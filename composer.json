@@ -1,5 +1,5 @@
 {
-  "name": "SyntaxDTL/SX-Framework",
+  "name": "syntax/sx-framework",
   "description": "A simple PHP framework for building web applications.",
   "version": "1.0.0",
   "license": "MIT",
