@@ -74,9 +74,7 @@ class SX_Field
 	 */
     public function make( string $id ): static
     {
-	    global $_GLOBALS;
-
-	    $this->slug = $_GLOBALS['SX_OPTION_SLUG'];
+	    $this->slug = SX_OPTION_SLUG;
         $this->id = $id;
         $this->name = $this->slug . '[' . $id . ']';
 

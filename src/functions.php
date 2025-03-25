@@ -14,7 +14,6 @@ if( ! function_exists( 'xs_name' ) ) {
 		return strtolower( SX_PREFIX . '_' . $name );
 	}
 }
-
 if( ! function_exists( 'sx_setting' ) )
 {
 	/**
@@ -26,14 +25,11 @@ if( ! function_exists( 'sx_setting' ) )
 	 */
 	function sx_setting( string $name, mixed $default = null ): mixed
 	{
-		global $_GLOBALS;
-
-		$settings = get_option( $_GLOBALS['SX_OPTION_SLUG'] );
+		$settings = get_option( SX_OPTION_SLUG );
 
 		return $settings[ $name ] ?? $default;
 	}
 }
-
 if( ! function_exists('sx_validate_fields' )) {
 	/**
 	 * Validate fields
@@ -48,6 +44,32 @@ if( ! function_exists('sx_validate_fields' )) {
 		});
 	}
 }
+
+
+if( ! function_exists( 'sx_enqueue_scripts' ) )
+{
+	/**
+	 * Enqueue scripts
+	 *
+	 * @return void
+	 */
+	function sx_enqueue_scripts(): void
+	{
+		wp_enqueue_style( 'sx-admin-css', SX_URL . '/assets/css/admin.css', array(), '1.0', 'all' );
+
+		$required = array(  );
+		if( wp_script_is( 'color-picker-js', 'enqueued' ) ) {
+			$required[] = 'color-picker-js';
+		}
+		wp_enqueue_script( 'sx-admin-js', SX_URL . '/assets/js/admin.min.js', $required, '1.0', true );
+		wp_localize_script( 'sx-admin-js', 'tk', array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce( 'sx' ),
+		) );
+	}
+}
+add_action( 'admin_enqueue_scripts', 'sx_enqueue_scripts' );
+
 
 if( ! function_exists( 'sx_select' ) ) {
 	/**
