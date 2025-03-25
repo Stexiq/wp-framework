@@ -1,0 +1,17 @@
+{
+  "name": "SyntaxDTL/SX-Framework",
+  "description": "A simple PHP framework for building web applications.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "autoload": {
+    "files": [
+      "src/framework.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "syntax.digital",
+      "email": "contact@syntax.digital"
+    }
+  ]
+}
