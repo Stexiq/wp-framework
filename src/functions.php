@@ -26,9 +26,11 @@ if( ! function_exists( 'sx_setting' ) )
 	 */
 	function sx_setting( string $name, mixed $default = null ): mixed
 	{
-		$array = get_option( SX_OPTION_SLUG );
+		global $_GLOBALS;
 
-		return $array[$name] ?? $default;
+		$settings = get_option( $_GLOBALS['SX_OPTION_SLUG'] );
+
+		return $settings[ $name ] ?? $default;
 	}
 }
 
