@@ -153,18 +153,6 @@ if( ! function_exists( 'sx_tab' ) ) {
 	}
 }
 
-if( ! function_exists( 'sx_admin' ) ) {
-	/**
-	 * Get the admin instance
-	 *
-	 * @return SX_Admin
-	 */
-	function sx_admin(): SX_Admin
-	{
-		return SX_Admin::get_instance();
-	}
-}
-
 
 
 function sx_get_roles()
@@ -266,7 +254,7 @@ function sx_is_allowed( $validate ) {
 }
 
 function sx_setting( string $name, $default = null ) {
-	$array = get_option( SXTB_SLUG );
+	$array = get_option( SX_OPTION_SLUG );
 
 	return $array[$name] ?? $default;
 }
