@@ -33,22 +33,15 @@ class SX_Checkbox extends SX_Field
 
         if( count($this->options) ): ?>
             <?php foreach( $this->options as $key => $option ): ?>
-                    <label class="sx-toggle-sitch" id="<?= $this->id ?>_<?= $key ?>">
-                        <input type="checkbox" id="<?= $this->id ?>_<?= $key ?>" name="<?= $this->name ?>[<?= $key ?>]" value="1" <?= checked( isset($value[$key]) ?? [], 1) ?> <?= $this->get_attributes(); ?>>
-
-
-
-                        <span><?= $option ?></span>
-                    </label>
+                <label id="<?= $this->id ?>_<?= $key ?>">
+                    <input type="checkbox" id="<?= $this->id ?>_<?= $key ?>" name="<?= $this->name ?>[<?= $key ?>]" value="1" <?= checked( isset($value[$key]) ?? [], 1) ?> <?= $this->get_attributes(); ?>>
+                    <span><?= $option ?></span>
+                </label>
             <?php endforeach; ?>
         <?php else: ?>
             <div class="sx-form-choice-group">
-                <label class="sx-toggle-switch" id="<?= $this->id ?>">
+                <label id="<?= $this->id ?>">
                     <input type="checkbox" id="<?= $this->id ?>" name="<?= $this->name ?>" value="1" <?= checked( $value, 1) ?> <?= $this->get_attributes(); ?>>
-
-                    <div class="sx-toggle-switch-background">
-                        <div class="sx-toggle-switch-handle"></div>
-                    </div>
                 </label>
             </div>
         <?php endif;
