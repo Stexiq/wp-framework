@@ -1,1 +1,10 @@
 .idea
+/src/node_modules
+/src/source
+src/gulpconfig.json
+src/gulpfile.js
+src/package-lock.json
+src/package.json
+src/postcss.config.js
+src/tailwind.config.js
+src/webpack.mix.js
