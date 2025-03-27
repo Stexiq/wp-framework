@@ -462,7 +462,7 @@ class SX_Field
             <div class="sx-field__type">
                 <?php if( $this->has_label() ) : ?>
                 <div class="sx-field__label">
-                    <label for="<?= $this->id; ?>"><?= $this->label; ?> <?= $this->recommended ? '<span class="sx-recommended">[Recommended]</span>' : ''; ?></label>]
+                    <label for="<?= $this->id; ?>"><?= $this->label; ?> <?= $this->recommended ? '<span class="sx-recommended">[Recommended]</span>' : ''; ?></label>
                     <?php if( $this->has_description() ) : ?>
                         <div class="sx-description"><?= $this->description; ?></div>
                     <?php endif; ?>
