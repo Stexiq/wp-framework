@@ -250,30 +250,25 @@ body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field_
 body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field__label {
   grid-column: 1/-1;
 }
-body[class*=sx] .sx-field .sx-field__sub-fields .sx-field--custom{
-  display: grid;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
-  grid-template-columns: 450px 1fr;
-}
-@media (max-width: 768px) {
-  body[class*=sx] .sx-field .sx-field__sub-fields .sx-field--custom{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-body[class*=sx] .sx-field .sx-field__sub-fields .sx-field--custom .sx-field__type{
-  padding-top: 0px;
-  grid-template-columns: repeat(2, 1fr);
+body[class*=sx] .sx-field .sx-field__sub-fields .sx-field--custom > * {
   grid-column: 2/-1;
-}
-body[class*=sx] .sx-field .sx-field__sub-fields .sx-field--custom .sx-field__label {
-  grid-column: 1/-1;
 }
 body[class*=sx] .sx-field table{
   width: 100%;
   border-collapse: collapse;
+}
+body[class*=sx] .sx-field table tr{
+  border-bottom-width: 1px;
+}
+body[class*=sx] .sx-field table tr:last-child{
+  border-bottom-width: 0px;
+}
+body[class*=sx] .sx-field table tr td{
+  padding: 0.5rem;
+}
+body[class*=sx] .sx-field table th{
+  padding: 0.5rem;
+  text-align: left;
 }
 body[class*=sx] .sx-field .sx-repeat{
   display: flex;
