@@ -15,7 +15,7 @@ body[class*=sx] #wpfooter {
 body[class*=sx] .sx-container{
   display: flex;
   min-width: 295px;
-  max-width: 880px;
+  max-width: 980px;
   flex-direction: column;
   overflow: hidden;
   border-radius: 0.25rem;
@@ -150,7 +150,7 @@ body[class*=sx] .sx-field .sx-field__type{
   -moz-column-gap: 1.5rem;
        column-gap: 1.5rem;
   padding: 1rem;
-  grid-template-columns: 400px 1fr;
+  grid-template-columns: 450px 1fr;
 }
 @media (max-width: 768px) {
   body[class*=sx] .sx-field .sx-field__type{
@@ -333,19 +333,13 @@ body[class*=sx] .sx-toggle-switch .sx-toggle-switch-background{
   width: 2.25rem;
   border-radius: 9999px;
   cursor: pointer;
-  border-width: 1px;
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 body[class*=sx] .sx-toggle-switch input{
   display: none;
 }
 body[class*=sx] .sx-toggle-switch input:checked + .sx-toggle-switch-background{
-  --tw-border-opacity: 1;
-  border-color: rgb(21 128 61 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
