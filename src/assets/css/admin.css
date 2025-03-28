@@ -177,8 +177,8 @@ body[class*=sx] .sx-field .sx-field__type .sx-field__label label .sx-recommended
   padding-right: 0.5rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
   font-weight: 500;
   border-radius: 0.125rem;
   --tw-bg-opacity: 1;
