@@ -320,7 +320,14 @@ class SX_Field
         return $this;
     }
 
-    public function impact( $level  = 'low', $color = null ): static
+    /**
+     * Set the field as impact
+     *
+     * @param string|null $level
+     * @param string|null $color
+     * @return $this
+     */
+    public function impact( ?string $level = null, ?string $color = null ): static
     {
         if( ! isset( $color ) ) {
             switch ( $level ) {
