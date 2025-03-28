@@ -59,9 +59,9 @@ class SX_Field
 	public string $description = '';
 
 	/**
-	 * @var bool
+	 * @var array
 	 */
-	public bool $recommended = false;
+	public array $tags = [];
 
     /**
      * @var array
@@ -311,12 +311,11 @@ class SX_Field
     /**
      * Set the field as recommended
      *
-     * @param bool $recommended
      * @return $this
      */
-    public function recommended( bool $recommended = true ): static
+    public function recommended(): static
     {
-        $this->recommended = $recommended;
+        $this->tags[] = [ 'title' => __('Recommended', 'sx'), 'color' => 'success' ];
 
         return $this;
     }
@@ -454,6 +453,16 @@ class SX_Field
 		return strlen( $this->description ) > 0;
 	}
 
+    /**
+     * Check if the field has tags
+     *
+     * @return boolean
+     */
+    protected function has_tags(): bool
+    {
+        return count($this->tags) > 0;
+    }
+
 
     protected function field_before()
     {
@@ -461,10 +470,20 @@ class SX_Field
         <div class="sx-field sx-field--<?= $this->type ?>" data-field="<?= $this->id ?>">
             <div class="sx-field__type">
                 <?php if( $this->has_label() ) : ?>
-                <div class="sx-field__label">
-                    <label for="<?= $this->id; ?>"><?= $this->label; ?> <?= $this->recommended ? '<span class="sx-recommended">Recommended</span>' : ''; ?></label>
-                    <?php if( $this->has_description() ) : ?>
-                        <div class="sx-description"><?= $this->description; ?></div>
+                <div class="sx-field__title">
+                    <div class="sx-field__label">
+                        <label for="<?= $this->id; ?>"><?= $this->label; ?></label>
+                        <?php if( $this->has_description() ) : ?>
+                            <div class="sx-field__description"><?= $this->description; ?></div>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php if( $this->has_tags() ) : ?>
+                        <div class="sx-field__tags">
+                            <?php foreach( $this->tags as $tag ) : ?>
+                                <span class="sx-field__tag sx-field__tag--<?= $tag['color'] ?>"><?= $tag['title'] ?></span>
+                            <?php endforeach; ?>
+                        </div>
                     <?php endif; ?>
                 </div>
         <?php
