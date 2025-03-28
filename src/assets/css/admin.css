@@ -161,7 +161,7 @@ body[class*=sx] .sx-field .sx-field__type{
 }
 body[class*=sx] .sx-field .sx-field__type .sx-field__title{
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.5rem;
 }
 body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label{
