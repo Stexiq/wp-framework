@@ -198,25 +198,25 @@ body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag .sx-field__tag--success{
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag.sx-field__tag--success{
   --tw-bg-opacity: 1;
   background-color: rgb(220 252 231 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(22 101 52 / var(--tw-text-opacity));
 }
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag .sx-field__tag--danger{
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag.sx-field__tag--danger{
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(153 27 27 / var(--tw-text-opacity));
 }
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag .sx-tag--warning{
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag.sx-tag--warning{
   --tw-bg-opacity: 1;
   background-color: rgb(254 249 195 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(133 77 14 / var(--tw-text-opacity));
 }
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag .sx-tag--info{
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag.sx-tag--info{
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
