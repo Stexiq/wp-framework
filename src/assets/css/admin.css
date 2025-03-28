@@ -160,7 +160,31 @@ body[class*=sx] .sx-field .sx-field__type{
   }
 }
 body[class*=sx] .sx-field .sx-field__type .sx-field__label label{
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+body[class*=sx] .sx-field .sx-field__type .sx-field__label label .sx-recommended{
+  margin-left: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  border-radius: 0.125rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(30 64 175 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-field__sub-fields{
   display: flex;
@@ -279,9 +303,9 @@ body[class*=sx] .sx-toggle-switch input{
 }
 body[class*=sx] .sx-toggle-switch input:checked + .sx-toggle-switch-background{
   --tw-border-opacity: 1;
-  border-color: rgb(36 84 132 / var(--tw-border-opacity));
+  border-color: rgb(21 128 61 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
-  background-color: rgb(47 110 172 / var(--tw-bg-opacity));
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 body[class*=sx] .sx-toggle-switch input:checked + .sx-toggle-switch-background .sx-toggle-switch-handle {
   transform: translateX(20px);
