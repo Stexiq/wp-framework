@@ -492,9 +492,9 @@ class SX_Field
                         <label for="<?= $this->id; ?>"><?= $this->label; ?></label>
 
 	                    <?php if( $this->has_tags() ) : ?>
-                            <div class="sx-field__tags">
+                            <div class="sx-tags">
 			                    <?php foreach( $this->tags as $tag ) : ?>
-                                    <span class="sx-field__tag sx-field__tag--<?= $tag['color'] ?>"><?= $tag['title'] ?></span>
+                                    <span class="sx-tag sx-field-tag--<?= $tag['color'] ?>"><?= $tag['title'] ?></span>
 			                    <?php endforeach; ?>
                             </div>
 	                    <?php endif; ?>
