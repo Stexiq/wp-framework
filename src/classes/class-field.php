@@ -320,6 +320,23 @@ class SX_Field
         return $this;
     }
 
+    public function impact( $level  = 'low' ): static
+    {
+        $color = 'info';
+        switch ( $level ) {
+            case 'medium':
+                $color = 'warning';
+                break;
+            case 'high':
+                $color = 'danger';
+                break;
+        }
+
+        $this->tags[] = [ 'title' => ucfirst($level), 'color' => $color ];
+
+        return $this;
+    }
+
 	/**
 	 * Set attributes for the field
 	 *
