@@ -250,12 +250,15 @@ body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field_
 body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field__label {
   grid-column: 1/-1;
 }
-body[class*=sx] .sx-field .sx-field__sub-fields .sx-field--custom > * {
+body[class*=sx] .sx-field .sx-field__sub-fields .sx-field--custom .sx-field__type > * {
   grid-column: 2/-1;
 }
 body[class*=sx] .sx-field table{
   width: 100%;
   border-collapse: collapse;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 body[class*=sx] .sx-field table tr{
   border-bottom-width: 1px;
@@ -267,6 +270,8 @@ body[class*=sx] .sx-field table tr td{
   padding: 0.5rem;
 }
 body[class*=sx] .sx-field table th{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
   padding: 0.5rem;
   text-align: left;
 }
