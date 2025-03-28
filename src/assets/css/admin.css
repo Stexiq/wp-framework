@@ -279,7 +279,7 @@ body[class*=sx] .sx-toggle-switch input{
 }
 body[class*=sx] .sx-toggle-switch input:checked + .sx-toggle-switch-background{
   --tw-border-opacity: 1;
-  border-color: rgb(42 97 152 / var(--tw-border-opacity));
+  border-color: rgb(36 84 132 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(47 110 172 / var(--tw-bg-opacity));
 }
@@ -392,8 +392,13 @@ body[class*=sx] .sx-settings .sx-settings__footer button{
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(36 84 132 / var(--tw-border-opacity));
 }
 body[class*=sx] .sx-settings .sx-settings__footer button:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(31 72 112 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(42 97 152 / var(--tw-bg-opacity));
 }
