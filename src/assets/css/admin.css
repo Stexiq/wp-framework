@@ -172,15 +172,11 @@ body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label labe
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
   font-weight: 600;
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__description{
-  font-size: 0.875rem;
-  line-height: 1.25rem;
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
