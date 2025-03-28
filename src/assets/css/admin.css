@@ -237,7 +237,7 @@ body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox{
   display: grid;
   -moz-column-gap: 1rem;
        column-gap: 1rem;
-  grid-template-columns: 400px 1fr;
+  grid-template-columns: 450px 1fr;
 }
 @media (max-width: 768px) {
   body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox{
