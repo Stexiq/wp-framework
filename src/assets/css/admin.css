@@ -166,8 +166,6 @@ body[class*=sx] .sx-field .sx-field__type .sx-field__title{
 }
 body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 0.5rem;
 }
 body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label label{
@@ -180,18 +178,11 @@ body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label labe
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__description{
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__tags{
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags{
   display: flex;
-  align-items: center;
   gap: 0.5rem;
 }
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__tags .sx-field__tag{
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag{
   display: inline-flex;
   align-items: center;
   padding-left: 0.25rem;
@@ -207,29 +198,35 @@ body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__tags .sx-f
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__tags .sx-field__tag .sx-field__tag--success{
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag .sx-field__tag--success{
   --tw-bg-opacity: 1;
   background-color: rgb(220 252 231 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(22 101 52 / var(--tw-text-opacity));
 }
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__tags .sx-field__tag .sx-field__tag--danger{
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag .sx-field__tag--danger{
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(153 27 27 / var(--tw-text-opacity));
 }
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__tags .sx-field__tag .sx-tag--warning{
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag .sx-tag--warning{
   --tw-bg-opacity: 1;
   background-color: rgb(254 249 195 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(133 77 14 / var(--tw-text-opacity));
 }
-body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__tags .sx-field__tag .sx-tag--info{
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__label .sx-field__tags .sx-field__tag .sx-tag--info{
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(30 64 175 / var(--tw-text-opacity));
+}
+body[class*=sx] .sx-field .sx-field__type .sx-field__title .sx-field__description{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-field__sub-fields{
   display: flex;

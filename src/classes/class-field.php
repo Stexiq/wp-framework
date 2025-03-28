@@ -473,18 +473,19 @@ class SX_Field
                 <div class="sx-field__title">
                     <div class="sx-field__label">
                         <label for="<?= $this->id; ?>"><?= $this->label; ?></label>
-                        <?php if( $this->has_description() ) : ?>
-                            <div class="sx-field__description"><?= $this->description; ?></div>
-                        <?php endif; ?>
+
+	                    <?php if( $this->has_tags() ) : ?>
+                            <div class="sx-field__tags">
+			                    <?php foreach( $this->tags as $tag ) : ?>
+                                    <span class="sx-field__tag sx-field__tag--<?= $tag['color'] ?>"><?= $tag['title'] ?></span>
+			                    <?php endforeach; ?>
+                            </div>
+	                    <?php endif; ?>
                     </div>
 
-                    <?php if( $this->has_tags() ) : ?>
-                        <div class="sx-field__tags">
-                            <?php foreach( $this->tags as $tag ) : ?>
-                                <span class="sx-field__tag sx-field__tag--<?= $tag['color'] ?>"><?= $tag['title'] ?></span>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
+	                <?php if( $this->has_description() ) : ?>
+                        <div class="sx-field__description"><?= $this->description; ?></div>
+	                <?php endif; ?>
                 </div>
         <?php
         endif;
