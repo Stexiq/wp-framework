@@ -432,8 +432,8 @@ body[class*=sx] select{
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0px;
+  padding-bottom: 0px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
