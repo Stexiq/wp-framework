@@ -201,32 +201,32 @@ body[class*=sx] .sx-field .sx-tags .sx-tag{
   line-height: 1rem;
   font-weight: 500;
   border-radius: 0.25rem;
-  --tw-bg-opacity: 1;
   background-color: rgb(240 240 241 / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.3;
   --tw-text-opacity: 1;
   color: rgb(80 87 94 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-tags .sx-tag.sx-tag--success{
+  --tw-bg-opacity: 1;
   background-color: rgb(184 230 191 / var(--tw-bg-opacity));
-  --tw-bg-opacity: 0.5;
   --tw-text-opacity: 1;
   color: rgb(0 92 18 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-tags .sx-tag.sx-tag--danger{
+  --tw-bg-opacity: 1;
   background-color: rgb(250 207 210 / var(--tw-bg-opacity));
-  --tw-bg-opacity: 0.5;
   --tw-text-opacity: 1;
   color: rgb(138 36 36 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-tags .sx-tag.sx-tag--warning{
+  --tw-bg-opacity: 1;
   background-color: rgb(245 230 171 / var(--tw-bg-opacity));
-  --tw-bg-opacity: 0.5;
   --tw-text-opacity: 1;
   color: rgb(97 66 0 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-tags .sx-tag.sx-tag--info{
+  --tw-bg-opacity: 1;
   background-color: rgb(197 217 237 / var(--tw-bg-opacity));
-  --tw-bg-opacity: 0.5;
   --tw-text-opacity: 1;
   color: rgb(10 75 120 / var(--tw-text-opacity));
 }
