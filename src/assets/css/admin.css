@@ -306,7 +306,18 @@ body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item{
   display: grid;
   gap: 1rem;
   border-radius: 0.25rem;
+}
+body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:nth-child(1n) {
+  grid-template-columns: repeat(1, 1fr);
+}
+body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:nth-child(2n) {
   grid-template-columns: repeat(2, 1fr);
+}
+body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:nth-child(3n) {
+  grid-template-columns: repeat(3, 1fr);
+}
+body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:nth-child(4n) {
+  grid-template-columns: repeat(4, 1fr);
 }
 body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:not(:last-child){
   border-bottom-width: 1px;
