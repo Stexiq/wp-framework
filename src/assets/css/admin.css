@@ -155,6 +155,9 @@ body[class*=sx] .sx-field .sx-field__type{
 body[class*=sx] .sx-field .sx-field__type:has(.sx-repeat){
   align-items: flex-start;
 }
+body[class*=sx] .sx-field .sx-field__type:not(:has(.sx-field__label)) > * {
+  grid-column: 1/-1;
+}
 @media (max-width: 768px) {
   body[class*=sx] .sx-field .sx-field__type{
     display: flex;
