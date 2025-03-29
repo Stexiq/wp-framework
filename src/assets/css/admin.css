@@ -315,8 +315,6 @@ body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item{
   border-radius: 0.25rem;
 }
 body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item .sx-field{
-  max-width: -moz-min-content;
-  max-width: min-content;
   flex: 1 1 0%;
 }
 body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:not(:last-child){
@@ -445,6 +443,8 @@ body[class*=sx] input[type=checkbox]:focus{
 }
 body[class*=sx] select{
   width: 100%;
+  max-width: -moz-max-content;
+  max-width: max-content;
   border-radius: 0.25rem;
   border-width: 1px;
   --tw-border-opacity: 1;
