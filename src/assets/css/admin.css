@@ -152,6 +152,9 @@ body[class*=sx] .sx-field .sx-field__type{
   padding: 1rem;
   grid-template-columns: 450px 1fr;
 }
+body[class*=sx] .sx-field .sx-field__type:has(.sx-repeat){
+  align-items: flex-start;
+}
 @media (max-width: 768px) {
   body[class*=sx] .sx-field .sx-field__type{
     display: flex;
