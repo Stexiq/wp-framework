@@ -437,3 +437,31 @@ if( ! function_exists( 'sx_plugin_get_writable_htaccess_path' ) )
 		return $htaccess_file;
 	}
 }
+
+
+if( ! function_exists( 'sx_get_dashboard_widgets' ) )
+{
+	/**
+	 * Get dashboard widgets
+	 *
+	 * @return array
+	 */
+	function sx_get_dashboard_widgets(): array
+	{
+		global $wp_meta_boxes;
+
+		$widgets = [];
+		foreach( $wp_meta_boxes['dashboard'] as $location => $widget_locations ) {
+			foreach( $widget_locations as $widget_location ) {
+				foreach( $widget_location as $widget ) {
+					$widgets[] = [
+						'id' => $widget['id'],
+						'location' => $location,
+					];
+				}
+			}
+		}
+
+		return $widgets;
+	}
+}
