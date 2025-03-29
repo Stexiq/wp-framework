@@ -432,7 +432,10 @@ body[class*=sx] select{
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
-  padding: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 body[class*=sx] .sx-settings .sx-settings__section .sx-settings__section-header{
   display: flex;
