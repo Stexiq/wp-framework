@@ -122,7 +122,7 @@ body[class*=sx] .notice.notice-error{
   --tw-border-opacity: 1;
   border-color: rgb(252 165 165 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
-  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+  background-color: rgb(36 10 10 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
 }
@@ -130,7 +130,7 @@ body[class*=sx] .notice.notice-warning{
   --tw-border-opacity: 1;
   border-color: rgb(253 224 71 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
-  background-color: rgb(254 249 195 / var(--tw-bg-opacity));
+  background-color: rgb(33 22 0 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity));
 }
@@ -202,31 +202,31 @@ body[class*=sx] .sx-field .sx-tags .sx-tag{
   font-weight: 500;
   border-radius: 0.125rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  background-color: rgb(16 21 23 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-tags .sx-tag.sx-tag--success{
   --tw-bg-opacity: 1;
-  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+  background-color: rgb(0 28 5 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(22 101 52 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-tags .sx-tag.sx-tag--danger{
   --tw-bg-opacity: 1;
-  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+  background-color: rgb(36 10 10 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(153 27 27 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-tags .sx-tag.sx-tag--warning{
   --tw-bg-opacity: 1;
-  background-color: rgb(254 249 195 / var(--tw-bg-opacity));
+  background-color: rgb(33 22 0 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(133 77 14 / var(--tw-text-opacity));
 }
 body[class*=sx] .sx-field .sx-tags .sx-tag.sx-tag--info{
   --tw-bg-opacity: 1;
-  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+  background-color: rgb(0 19 28 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(30 64 175 / var(--tw-text-opacity));
 }
@@ -280,7 +280,7 @@ body[class*=sx] .sx-field table tr td{
 }
 body[class*=sx] .sx-field table th{
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(100 105 112 / var(--tw-bg-opacity));
   padding: 0.5rem;
   text-align: left;
 }
@@ -301,7 +301,7 @@ body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item{
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(100 105 112 / var(--tw-bg-opacity));
   padding: 1rem;
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -460,7 +460,7 @@ body[class*=sx] .sx-settings .sx-settings__section .sx-settings__section-header{
   align-items: center;
   justify-content: space-between;
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(100 105 112 / var(--tw-bg-opacity));
   padding: 1rem;
   margin: 0px;
   cursor: pointer;
