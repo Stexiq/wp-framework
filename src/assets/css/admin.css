@@ -253,7 +253,9 @@ body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field_
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-column: 2/-1;
 }
-body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field__title {
+body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field__title{
+  margin-bottom: 0.5rem;
+  gap: 0px;
   grid-column: 1/-1;
 }
 body[class*=sx] .sx-field .sx-field__sub-fields .sx-field--custom .sx-field__type > * {
