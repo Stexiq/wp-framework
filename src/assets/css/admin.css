@@ -426,6 +426,14 @@ body[class*=sx] input[type=checkbox]:focus{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(47 110 172 / var(--tw-ring-opacity));
 }
+body[class*=sx] select{
+  width: 100%;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  padding: 0.5rem;
+}
 body[class*=sx] .sx-settings .sx-settings__section .sx-settings__section-header{
   display: flex;
   align-items: center;
