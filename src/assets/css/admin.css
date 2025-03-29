@@ -248,9 +248,15 @@ body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox{
     align-items: flex-start;
   }
 }
+body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field{
+  max-width: -moz-min-content;
+  max-width: min-content;
+  flex: 1 1 0%;
+}
 body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field__type{
+  display: flex;
+  flex-wrap: wrap;
   padding-top: 0px;
-  grid-template-columns: repeat(2, 1fr);
   grid-column: 2/-1;
 }
 body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field__label {
