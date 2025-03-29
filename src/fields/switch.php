@@ -7,7 +7,7 @@ class SX_Switch extends SX_Field
     /**
     * @var string
     */
-    public string $type = 'checkbox';
+    public string $type = 'switch';
 
     /**
      * Set options.
