@@ -307,13 +307,13 @@ body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item{
   gap: 1rem;
   border-radius: 0.25rem;
 }
-body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:has(> :nth-child(1)) {
+body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:has(> .sx-field:nth-child(1)) {
   grid-template-columns: repeat(1, 1fr);
 }
-body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:has(> :nth-child(2)) {
+body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:has(> .sx-field:nth-child(2)) {
   grid-template-columns: repeat(2, 1fr);
 }
-body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:has(> :nth-child(3)) {
+body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:has(> .sx-field:nth-child(3)) {
   grid-template-columns: repeat(3, 1fr);
 }
 body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:not(:last-child){
