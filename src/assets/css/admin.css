@@ -144,6 +144,9 @@ body[class*=sx] .sx-field{
 body[class*=sx] .sx-field:not(:last-child) .sx-field__sub-fields{
   border-bottom-width: 1px;
 }
+body[class*=sx] .sx-field.sx-field--no-label .sx-field__type > * {
+  grid-column: 1/-1;
+}
 body[class*=sx] .sx-field .sx-field__type{
   display: grid;
   align-items: center;
@@ -154,9 +157,6 @@ body[class*=sx] .sx-field .sx-field__type{
 }
 body[class*=sx] .sx-field .sx-field__type:has(.sx-repeat){
   align-items: flex-start;
-}
-body[class*=sx] .sx-field .sx-field__type:not(:has(.sx-field__title)) > * {
-  grid-column: 1/-1;
 }
 @media (max-width: 768px) {
   body[class*=sx] .sx-field .sx-field__type{
