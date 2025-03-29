@@ -495,7 +495,7 @@ class SX_Field
     protected function field_before()
     {
         ?>
-        <div class="sx-field sx-field--<?= $this->type ?>" data-field="<?= $this->id ?>">
+        <div class="sx-field sx-field--<?= $this->type ?> sx-field--<?= $this->has_label() ? 'has-label' : 'no-label' ?>" data-field="<?= $this->id ?>">
             <div class="sx-field__type">
                 <?php if( $this->has_label() ) : ?>
                 <div class="sx-field__title">
