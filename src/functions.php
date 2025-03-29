@@ -456,6 +456,7 @@ if( ! function_exists( 'sx_get_dashboard_widgets' ) )
 				foreach( $widget_location as $widget ) {
 					$widgets[] = [
 						'id' => $widget['id'],
+						'title' => $widget['title'],
 						'location' => $location,
 					];
 				}
