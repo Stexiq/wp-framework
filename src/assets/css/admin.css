@@ -307,17 +307,14 @@ body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item{
   gap: 1rem;
   border-radius: 0.25rem;
 }
-body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:nth-child(1n) {
+body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:has(> :nth-child(1)) {
   grid-template-columns: repeat(1, 1fr);
 }
-body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:nth-child(2n) {
+body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:has(> :nth-child(2)) {
   grid-template-columns: repeat(2, 1fr);
 }
-body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:nth-child(3n) {
+body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:has(> :nth-child(3)) {
   grid-template-columns: repeat(3, 1fr);
-}
-body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:nth-child(4n) {
-  grid-template-columns: repeat(4, 1fr);
 }
 body[class*=sx] .sx-field .sx-repeat .sx-repeat-items .sx-repeat-item:not(:last-child){
   border-bottom-width: 1px;
