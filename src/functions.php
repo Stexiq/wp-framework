@@ -454,11 +454,13 @@ if( ! function_exists( 'sx_get_dashboard_widgets' ) )
 		foreach( $wp_meta_boxes['dashboard'] as $location => $widget_locations ) {
 			foreach( $widget_locations as $widget_location ) {
 				foreach( $widget_location as $widget ) {
-					$widgets[] = [
-						'id' => $widget['id'],
-						'title' => $widget['title'],
-						'location' => $location,
-					];
+					if( is_array( $widget ) ) {
+						$widgets[] = [
+							'id' => $widget['id'],
+							'title' => $widget['title'],
+							'location' => $location,
+						];
+					}
 				}
 			}
 		}
