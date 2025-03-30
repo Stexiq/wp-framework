@@ -102,8 +102,8 @@ body[class*=sx] .error{
 body[class*=sx] #wpbody-content .notice{
   display: none;
 }
-body[class*=sx] .sx-container .notice{
-  display: block;
+body[class*=sx] .sx-container .notice {
+  display: block !important;
 }
 body[class*=sx] .notice{
   margin: 0px;
