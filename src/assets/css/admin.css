@@ -96,10 +96,10 @@ body[class*=sx] .sx-container .sx-top-bar .sx-nav li a.sx-nav--active-item{
   --tw-text-opacity: 1;
   color: rgb(47 110 172 / var(--tw-text-opacity));
 }
-body[class*=sx] .error {
+body[class*=sx] .error{
   display: none;
 }
-body[class*=sx] #screen-meta .notice {
+body[class*=sx] #screen-meta .notice{
   display: none;
 }
 body[class*=sx] .sx-container .notice{
