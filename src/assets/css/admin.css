@@ -99,7 +99,7 @@ body[class*=sx] .sx-container .sx-top-bar .sx-nav li a.sx-nav--active-item{
 body[class*=sx] .error{
   display: none;
 }
-body[class*=sx] #screen-meta .notice{
+body[class*=sx] #wpbody-content .notice{
   display: none;
 }
 body[class*=sx] .sx-container .notice{
