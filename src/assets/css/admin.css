@@ -250,9 +250,10 @@ body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox{
   }
 }
 body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field__type{
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   padding-top: 0px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-column: 2/-1;
 }
 body[class*=sx] .sx-field .sx-field__sub-fields > .sx-field--checkbox .sx-field__title{
