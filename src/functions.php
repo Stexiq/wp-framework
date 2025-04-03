@@ -39,15 +39,6 @@ if( ! function_exists('sx_validate_fields' )) {
 	 */
 	function sx_validate_fields( array $fields ): array
 	{
-		foreach( $fields as $key => $field ) {
-			if( is_string( $field ) && class_exists( $field ) ) {
-				if( method_exists( $field, 'fields' ) ) {
-					$fields[$key] = call_user_func( $field . '::fields' );
-					$fields[$key] = array_shift($fields[$key]);
-				}
-			}
-		}
-		
 		return array_filter($fields, function( $field) {
 			return $field->enabled ?? false;
 		});
