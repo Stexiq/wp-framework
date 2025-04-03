@@ -325,25 +325,6 @@ class SX_Field
         return $this;
     }
 
-
-
-	/**
-	 * Set the field as recommended
-	 *
-	 * @return $this
-	 */
-	public function setting( $class ): static
-	{
-        // check if class exists
-        if( ! class_exists( $class ) ) {
-            return $this;
-        }
-
-        new $class();
-
-		return $this;
-	}
-
     /**
      * Set the field as impact
      *
