@@ -32,7 +32,9 @@ if( ! class_exists( 'SX_Plugin' ) )
 			}
 
 			if( method_exists( $this, 'construct' ) ) {
-				$this->construct();
+				add_action( 'admin_init', array( $this, 'construct' ) );
+				add_action( 'init', array( $this, 'construct' ) );
+				//				$this->construct();
 			}
 		}
 	}

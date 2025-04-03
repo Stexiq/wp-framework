@@ -34,6 +34,11 @@ class SX_Field
 	public bool $enabled = true;
 
     /**
+     * @var string
+     */
+    public $setting;
+
+    /**
      * @var array
      */
     public array $options = [];
@@ -319,6 +324,25 @@ class SX_Field
 
         return $this;
     }
+
+
+
+	/**
+	 * Set the field as recommended
+	 *
+	 * @return $this
+	 */
+	public function setting( $class ): static
+	{
+        // check if class exists
+        if( ! class_exists( $class ) ) {
+            return $this;
+        }
+
+        new $class();
+
+		return $this;
+	}
 
     /**
      * Set the field as impact
