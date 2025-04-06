@@ -423,6 +423,29 @@ body[class*=sx] input[type=password]{
   --tw-text-opacity: 1;
   color: rgb(140 143 148 / var(--tw-text-opacity));
 }
+body[class*=sx] input[type=text]:hover,
+body[class*=sx] input[type=number]:hover,
+body[class*=sx] input[type=email]:hover,
+body[class*=sx] input[type=url]:hover,
+body[class*=sx] input[type=password]:hover {
+  box-shadow: 0 0 0 4px #f2f2f2;
+}
+body[class*=sx] input[type=text]:checked, 
+body[class*=sx] input[type=number]:checked, 
+body[class*=sx] input[type=email]:checked, 
+body[class*=sx] input[type=url]:checked, 
+body[class*=sx] input[type=password]:checked{
+  --tw-border-opacity: 1;
+  border-color: rgb(47 110 172 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(47 110 172 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: 0 0 0 4px rgba(23, 168, 227, 0.2);
+}
 body[class*=sx] input[type=checkbox]{
   height: 1rem;
   width: 1rem;
@@ -465,6 +488,21 @@ body[class*=sx] select{
   padding-bottom: 0px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+body[class*=sx] select:hover {
+  box-shadow: 0 0 0 4px #f2f2f2;
+}
+body[class*=sx] select:checked{
+  --tw-border-opacity: 1;
+  border-color: rgb(47 110 172 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(47 110 172 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  box-shadow: 0 0 0 4px rgba(23, 168, 227, 0.2);
 }
 body[class*=sx] .sx-settings .sx-settings__section .sx-settings__section-header{
   display: flex;
