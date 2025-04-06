@@ -462,8 +462,12 @@ body[class*=sx] input[type=checkbox]:focus{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(47 110 172 / var(--tw-ring-opacity));
 }
-body[class*=sx] input[type=checkbox]:hover {
-  box-shadow: 0 0 0 4px #f2f2f2;
+body[class*=sx] input[type=checkbox]:hover{
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow-color: #6BA1D6;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 body[class*=sx] input[type=checkbox]:checked{
   --tw-border-opacity: 1;
@@ -475,7 +479,11 @@ body[class*=sx] input[type=checkbox]:checked{
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  box-shadow: 0 0 0 4px rgba(23, 168, 227, 0.2);
+  --tw-shadow-color: #6BA1D6;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+body[class*=sx] input[type=checkbox]:checked:before {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(80deg) brightness(104%) contrast(200%);
 }
 body[class*=sx] select{
   width: 100%;
@@ -502,7 +510,8 @@ body[class*=sx] select:checked{
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  box-shadow: 0 0 0 4px rgba(23, 168, 227, 0.2);
+  --tw-shadow-color: #6BA1D6;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 body[class*=sx] .sx-settings .sx-settings__section .sx-settings__section-header{
   display: flex;
