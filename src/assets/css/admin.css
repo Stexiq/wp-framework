@@ -433,8 +433,8 @@ body[class*=sx] input[type=number]:hover,
 body[class*=sx] input[type=email]:hover, 
 body[class*=sx] input[type=url]:hover, 
 body[class*=sx] input[type=password]:hover{
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  --tw-shadow: 0 0 0 4px;
+  --tw-shadow-colored: 0 0 0 4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   --tw-shadow-color: #6BA1D6;
   --tw-shadow: var(--tw-shadow-colored);
@@ -450,8 +450,8 @@ body[class*=sx] input[type=password]:checked{
   background-color: rgb(47 110 172 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  --tw-shadow: 0 0 0 4px;
+  --tw-shadow-colored: 0 0 0 4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   --tw-shadow-color: #6BA1D6;
   --tw-shadow: var(--tw-shadow-colored);
@@ -478,8 +478,8 @@ body[class*=sx] input[type=checkbox]:focus{
   --tw-ring-color: rgb(47 110 172 / var(--tw-ring-opacity));
 }
 body[class*=sx] input[type=checkbox]:hover{
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  --tw-shadow: 0 0 0 4px;
+  --tw-shadow-colored: 0 0 0 4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   --tw-shadow-color: #6BA1D6;
   --tw-shadow: var(--tw-shadow-colored);
@@ -491,8 +491,8 @@ body[class*=sx] input[type=checkbox]:checked{
   background-color: rgb(47 110 172 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  --tw-shadow: 0 0 0 4px;
+  --tw-shadow-colored: 0 0 0 4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   --tw-shadow-color: #6BA1D6;
   --tw-shadow: var(--tw-shadow-colored);
@@ -518,8 +518,8 @@ body[class*=sx] select{
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 body[class*=sx] select:hover{
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  --tw-shadow: 0 0 0 4px;
+  --tw-shadow-colored: 0 0 0 4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   --tw-shadow-color: #6BA1D6;
   --tw-shadow: var(--tw-shadow-colored);
@@ -531,8 +531,8 @@ body[class*=sx] select:checked{
   background-color: rgb(47 110 172 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  --tw-shadow: 0 0 0 4px;
+  --tw-shadow-colored: 0 0 0 4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   --tw-shadow-color: #6BA1D6;
   --tw-shadow: var(--tw-shadow-colored);
