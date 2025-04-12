@@ -3,14 +3,13 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class SX_Textarea extends SX_Field
 {
-
     /**
     * @var string
     */
     public string $type = 'textarea';
 
 	/**
-	 * @var bool
+	 * @var array
 	 */
 	public array $code_mirror = array(
         'enabled' => false,
@@ -78,14 +77,14 @@ class SX_Textarea extends SX_Field
 	    return array(
             array(
                 'handle' => 'codemirror',
-                'src' => SXTB_PLUGIN_URL . 'admin/assets/libs/codemirror/codemirror.min.js',
+                'src' => SX_URL . 'admin/assets/libs/codemirror/codemirror.min.js',
                 'deps' => array(),
                 'ver' => '1.0',
                 'in_footer' => false
             ),
             array(
                 'handle' => 'codemirror-mode-' . $this->code_mirror_mode(),
-                'src' => SXTB_PLUGIN_URL . 'admin/assets/libs/codemirror/mode/' . $this->code_mirror_mode() . '.min.js',
+                'src' => SX_URL . 'admin/assets/libs/codemirror/mode/' . $this->code_mirror_mode() . '.min.js',
                 'deps' => array( 'jquery' ),
                 'ver' => '1.0',
                 'in_footer' => false
@@ -103,7 +102,7 @@ class SX_Textarea extends SX_Field
 		return array(
 			array(
 				'handle' => 'codemirror-css',
-				'src' => SXTB_PLUGIN_URL . 'admin/assets/libs/codemirror/codemirror.min.css',
+				'src' => SX_URL . 'admin/assets/libs/codemirror/codemirror.min.css',
 				'deps' => array(),
 				'ver' => '1.0',
 				'in_footer' => false

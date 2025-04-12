@@ -15,9 +15,6 @@ class SX_Password extends SX_Field
 	 */
 	public function init(): void
 	{
-		/**
-		 * Set the attributes.
-		 */
 		$this->attributes['type'] = 'password';
 	}
 

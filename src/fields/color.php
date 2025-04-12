@@ -19,7 +19,7 @@ class SX_Color extends SX_Field
 		 * Set the attributes.
 		 */
 		$this->attributes['type'] = 'text';
-		$this->attributes['class'] = 'sx-color-picker';
+		//$this->attributes['class'] = 'sx-color-picker';
 
 		/**
 		 * Set the rules.
@@ -27,35 +27,35 @@ class SX_Color extends SX_Field
         $this->rules[] = 'color';
 	}
 
-	/**
-	 * Add the required JS
-	 *
-	 * @return array
-	 */
-	public function js(): array
-	{
-		return array(
-			array(
-				'handle' => 'color-picker',
-				'src' => SXTB_PLUGIN_URL . 'admin/assets/libs/colorpicker/coloris.min.js',
-			),
-		);
-	}
-
-	/**
-	 * Add the required CSS
-	 *
-	 * @return array
-	 */
-	public function css(): array
-	{
-		return array(
-			array(
-				'handle' => 'color-picker',
-				'src' => SXTB_PLUGIN_URL . 'admin/assets/libs/colorpicker/coloris.min.css',
-			),
-		);
-	}
+//	/**
+//	 * Add the required JS
+//	 *
+//	 * @return array
+//	 */
+//	public function js(): array
+//	{
+//		return array(
+//			array(
+//				'handle' => 'color-picker',
+//				'src' => SX_URL . 'admin/assets/libs/colorpicker/coloris.min.js',
+//			),
+//		);
+//	}
+//
+//	/**
+//	 * Add the required CSS
+//	 *
+//	 * @return array
+//	 */
+//	public function css(): array
+//	{
+//		return array(
+//			array(
+//				'handle' => 'color-picker',
+//				'src' => SX_URL . 'admin/assets/libs/colorpicker/coloris.min.css',
+//			),
+//		);
+//	}
 
     /**
      * Render the field

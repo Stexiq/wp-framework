@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! function_exists( 'xs_name' ) ) {
+if( ! function_exists( 'sx_name' ) ) {
 	/**
 	 * Format the name
 	 *
@@ -70,6 +70,23 @@ if( ! function_exists( 'sx_enqueue_scripts' ) )
 }
 add_action( 'admin_enqueue_scripts', 'sx_enqueue_scripts' );
 
+if( ! function_exists( 'sx_generate_site_id') )
+{
+	function sx_get_site_id(): string
+	{
+		$unique = array(
+			'site_url' => get_site_url(),
+			'auth_key' => get_current_blog_id(),
+		);
+
+		$site_id = md5( implode( '', $unique ) );
+
+		 $site_id = substr( $site_id, 0, 16 );
+		 $site_id = sprintf( '%s-%s-%s', substr( $site_id, 0, 4 ), substr( $site_id, 8, 4 ), substr( $site_id, 12, 4 ) );
+
+		return $site_id;
+	}
+}
 
 if( ! function_exists( 'sx_select' ) ) {
 	/**
@@ -168,17 +185,6 @@ if( ! function_exists( 'sx_custom' ) ) {
 	function sx_custom(): SX_Custom
 	{
 		return new SX_Custom();
-	}
-}
-if( ! function_exists( 'sx_repeat' ) ) {
-	/**
-	 * Create a new repeat field
-	 *
-	 * @return SX_Repeat
-	 */
-	function sx_repeat(): SX_Repeat
-	{
-		return new SX_Repeat();
 	}
 }
 if( ! function_exists( 'sx_tab' ) ) {
@@ -439,6 +445,7 @@ if( ! function_exists( 'sx_plugin_get_writable_htaccess_path' ) )
 }
 
 
+
 if( ! function_exists( 'sx_get_dashboard_widgets' ) )
 {
 	/**
@@ -467,4 +474,10 @@ if( ! function_exists( 'sx_get_dashboard_widgets' ) )
 
 		return $widgets;
 	}
+}
+
+
+function sx_minify( $data )
+{
+	return preg_replace( array( '/\s+/', '/\s*([{};:])\s*/', '/\s*([()])\s*/', ), array( ' ', '$1', '$1', ), $data );
 }

@@ -8,6 +8,11 @@ class SX_Text extends SX_Field
     */
     public string $type = 'text';
 
+	/**
+     * Set the field type to text.
+     *
+	 * @return void
+	 */
 	public function init(): void
 	{
 		$this->attributes['type'] = 'text';
@@ -28,6 +33,7 @@ class SX_Text extends SX_Field
 
     /**
      * Render the field
+     *
      * @return void
      */
     public function field(): void

@@ -34,11 +34,6 @@ class SX_Field
 	public bool $enabled = true;
 
     /**
-     * @var string
-     */
-    public $setting;
-
-    /**
      * @var array
      */
     public array $options = [];
@@ -456,11 +451,7 @@ class SX_Field
 	protected function set_attributes(): void
     {
         switch ( $this->type ) {
-            case 'checkbox':
-                break;
-            case 'select':
-                break;
-            case 'input':
+	        case 'input':
                 $this->attributes['type'] = $this->attributes['type'] ?? 'text';
                 break;
         }
@@ -496,8 +487,12 @@ class SX_Field
         return count($this->tags) > 0;
     }
 
-
-    protected function field_before()
+    /**
+     * Render something before the field
+     *
+     * @return void
+     */
+    protected function field_before(): void
     {
         ?>
         <div class="sx-field sx-field--<?= $this->type ?> sx-field--<?= $this->has_label() ? 'has-label' : 'no-label' ?>" data-field="<?= $this->id ?>">
@@ -524,18 +519,23 @@ class SX_Field
         endif;
     }
 
-	protected function field_after()
+    /**
+     * Render something after the field
+     *
+     * @return void
+     */
+	protected function field_after(): void
 	{
 		?>
         </div>
 
-		<?php if(count($this->sub_fields)) : ?>
-            <div class="sx-field__sub-fields">
-				<?php foreach($this->sub_fields as $field) : ?>
-					<?= $field->set()->render(); ?>
-				<?php endforeach; ?>
-            </div>
-		<?php endif; ?>
+            <?php if(count($this->sub_fields)) : ?>
+                <div class="sx-field__sub-fields">
+                    <?php foreach($this->sub_fields as $field) : ?>
+                        <?= $field->set()->render(); ?>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
 		<?php
 	}
@@ -544,8 +544,9 @@ class SX_Field
     /**
      * Attributes
      *
+     * @return void
      */
-    public function get_attributes()
+    public function get_attributes(): void
     {
         foreach ( $this->attributes as $attribute => $value ) {
             if ( null === $value ) {
@@ -560,7 +561,12 @@ class SX_Field
         }
     }
 
-    public function get_value()
+    /**
+     * Get the field value
+     *
+     * @return mixed
+     */
+    public function get_value(): mixed
     {
         $value = get_option( $this->slug );
         $value = $value[ $this->id ] ?? ( $this->attributes['value'] ?? '' );
@@ -571,7 +577,12 @@ class SX_Field
 		return $value;
 	}
 
-	public function render()
+    /**
+     * Render the field
+     *
+     * @return void
+     */
+	public function render(): void
 	{
 		$this->field_before();
 		$this->field();

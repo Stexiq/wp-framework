@@ -8,18 +8,27 @@ class SX_Custom extends SX_Field
 	 */
 	public string $type = 'custom';
 
+	/**
+	 * @var string
+	 */
+	public string $html = '';
 
-
-	public function html($test) {
-
-		$this->html = $test;
+	/**
+	 * Set the HTML to be rendered.
+	 *
+	 * @param string $html
+	 * @return $this
+	 */
+	public function html( string $html ): static
+	{
+		$this->html = $html;
 
 		return $this;
 	}
 
-
 	/**
 	 * Render the field
+	 *
 	 * @return void
 	 */
 	public function render(): void

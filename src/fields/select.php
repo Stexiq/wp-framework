@@ -24,6 +24,7 @@ class SX_Select extends SX_Field
 
     /**
      * Render the field
+     *
      * @return void
      */
     public function render(): void
@@ -36,7 +37,6 @@ class SX_Select extends SX_Field
                 <?php endforeach; ?>
             </select>
         <?php
-
         $this->field_after();
     }
 }

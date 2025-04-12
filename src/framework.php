@@ -15,17 +15,13 @@ if( ! function_exists( 'WP_Filesystem' ) ) {
 
 require_once SX_ROOT . 'functions.php';
 
-require_once SX_ROOT . 'classes/class-plugin.php';
+require_once SX_ROOT . 'updater/plugin-update-checker.php';
+
+require_once SX_ROOT . 'classes/class-api.php';
+require_once SX_ROOT . 'classes/class-license.php';
+require_once SX_ROOT . 'classes/class-updater.php';
 require_once SX_ROOT . 'classes/class-field.php';
 
-require_once SX_ROOT . 'fields/select.php';
-require_once SX_ROOT . 'fields/section.php';
-require_once SX_ROOT . 'fields/checkbox.php';
-require_once SX_ROOT . 'fields/textarea.php';
-require_once SX_ROOT . 'fields/switch.php';
-require_once SX_ROOT . 'fields/color.php';
-require_once SX_ROOT . 'fields/password.php';
-require_once SX_ROOT . 'fields/text.php';
-require_once SX_ROOT . 'fields/custom.php';
-require_once SX_ROOT . 'fields/repeat.php';
-require_once SX_ROOT . 'fields/tab.php';
+foreach( glob(SX_ROOT . 'fields/*.php') as $file ) {
+	require_once $file;
+}

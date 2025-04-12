@@ -3,7 +3,6 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class SX_Checkbox extends SX_Field
 {
-
     /**
     * @var string
     */
