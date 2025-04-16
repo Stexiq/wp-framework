@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! function_exists( 'sx_name' ) ) {
+if( ! function_exists( 'sq_name' ) ) {
 	/**
 	 * Format the name
 	 *
@@ -9,12 +9,12 @@ if( ! function_exists( 'sx_name' ) ) {
 	 * @return string
 	 */
 
-	function sx_name( string $name ): string
+	function sq_name( string $name ): string
 	{
-		return strtolower( SX_PREFIX . '_' . $name );
+		return strtolower( SQ_PREFIX . '_' . $name );
 	}
 }
-if( ! function_exists( 'sx_setting' ) )
+if( ! function_exists( 'sq_setting' ) )
 {
 	/**
 	 * Get setting
@@ -23,21 +23,21 @@ if( ! function_exists( 'sx_setting' ) )
 	 * @param mixed|null $default
 	 * @return mixed
 	 */
-	function sx_setting( string $name, mixed $default = null ): mixed
+	function sq_setting( string $name, mixed $default = null ): mixed
 	{
-		$settings = get_option( SX_OPTION_SLUG );
+		$settings = get_option( SQ_OPTION_SLUG );
 
 		return $settings[ $name ] ?? $default;
 	}
 }
-if( ! function_exists('sx_validate_fields' )) {
+if( ! function_exists('sq_validate_fields' )) {
 	/**
 	 * Validate fields
 	 *
 	 * @param array $fields
 	 * @return array
 	 */
-	function sx_validate_fields( array $fields ): array
+	function sq_validate_fields( array $fields ): array
 	{
 		return array_filter($fields, function( $field) {
 			return $field->enabled ?? false;
@@ -46,33 +46,33 @@ if( ! function_exists('sx_validate_fields' )) {
 }
 
 
-if( ! function_exists( 'sx_enqueue_scripts' ) )
+if( ! function_exists( 'sq_enqueue_scripts' ) )
 {
 	/**
 	 * Enqueue scripts
 	 *
 	 * @return void
 	 */
-	function sx_enqueue_scripts(): void
+	function sq_enqueue_scripts(): void
 	{
-		wp_enqueue_style( 'sx-admin-css', SX_URL . '/assets/css/admin.css', array(), '1.0', 'all' );
+		wp_enqueue_style( 'sq-admin-css', SQ_URL . '/assets/css/admin.css', array(), '1.0', 'all' );
 
 		$required = array(  );
 		if( wp_script_is( 'color-picker-js', 'enqueued' ) ) {
 			$required[] = 'color-picker-js';
 		}
-		wp_enqueue_script( 'sx-admin-js', SX_URL . '/assets/js/admin.min.js', $required, '1.0', true );
-		wp_localize_script( 'sx-admin-js', 'tk', array(
+		wp_enqueue_script( 'sq-admin-js', SQ_URL . '/assets/js/admin.min.js', $required, '1.0', true );
+		wp_localize_script( 'sq-admin-js', 'tk', array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
-			'nonce' => wp_create_nonce( 'sx' ),
+			'nonce' => wp_create_nonce( 'sq' ),
 		) );
 	}
 }
-add_action( 'admin_enqueue_scripts', 'sx_enqueue_scripts' );
+add_action( 'admin_enqueue_scripts', 'sq_enqueue_scripts' );
 
-if( ! function_exists( 'sx_generate_site_id') )
+if( ! function_exists( 'sq_generate_site_id') )
 {
-	function sx_get_site_id(): string
+	function sq_get_site_id(): string
 	{
 		$unique = array(
 			'site_url' => get_site_url(),
@@ -88,126 +88,126 @@ if( ! function_exists( 'sx_generate_site_id') )
 	}
 }
 
-if( ! function_exists( 'sx_select' ) ) {
+if( ! function_exists( 'sq_select' ) ) {
 	/**
 	 * Create a new select field
 	 *
-	 * @return SX_Select
+	 * @return SQ_Select
 	 */
-	function sx_select(): SX_Select
+	function sq_select(): SQ_Select
 	{
-		return new SX_Select();
+		return new SQ_Select();
 	}
 }
-if( ! function_exists( 'sx_section' ) ) {
+if( ! function_exists( 'sq_section' ) ) {
 	/**
 	 * Create a new section field
 	 *
-	 * @return SX_Section
+	 * @return SQ_Section
 	 */
-	function sx_section(): SX_Section
+	function sq_section(): SQ_Section
 	{
-		return new SX_Section();
+		return new SQ_Section();
 	}
 }
-if( ! function_exists( 'sx_checkbox' ) ) {
+if( ! function_exists( 'sq_checkbox' ) ) {
 	/**
 	 * Create a new checkbox field
 	 *
-	 * @return SX_Checkbox
+	 * @return SQ_Checkbox
 	 */
-	function sx_checkbox(): SX_Checkbox
+	function sq_checkbox(): SQ_Checkbox
 	{
-		return new SX_Checkbox();
+		return new SQ_Checkbox();
 	}
 }
-if( ! function_exists( 'sx_textarea' ) ) {
+if( ! function_exists( 'sq_textarea' ) ) {
 	/**
 	 * Create a new textarea field
 	 *
-	 * @return SX_Textarea
+	 * @return SQ_Textarea
 	 */
-	function sx_textarea(): SX_Textarea
+	function sq_textarea(): SQ_Textarea
 	{
-		return new SX_Textarea();
+		return new SQ_Textarea();
 	}
 }
-if( ! function_exists( 'sx_switch' ) ) {
+if( ! function_exists( 'sq_switch' ) ) {
 	/**
 	 * Create a new switch field
 	 *
-	 * @return SX_Switch
+	 * @return SQ_Switch
 	 */
-	function sx_switch(): SX_Switch
+	function sq_switch(): SQ_Switch
 	{
-		return new SX_Switch();
+		return new SQ_Switch();
 	}
 }
-if( ! function_exists( 'sx_color' ) ) {
+if( ! function_exists( 'sq_color' ) ) {
 	/**
 	 * Create a new color field
 	 *
-	 * @return SX_Color
+	 * @return SQ_Color
 	 */
-	function sx_color(): SX_Color
+	function sq_color(): SQ_Color
 	{
-		return new SX_Color();
+		return new SQ_Color();
 	}
 }
-if( ! function_exists( 'sx_password' ) ) {
+if( ! function_exists( 'sq_password' ) ) {
 	/**
 	 * Create a new password field
 	 *
-	 * @return SX_Password
+	 * @return SQ_Password
 	 */
-	function sx_password(): SX_Password
+	function sq_password(): SQ_Password
 	{
-		return new SX_Password();
+		return new SQ_Password();
 	}
 }
-if( ! function_exists( 'sx_text' ) ) {
+if( ! function_exists( 'sq_text' ) ) {
 	/**
 	 * Create a new text field
 	 *
-	 * @return SX_Text
+	 * @return SQ_Text
 	 */
-	function sx_text(): SX_Text
+	function sq_text(): SQ_Text
 	{
-		return new SX_Text();
+		return new SQ_Text();
 	}
 }
-if( ! function_exists( 'sx_custom' ) ) {
+if( ! function_exists( 'sq_custom' ) ) {
 	/**
 	 * Create a new custom field
 	 *
-	 * @return SX_Custom
+	 * @return SQ_Custom
 	 */
-	function sx_custom(): SX_Custom
+	function sq_custom(): SQ_Custom
 	{
-		return new SX_Custom();
+		return new SQ_Custom();
 	}
 }
-if( ! function_exists( 'sx_tab' ) ) {
+if( ! function_exists( 'sq_tab' ) ) {
 	/**
 	 * Create a new tab field
 	 *
-	 * @return SX_Tab
+	 * @return SQ_Tab
 	 */
-	function sx_tab(): SX_Tab
+	function sq_tab(): SQ_Tab
 	{
-		return new SX_Tab();
+		return new SQ_Tab();
 	}
 }
 
 
-if( ! function_exists( 'sx_get_roles') )
+if( ! function_exists( 'sq_get_roles') )
 {
 	/**
 	 * Get all roles
 	 *
 	 * @return array
 	 */
-	function sx_get_roles(): array
+	function sq_get_roles(): array
 	{
 		$wp_roles = wp_roles()->roles;
 		$roles = [];
@@ -219,14 +219,14 @@ if( ! function_exists( 'sx_get_roles') )
 		return $roles;
 	}
 }
-if( ! function_exists( 'sx_get_users') )
+if( ! function_exists( 'sq_get_users') )
 {
 	/**
 	 * Get all users
 	 *
 	 * @return array
 	 */
-	function sx_get_users(): array
+	function sq_get_users(): array
 	{
 		$users = get_users();
 		$users_list = [];
@@ -238,7 +238,29 @@ if( ! function_exists( 'sx_get_users') )
 		return $users_list;
 	}
 }
-if( ! function_exists( 'sx_for_selectable' ) )
+
+// post_types
+if( ! function_exists( 'sq_get_post_types') )
+{
+	/**
+	 * Get all post types
+	 *
+	 * @return array
+	 */
+	function sq_get_post_types(): array
+	{
+		$post_types = get_post_types( array( 'public' => true ), 'objects' );
+		$post_types_list = [];
+
+		foreach( $post_types as $post_type ) {
+			$post_types_list[$post_type->name] = $post_type->label;
+		}
+
+		return $post_types_list;
+	}
+}
+
+if( ! function_exists( 'sq_for_selectable' ) )
 {
 	/**
 	 * Get selectable items
@@ -246,17 +268,20 @@ if( ! function_exists( 'sx_for_selectable' ) )
 	 * @param array $selects
 	 * @return array
 	 */
-	function sx_for_selectable( ...$selects ): array
+	function sq_for_selectable( ...$selects ): array
 	{
 		$data = [];
 		$source = [];
 		foreach( $selects as $select ) {
 			switch ( $select ) {
 				case 'role':
-					$source = sx_get_roles();
+					$source = sq_get_roles();
 					break;
 				case 'user':
-					$source = sx_get_users();
+					$source = sq_get_users();
+					break;
+				case 'post_type':
+					$source = sq_get_post_types();
 					break;
 			}
 
@@ -275,7 +300,7 @@ if( ! function_exists( 'sx_for_selectable' ) )
 	}
 }
 
-if( ! function_exists( 'sx_is_allowed' ) )
+if( ! function_exists( 'sq_is_allowed' ) )
 {
 	/**
 	 * Check if user is allowed
@@ -283,7 +308,7 @@ if( ! function_exists( 'sx_is_allowed' ) )
 	 * @param array $validate
 	 * @return bool
 	 */
-	function sx_is_allowed( array $validate ): bool
+	function sq_is_allowed( array $validate ): bool
 	{
 		$is_allowed = false;
 		foreach( $validate as $item ) {
@@ -312,7 +337,7 @@ if( ! function_exists( 'sx_is_allowed' ) )
 	}
 }
 
-if( ! function_exists( 'sx_plugin_update_htaccess' ) )
+if( ! function_exists( 'sq_plugin_update_htaccess' ) )
 {
 	/**
 	 * Update htaccess
@@ -321,19 +346,19 @@ if( ! function_exists( 'sx_plugin_update_htaccess' ) )
 	 * @param string $rules
 	 * @return void
 	 */
-	function sx_plugin_update_htaccess( string $block, string $rules ): void
+	function sq_plugin_update_htaccess( string $block, string $rules ): void
 	{
-		$filesystem = sx_plugin_get_filesystem();
+		$filesystem = sq_plugin_get_filesystem();
 		if ( null === $filesystem ) {
 			return;
 		}
 
-		$htaccess_file = sx_plugin_get_writable_htaccess_path( $filesystem );
+		$htaccess_file = sq_plugin_get_writable_htaccess_path( $filesystem );
 		if ( null === $htaccess_file ) {
 			return;
 		}
 
-		sx_plugin_cleanup_htaccess( $block );
+		sq_plugin_cleanup_htaccess( $block );
 
 		$original_contents = $filesystem->get_contents( $htaccess_file );
 		if ( false === $original_contents ) {
@@ -357,7 +382,7 @@ if( ! function_exists( 'sx_plugin_update_htaccess' ) )
 		$filesystem->put_contents( $htaccess_file, implode( PHP_EOL, $lines ) );
 	}
 }
-if( ! function_exists( 'sx_plugin_cleanup_htaccess' ) )
+if( ! function_exists( 'sq_plugin_cleanup_htaccess' ) )
 {
 	/**
 	 * Cleanup htaccess
@@ -365,14 +390,14 @@ if( ! function_exists( 'sx_plugin_cleanup_htaccess' ) )
 	 * @param string $block
 	 * @return void
 	 */
-	function sx_plugin_cleanup_htaccess( string $block ): void
+	function sq_plugin_cleanup_htaccess( string $block ): void
 	{
-		$filesystem = sx_plugin_get_filesystem();
+		$filesystem = sq_plugin_get_filesystem();
 		if ( null === $filesystem ) {
 			return;
 		}
 
-		$htaccess_file = sx_plugin_get_writable_htaccess_path( $filesystem );
+		$htaccess_file = sq_plugin_get_writable_htaccess_path( $filesystem );
 		if ( null === $htaccess_file ) {
 			return;
 		}
@@ -388,17 +413,17 @@ if( ! function_exists( 'sx_plugin_cleanup_htaccess' ) )
 		$htaccess_contents = preg_replace( "/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $htaccess_contents );
 		$filesystem->put_contents( $htaccess_file, $htaccess_contents );
 
-		sx_plugin_flush_rewrite_rules();
+		sq_plugin_flush_rewrite_rules();
 	}
 }
-if( ! function_exists( 'sx_plugin_flush_rewrite_rules' ) )
+if( ! function_exists( 'sq_plugin_flush_rewrite_rules' ) )
 {
 	/**
 	 * Flush rewrite rules
 	 *
 	 * @return void
 	 */
-	function sx_plugin_flush_rewrite_rules(): void
+	function sq_plugin_flush_rewrite_rules(): void
 	{
 		global $wp_rewrite;
 		if ( $wp_rewrite instanceof WP_Rewrite ) {
@@ -406,14 +431,14 @@ if( ! function_exists( 'sx_plugin_flush_rewrite_rules' ) )
 		}
 	}
 }
-if( ! function_exists( 'sx_plugin_get_filesystem' ) )
+if( ! function_exists( 'sq_plugin_get_filesystem' ) )
 {
 	/**
 	 * Get filesystem
 	 *
 	 * @return WP_Filesystem_Base|null
 	 */
-	function sx_plugin_get_filesystem(): ?WP_Filesystem_Base
+	function sq_plugin_get_filesystem(): ?WP_Filesystem_Base
 	{
 		global $wp_filesystem;
 
@@ -424,7 +449,7 @@ if( ! function_exists( 'sx_plugin_get_filesystem' ) )
 		return $wp_filesystem;
 	}
 }
-if( ! function_exists( 'sx_plugin_get_writable_htaccess_path' ) )
+if( ! function_exists( 'sq_plugin_get_writable_htaccess_path' ) )
 {
 	/**
 	 * Get writable htaccess path
@@ -432,7 +457,7 @@ if( ! function_exists( 'sx_plugin_get_writable_htaccess_path' ) )
 	 * @param WP_Filesystem_Base $filesystem
 	 * @return string|null
 	 */
-	function sx_plugin_get_writable_htaccess_path( WP_Filesystem_Base $filesystem ): ?string
+	function sq_plugin_get_writable_htaccess_path( WP_Filesystem_Base $filesystem ): ?string
 	{
 		$htaccess_file = get_home_path() . '.htaccess';
 
@@ -446,38 +471,48 @@ if( ! function_exists( 'sx_plugin_get_writable_htaccess_path' ) )
 
 
 
-if( ! function_exists( 'sx_get_dashboard_widgets' ) )
+if( ! function_exists( 'sq_get_dashboard_widgets' ) )
 {
 	/**
 	 * Get dashboard widgets
 	 *
 	 * @return array
 	 */
-	function sx_get_dashboard_widgets(): array
+	function sq_get_dashboard_widgets(): array
 	{
 		global $wp_meta_boxes;
 
-		$widgets = [];
-		foreach( $wp_meta_boxes['dashboard'] as $location => $widget_locations ) {
-			foreach( $widget_locations as $widget_location ) {
-				foreach( $widget_location as $widget ) {
-					if( is_array( $widget ) ) {
-						$widgets[] = [
-							'id' => $widget['id'],
-							'title' => $widget['title'],
-							'location' => $location,
+		$dashboard_widgets = array();
+
+		if ( ! isset( $wp_meta_boxes['dashboard'] ) ) {
+			require_once ABSPATH . '/wp-admin/includes/dashboard.php';
+			set_current_screen( 'dashboard' );
+			wp_dashboard_setup();
+		}
+
+		if ( isset( $wp_meta_boxes['dashboard'] ) ) {
+			foreach( $wp_meta_boxes['dashboard'] as $context => $priorities ) {
+				foreach ( $priorities as $priority => $widgets ) {
+					foreach( $widgets as $widget_id => $data ) {
+						$widget_title = ( isset( $data['title'] ) ) ? wp_strip_all_tags( preg_replace( '/ <span.*span>/im', '', $data['title'] ) ) : str_replace( '_', ' ', ucwords($widget_id) );
+						$dashboard_widgets[$widget_id] =  [
+							'id'        => $widget_id,
+							'title'     => $widget_title,
+							'context'   => $context, // 'normal' or 'side'
+							'priority'  => $priority, // 'core'
+							'location'  => $data['location'] ?? 'core',
 						];
 					}
 				}
 			}
 		}
 
-		return $widgets;
+		return wp_list_sort( $dashboard_widgets, 'title', 'ASC', true );
 	}
 }
 
 
-function sx_minify( $data )
+function sq_minify( $data )
 {
 	return preg_replace( array( '/\s+/', '/\s*([{};:])\s*/', '/\s*([()])\s*/', ), array( ' ', '$1', '$1', ), $data );
 }

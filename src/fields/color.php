@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SX_Color extends SX_Field
+class SQ_Color extends SQ_Field
 {
     /**
     * @var string
@@ -19,7 +19,7 @@ class SX_Color extends SX_Field
 		 * Set the attributes.
 		 */
 		$this->attributes['type'] = 'text';
-		//$this->attributes['class'] = 'sx-color-picker';
+		//$this->attributes['class'] = 'sq-color-picker';
 
 		/**
 		 * Set the rules.
@@ -37,7 +37,7 @@ class SX_Color extends SX_Field
 //		return array(
 //			array(
 //				'handle' => 'color-picker',
-//				'src' => SX_URL . 'admin/assets/libs/colorpicker/coloris.min.js',
+//				'src' => SQ_URL . 'admin/assets/libs/colorpicker/coloris.min.js',
 //			),
 //		);
 //	}
@@ -52,7 +52,7 @@ class SX_Color extends SX_Field
 //		return array(
 //			array(
 //				'handle' => 'color-picker',
-//				'src' => SX_URL . 'admin/assets/libs/colorpicker/coloris.min.css',
+//				'src' => SQ_URL . 'admin/assets/libs/colorpicker/coloris.min.css',
 //			),
 //		);
 //	}

@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SX_Tab extends SX_Field
+class SQ_Tab extends SQ_Field
 {
     /**
     * @var string
@@ -15,7 +15,7 @@ class SX_Tab extends SX_Field
      */
     public function fields( ...$fields ): static
     {
-        $this->fields = sx_validate_fields( $fields );
+        $this->fields = sq_validate_fields( $fields );
 
         return $this;
     }
@@ -28,7 +28,7 @@ class SX_Tab extends SX_Field
     public function render(): void
     {
 		?>
-	    <div class="sx-tab" data-tab-content="<?php echo $this->get_id(); ?>">
+	    <div class="sq-tab" data-tab-content="<?php echo $this->get_id(); ?>">
     	    <?php
             foreach( $this->fields as $field ):
                 echo $field->set()->render();

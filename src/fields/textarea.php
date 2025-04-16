@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SX_Textarea extends SX_Field
+class SQ_Textarea extends SQ_Field
 {
     /**
     * @var string
@@ -77,14 +77,14 @@ class SX_Textarea extends SX_Field
 	    return array(
             array(
                 'handle' => 'codemirror',
-                'src' => SX_URL . 'admin/assets/libs/codemirror/codemirror.min.js',
+                'src' => SQ_URL . 'admin/assets/libs/codemirror/codemirror.min.js',
                 'deps' => array(),
                 'ver' => '1.0',
                 'in_footer' => false
             ),
             array(
                 'handle' => 'codemirror-mode-' . $this->code_mirror_mode(),
-                'src' => SX_URL . 'admin/assets/libs/codemirror/mode/' . $this->code_mirror_mode() . '.min.js',
+                'src' => SQ_URL . 'admin/assets/libs/codemirror/mode/' . $this->code_mirror_mode() . '.min.js',
                 'deps' => array( 'jquery' ),
                 'ver' => '1.0',
                 'in_footer' => false
@@ -102,7 +102,7 @@ class SX_Textarea extends SX_Field
 		return array(
 			array(
 				'handle' => 'codemirror-css',
-				'src' => SX_URL . 'admin/assets/libs/codemirror/codemirror.min.css',
+				'src' => SQ_URL . 'admin/assets/libs/codemirror/codemirror.min.css',
 				'deps' => array(),
 				'ver' => '1.0',
 				'in_footer' => false

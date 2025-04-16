@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SX_Custom extends SX_Field
+class SQ_Custom extends SQ_Field
 {
 	/**
 	 * @var string

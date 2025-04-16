@@ -1,14 +1,14 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! class_exists( 'SX_License') )
+if( ! class_exists( 'SQ_License') )
 {
 /**
-	 * Class SX_License
+	 * Class SQ_License
 	 *
-	 * @package SX
+	 * @package SQ
 	 */
-	class SX_License
+	class SQ_License
 	{
 		/**
 		 * @var static
@@ -43,12 +43,12 @@ if( ! class_exists( 'SX_License') )
 		public function __construct( string $plugin_file )
 		{
 			$this->plugin_file = $plugin_file;
-			$this->cache_key = 'sx_' . md5( $this->plugin_file ) . '_status' ;
+			$this->cache_key = 'sq_' . md5( $this->plugin_file ) . '_status' ;
 
-			add_action( 'sx_license_validate', array($this, 'validate' ) );
+			add_action( 'sq_license_validate', array($this, 'validate' ) );
 
-			if( ! wp_next_scheduled( 'sx_license_validate' ) ) {
-				wp_schedule_event( time(), 'hourly', 'sx_license_validate' );
+			if( ! wp_next_scheduled( 'sq_license_validate' ) ) {
+				wp_schedule_event( time(), 'hourly', 'sq_license_validate' );
 			}
 		}
 
@@ -64,7 +64,7 @@ if( ! class_exists( 'SX_License') )
 			if( false === $validate  ) {
 				$plugin_data = get_plugin_data( $this->plugin_file );
 
-				$validate = sx_api()->get( 'plugin/info', [
+				$validate = sq_api()->get( 'plugin/info', [
 					'plugin_slug' => $plugin_data['TextDomain'],
 					'installed_version' => $plugin_data['Version'],
 				] );
@@ -84,7 +84,7 @@ if( ! class_exists( 'SX_License') )
 	}
 }
 
-function sx_license( string $plugin_file ): SX_License
+function sq_license( string $plugin_file ): SQ_License
 {
-	return SX_License::get_instance( $plugin_file );
+	return SQ_License::get_instance( $plugin_file );
 }

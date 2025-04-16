@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SX_Field
+class SQ_Field
 {
     /**
      * @var string
@@ -43,6 +43,11 @@ class SX_Field
      */
     public array $attributes = [];
 
+	/**
+	 * @var array
+	 */
+	public array $settings = [];
+
     /**
      * @var array
      */
@@ -79,7 +84,7 @@ class SX_Field
 	 */
     public function make( string $id ): static
     {
-	    $this->slug = SX_OPTION_SLUG;
+	    $this->slug = SQ_OPTION_SLUG;
         $this->id = $id;
         $this->name = $this->slug . '[' . $id . ']';
 
@@ -315,7 +320,7 @@ class SX_Field
      */
     public function recommended(): static
     {
-        $this->tags[] = [ 'title' => __('Recommended', 'sx'), 'color' => 'success' ];
+        $this->tags[] = [ 'title' => __('Recommended', 'sq'), 'color' => 'success' ];
 
         return $this;
     }
@@ -396,10 +401,17 @@ class SX_Field
 	 */
 	public function sub_fields( ...$args ): static
 	{
-		$this->sub_fields = sx_validate_fields($args);
+		$this->sub_fields = sq_validate_fields($args);
 
 		return $this;
 	}
+
+    public function sub_fields_hidden( bool $show = true ): static
+    {
+        $this->settings['sub_fields_hidden'] = $show;
+
+        return $this;
+    }
 
     /**
      * Set all the configuration.
@@ -487,6 +499,7 @@ class SX_Field
         return count($this->tags) > 0;
     }
 
+
     /**
      * Render something before the field
      *
@@ -495,28 +508,29 @@ class SX_Field
     protected function field_before(): void
     {
         ?>
-        <div class="sx-field sx-field--<?= $this->type ?> sx-field--<?= $this->has_label() ? 'has-label' : 'no-label' ?>" data-field="<?= $this->id ?>">
-            <div class="sx-field__type">
-                <?php if( $this->has_label() ) : ?>
-                <div class="sx-field__title">
-                    <div class="sx-field__label">
-                        <label for="<?= $this->id; ?>"><?= $this->label; ?></label>
+        <div class="sq-field sq-field--<?= $this->type ?> sq-field--<?= $this->has_label() ? 'has-label' : 'no-label' ?>" data-field="<?= $this->id ?>">
+            <?php if( $this->has_label() ) : ?>
+            <div class="sq-field__title">
+                <div class="sq-field__label">
+                    <label for="<?= $this->id; ?>"><?= $this->label; ?></label>
 
-	                    <?php if( $this->has_tags() ) : ?>
-                            <div class="sx-tags">
-			                    <?php foreach( $this->tags as $tag ) : ?>
-                                    <span class="sx-tag sx-tag--<?= $tag['color'] ?>"><?= $tag['title'] ?></span>
-			                    <?php endforeach; ?>
-                            </div>
-	                    <?php endif; ?>
-                    </div>
-
-	                <?php if( $this->has_description() ) : ?>
-                        <div class="sx-field__description"><?= $this->description; ?></div>
-	                <?php endif; ?>
+                    <?php if( $this->has_tags() ) : ?>
+                        <div class="sq-tags">
+                            <?php foreach( $this->tags as $tag ) : ?>
+                                <span class="sq-tag sq-tag--<?= $tag['color'] ?>"><?= $tag['title'] ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
+                <?php if( $this->has_description() ) : ?>
+                    <div class="sq-field__description"><?= $this->description; ?></div>
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
+
+            <div class="sq-field__type">
         <?php
-        endif;
     }
 
     /**
@@ -530,7 +544,7 @@ class SX_Field
         </div>
 
             <?php if(count($this->sub_fields)) : ?>
-                <div class="sx-field__sub-fields">
+                <div class="sq-field__sub-fields" <?= isset($this->settings['sub_fields_hidden']) ? 'data-sub-show' : '' ?>>
                     <?php foreach($this->sub_fields as $field) : ?>
                         <?= $field->set()->render(); ?>
                     <?php endforeach; ?>

@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SX_Checkbox extends SX_Field
+class SQ_Checkbox extends SQ_Field
 {
     /**
     * @var string
@@ -38,7 +38,7 @@ class SX_Checkbox extends SX_Field
                 </label>
             <?php endforeach; ?>
         <?php else: ?>
-            <div class="sx-form-choice-group">
+            <div class="sq-form-choice-group">
                 <label id="<?= $this->id ?>">
                     <input type="checkbox" id="<?= $this->id ?>" name="<?= $this->name ?>" value="1" <?= checked( $value, 1) ?> <?= $this->get_attributes(); ?>>
                 </label>

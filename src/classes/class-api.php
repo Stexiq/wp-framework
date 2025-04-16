@@ -1,11 +1,11 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! class_exists( 'SX_Api' ) ) {
+if( ! class_exists( 'SQ_Api' ) ) {
 	/**
-	 * Class SX_Api
+	 * Class SQ_Api
 	 */
-	class SX_Api
+	class SQ_Api
 	{
 		/**
 		 * @var static
@@ -77,7 +77,7 @@ if( ! class_exists( 'SX_Api' ) ) {
         protected function default_args(): array
         {
 	        return array(
-                'site_id' => sx_get_site_id(),
+                'site_id' => sq_get_site_id(),
                 'site_url' => get_site_url(),
 	            'admin_email' => get_option( 'admin_email' ),
             );
@@ -88,12 +88,12 @@ if( ! class_exists( 'SX_Api' ) ) {
 /**
  * Get the API instance
  *
- * @return SX_Api
+ * @return SQ_Api
  */
-if( ! function_exists( 'sx_api' ) )
+if( ! function_exists( 'sq_api' ) )
 {
-    function sx_api(): SX_Api
+    function sq_api(): SQ_Api
     {
-        return SX_Api::get_instance();
+        return SQ_Api::get_instance();
     }
 }
