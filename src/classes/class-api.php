@@ -15,7 +15,7 @@ if( ! class_exists( 'RD_Api' ) ) {
 		/**
 		 * @var string
 		 */
-		public string $api_url = 'http://localhost:8000/api/v1/';
+		public string $api_url = 'https://api.wprefined.dev/';
 
 		/**
 		 * Get instance
