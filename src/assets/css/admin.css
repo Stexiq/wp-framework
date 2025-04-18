@@ -182,7 +182,7 @@ body[class*=rd] .rd-container .rd-admin .rd-sidebar .rd-nav li a:focus {
   border-color: rgb(53 130 196 / var(--rd-border-opacity));
   background-color: rgb(240 246 252 / 0.1);
   --rd-text-opacity: 1;
-  color: rgb(19 94 150 / var(--rd-text-opacity));
+  color: rgb(100 105 112 / var(--rd-text-opacity));
   --rd-shadow: 0 0 #0000;
   --rd-shadow-colored: 0 0 #0000;
   box-shadow: var(--rd-ring-offset-shadow, 0 0 #0000), var(--rd-ring-shadow, 0 0 #0000), var(--rd-shadow);
@@ -216,8 +216,6 @@ body[class*=rd] .rd-settings .rd-settings__section .rd-settings__section-header 
   margin: 0px;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  --rd-text-opacity: 1;
-  color: rgb(100 105 112 / var(--rd-text-opacity));
 }
 body[class*=rd] .rd-settings .rd-settings__section:not(:first-child) .rd-settings__section-header {
   border-top-width: 1px;
@@ -300,8 +298,6 @@ body[class*=rd] .rd-field.rd-field--switch > .rd-field__type,  body[class*=rd] .
   grid-column: 2/-1;
   display: grid;
   gap: 0.25rem;
-  --rd-text-opacity: 1;
-  color: rgb(100 105 112 / var(--rd-text-opacity));
   grid-template-columns: repeat(2, 1fr);
 }
 body[class*=rd] .rd-field.rd-field--switch {
