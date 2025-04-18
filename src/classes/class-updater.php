@@ -34,43 +34,7 @@ class RD_Updater
 	public function __construct( string $plugin_file )
 	{
         $this->plugin_file = $plugin_file;
-
-//        $this->hooks();
-//        $this->register_updater();
     }
-
-    public function register()
-    {
-//		if( ! $this->license_status() ) {
-//			return false;
-//		}
-
-		$this->register_updater();
-    }
-
-//	public function license_status()
-//	{
-//		$body = rd_license( $this->plugin_file )->get_status();
-//
-//		if( ! isset( $body['status'] ) ) {
-//			return false;
-//		}
-//
-//		if( $body['status'] == false ) {
-//			add_action( 'admin_notices', function () use ( $body ) {
-//				wp_admin_notice(
-//					__( $body['error'], RD_TEXT_DOMAIN ),
-//					array(
-//						'id'                 => 'message',
-//						'additional_classes' => array( 'notice-error' ),
-//						'dismissible'        => true,
-//					)
-//				);
-//			} );
-//		}
-//
-//		return $body['status'];
-//	}
 
     /**
      * Register updater
@@ -83,8 +47,8 @@ class RD_Updater
         $plugin_slug = $plugin_data['TextDomain'] ?? '';
 
 		$api_url = rd_api()->url( 'plugin', array(
-			'plugin_slug' => $plugin_slug,
-			'installed_version' => $plugin_data['Version'],
+//			'plugin_slug' => $plugin_slug,
+//			'installed_version' => $plugin_data['Version'],
 		));
 
 		PucFactory::buildUpdateChecker( $api_url, $this->plugin_file, $plugin_slug );
