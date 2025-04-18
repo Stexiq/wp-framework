@@ -1,5 +1,5 @@
 {
-  "name": "stexiq/wp-framework",
+  "name": "wprefined/wp-framework",
   "description": "A simple PHP framework for building web applications.",
   "version": "1.0.0",
   "license": "MIT",
@@ -10,8 +10,8 @@
   },
   "authors": [
     {
-      "name": "syntax.digital",
-      "email": "contact@syntax.digital"
+      "name": "wprefined.dev",
+      "email": "contact@swprefined.dev"
     }
   ]
 }

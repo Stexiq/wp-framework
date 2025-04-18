@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SQ_Section extends SQ_Field
+class RD_Section extends RD_Field
 {
     /**
     * @var string
@@ -15,7 +15,7 @@ class SQ_Section extends SQ_Field
      */
     public function fields( ...$fields ): static
     {
-        $this->fields = sq_validate_fields($fields);
+        $this->fields = rd_validate_fields($fields);
 
         return $this;
     }
@@ -28,8 +28,8 @@ class SQ_Section extends SQ_Field
     public function render(): void
     {
         ?>
-       <div class="sq-settings__section sq-settings__section--open">
-            <div class="sq-settings__section-header">
+       <div class="rd-settings__section rd-settings__section--open">
+            <div class="rd-settings__section-header">
                 <h2>
                     <span><?= $this->label ?></span>
                 </h2>

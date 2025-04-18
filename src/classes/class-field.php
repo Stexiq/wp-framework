@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SQ_Field
+class RD_Field
 {
     /**
      * @var string
@@ -84,7 +84,7 @@ class SQ_Field
 	 */
     public function make( string $id ): static
     {
-	    $this->slug = SQ_OPTION_SLUG;
+	    $this->slug = RD_OPTION_SLUG;
         $this->id = $id;
         $this->name = $this->slug . '[' . $id . ']';
 
@@ -320,7 +320,7 @@ class SQ_Field
      */
     public function recommended(): static
     {
-        $this->tags[] = [ 'title' => __('Recommended', 'sq'), 'color' => 'success' ];
+        $this->tags[] = [ 'title' => __('Recommended', 'rd'), 'color' => 'success' ];
 
         return $this;
     }
@@ -401,7 +401,7 @@ class SQ_Field
 	 */
 	public function sub_fields( ...$args ): static
 	{
-		$this->sub_fields = sq_validate_fields($args);
+		$this->sub_fields = rd_validate_fields($args);
 
 		return $this;
 	}
@@ -508,28 +508,28 @@ class SQ_Field
     protected function field_before(): void
     {
         ?>
-        <div class="sq-field sq-field--<?= $this->type ?> sq-field--<?= $this->has_label() ? 'has-label' : 'no-label' ?>" data-field="<?= $this->id ?>">
+        <div class="rd-field rd-field--<?= $this->type ?> rd-field--<?= $this->has_label() ? 'has-label' : 'no-label' ?>" data-field="<?= $this->id ?>">
             <?php if( $this->has_label() ) : ?>
-            <div class="sq-field__title">
-                <div class="sq-field__label">
+            <div class="rd-field__title">
+                <div class="rd-field__label">
                     <label for="<?= $this->id; ?>"><?= $this->label; ?></label>
 
                     <?php if( $this->has_tags() ) : ?>
-                        <div class="sq-tags">
+                        <div class="rd-tags">
                             <?php foreach( $this->tags as $tag ) : ?>
-                                <span class="sq-tag sq-tag--<?= $tag['color'] ?>"><?= $tag['title'] ?></span>
+                                <span class="rd-tag rd-tag--<?= $tag['color'] ?>"><?= $tag['title'] ?></span>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
                 </div>
 
                 <?php if( $this->has_description() ) : ?>
-                    <div class="sq-field__description"><?= $this->description; ?></div>
+                    <div class="rd-field__description"><?= $this->description; ?></div>
                 <?php endif; ?>
             </div>
             <?php endif; ?>
 
-            <div class="sq-field__type">
+            <div class="rd-field__type">
         <?php
     }
 
@@ -544,7 +544,7 @@ class SQ_Field
         </div>
 
             <?php if(count($this->sub_fields)) : ?>
-                <div class="sq-field__sub-fields" <?= isset($this->settings['sub_fields_hidden']) ? 'data-sub-show' : '' ?>>
+                <div class="rd-field__sub-fields" <?= isset($this->settings['sub_fields_hidden']) ? 'data-sub-show' : '' ?>>
                     <?php foreach($this->sub_fields as $field) : ?>
                         <?= $field->set()->render(); ?>
                     <?php endforeach; ?>

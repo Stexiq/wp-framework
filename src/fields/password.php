@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SQ_Password extends SQ_Field
+class RD_Password extends RD_Field
 {
     /**
     * @var string

@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SQ_Select extends SQ_Field
+class RD_Select extends RD_Field
 {
 
     /**

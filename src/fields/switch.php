@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SQ_Switch extends SQ_Field
+class RD_Switch extends RD_Field
 {
     /**
     * @var string
@@ -32,12 +32,12 @@ class SQ_Switch extends SQ_Field
 
 	    if( count($this->options) ):
             foreach( $this->options as $key => $option ): ?>
-                <div class="sq-form-choice-group">
-                    <label class="sq-toggle-switch" id="<?= $this->id ?>_<?= $key ?>">
+                <div class="rd-form-choice-group">
+                    <label class="rd-toggle-switch" id="<?= $this->id ?>_<?= $key ?>">
                         <input type="checkbox" id="<?= $this->id ?>_<?= $key ?>" name="<?= $this->name ?>[<?= $key ?>]" value="1" <?= checked( isset($value[$key]) ?? [], 1) ?> <?= $this->get_attributes(); ?>>
 
-                        <div class="sq-toggle-switch-background">
-                            <div class="sq-toggle-switch-handle"></div>
+                        <div class="rd-toggle-switch-background">
+                            <div class="rd-toggle-switch-handle"></div>
                         </div>
 
                         <span><?= $option ?></span>
@@ -45,12 +45,12 @@ class SQ_Switch extends SQ_Field
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <div class="sq-form-choice-group">
-                <label class="sq-toggle-switch" id="<?= $this->id ?>">
+            <div class="rd-form-choice-group">
+                <label class="rd-toggle-switch" id="<?= $this->id ?>">
                     <input type="checkbox" id="<?= $this->id ?>" name="<?= $this->name ?>" value="1" <?= checked( $value, 1) ?> <?= $this->get_attributes(); ?>>
 
-                    <div class="sq-toggle-switch-background">
-                        <div class="sq-toggle-switch-handle"></div>
+                    <div class="rd-toggle-switch-background">
+                        <div class="rd-toggle-switch-handle"></div>
                     </div>
                 </label>
             </div>

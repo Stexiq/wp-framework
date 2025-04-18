@@ -1,7 +1,7 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class SQ_Color extends SQ_Field
+class RD_Color extends RD_Field
 {
     /**
     * @var string
@@ -19,7 +19,7 @@ class SQ_Color extends SQ_Field
 		 * Set the attributes.
 		 */
 		$this->attributes['type'] = 'text';
-		//$this->attributes['class'] = 'sq-color-picker';
+		//$this->attributes['class'] = 'rd-color-picker';
 
 		/**
 		 * Set the rules.
@@ -37,7 +37,7 @@ class SQ_Color extends SQ_Field
 //		return array(
 //			array(
 //				'handle' => 'color-picker',
-//				'src' => SQ_URL . 'admin/assets/libs/colorpicker/coloris.min.js',
+//				'src' => RD_URL . 'admin/assets/libs/colorpicker/coloris.min.js',
 //			),
 //		);
 //	}
@@ -52,7 +52,7 @@ class SQ_Color extends SQ_Field
 //		return array(
 //			array(
 //				'handle' => 'color-picker',
-//				'src' => SQ_URL . 'admin/assets/libs/colorpicker/coloris.min.css',
+//				'src' => RD_URL . 'admin/assets/libs/colorpicker/coloris.min.css',
 //			),
 //		);
 //	}
