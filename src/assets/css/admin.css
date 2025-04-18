@@ -411,13 +411,13 @@ body[class*=rd] .rd-field .rd-tags .rd-tag.rd-tag--info {
   --rd-text-opacity: 1;
   color: rgb(10 75 120 / var(--rd-text-opacity));
 }
-body[class*=rd] input[type=text],
-body[class*=rd] input[type=email],
-body[class*=rd] input[type=url],
-body[class*=rd] input[type=password],
-body[class*=rd] input[type=number],
-body[class*=rd] input[type=search],
-body[class*=rd] input[type=tel],
+body[class*=rd] input[type=text], 
+body[class*=rd] input[type=email], 
+body[class*=rd] input[type=url], 
+body[class*=rd] input[type=password], 
+body[class*=rd] input[type=number], 
+body[class*=rd] input[type=search], 
+body[class*=rd] input[type=tel], 
 body[class*=rd] input[type=color] {
   display: block;
   width: 100%;
@@ -434,13 +434,13 @@ body[class*=rd] input[type=color] {
   --rd-text-opacity: 1;
   color: rgb(100 105 112 / var(--rd-text-opacity));
 }
-body[class*=rd] input[type=text]:focus,
-body[class*=rd] input[type=email]:focus,
-body[class*=rd] input[type=url]:focus,
-body[class*=rd] input[type=password]:focus,
-body[class*=rd] input[type=number]:focus,
-body[class*=rd] input[type=search]:focus,
-body[class*=rd] input[type=tel]:focus,
+body[class*=rd] input[type=text]:focus, 
+body[class*=rd] input[type=email]:focus, 
+body[class*=rd] input[type=url]:focus, 
+body[class*=rd] input[type=password]:focus, 
+body[class*=rd] input[type=number]:focus, 
+body[class*=rd] input[type=search]:focus, 
+body[class*=rd] input[type=tel]:focus, 
 body[class*=rd] input[type=color]:focus {
   --rd-border-opacity: 1;
   border-color: rgb(53 130 196 / var(--rd-border-opacity));
