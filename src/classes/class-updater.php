@@ -55,16 +55,17 @@ class RD_Updater
 	 *
 	 * @return void
 	 */
-	public function register_updater(): bool
+	public function register_updater(): void
 	{
-		$plugin_data = get_plugin_data( $this->plugin_file );
-		$plugin_slug = $plugin_data['TextDomain'] ?? '';
-
-		$check = PucFactory::buildUpdateChecker( $this->api_url . '/plugin/info', $this->plugin_file, $plugin_slug );
-
-		return get_transient( 'rd_' . md5( $this->plugin_file ) . '_status' );
+		PucFactory::buildUpdateChecker( $this->api_url . '/plugin/info', $this->plugin_file, $this->plugin_data['TextDomain'] );
 	}
 
+	/**
+	 * Add query args
+	 *
+	 * @param $query_args
+	 * @return array
+	 */
 	public function add_query_args( $query_args )
 	{
 		$plugin_data = get_plugin_data( $this->plugin_file );
@@ -77,12 +78,5 @@ class RD_Updater
 		$query_args['admin_email'] = get_option( 'admin_email' );
 
 		return $query_args;
-	}
-
-	public function http_result( $result )
-	{
-		set_transient( 'rd_' . md5( $this->plugin_file ) . '_status', !is_wp_error( $result ),  MINUTE_IN_SECONDS );
-
-		return $result;
 	}
 }
