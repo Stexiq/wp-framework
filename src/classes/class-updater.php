@@ -46,9 +46,9 @@ class RD_Updater
         $plugin_data = get_plugin_data( $this->plugin_file );
         $plugin_slug = $plugin_data['TextDomain'] ?? '';
 
-		$api_url = rd_api()->url( 'plugin', array(
-//			'plugin_slug' => $plugin_slug,
-//			'installed_version' => $plugin_data['Version'],
+		$api_url = rd_api()->url( 'plugin/info', array(
+			'plugin_slug' => $plugin_slug,
+			'installed_version' => $plugin_data['Version'],
 		));
 
 		PucFactory::buildUpdateChecker( $api_url, $this->plugin_file, $plugin_slug );
