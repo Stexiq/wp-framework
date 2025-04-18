@@ -216,6 +216,8 @@ body[class*=rd] .rd-settings .rd-settings__section .rd-settings__section-header 
   margin: 0px;
   font-size: 0.875rem;
   line-height: 1.25rem;
+  --rd-text-opacity: 1;
+  color: rgb(100 105 112 / var(--rd-text-opacity));
 }
 body[class*=rd] .rd-settings .rd-settings__section:not(:first-child) .rd-settings__section-header {
   border-top-width: 1px;
@@ -280,6 +282,8 @@ body[class*=rd] .rd-field .rd-field__title {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  --rd-text-opacity: 1;
+  color: rgb(100 105 112 / var(--rd-text-opacity));
 }
 body[class*=rd] .rd-field .rd-field__title .rd-field__label {
   display: flex;
@@ -298,6 +302,8 @@ body[class*=rd] .rd-field.rd-field--switch > .rd-field__type,  body[class*=rd] .
   grid-column: 2/-1;
   display: grid;
   gap: 0.25rem;
+  --rd-text-opacity: 1;
+  color: rgb(100 105 112 / var(--rd-text-opacity));
   grid-template-columns: repeat(2, 1fr);
 }
 body[class*=rd] .rd-field.rd-field--switch {
@@ -323,6 +329,8 @@ body[class*=rd] .rd-field .rd-field__sub-fields .rd-field--switch .rd-field__typ
   grid-column: 2/-1;
   display: grid;
   gap: 0.25rem;
+  --rd-text-opacity: 1;
+  color: rgb(100 105 112 / var(--rd-text-opacity));
   padding-top: 0px !important;
   grid-template-columns: repeat(2, 1fr);
 }
@@ -339,6 +347,8 @@ body[class*=rd] .rd-field table {
   text-align: left;
   font-size: 0.875rem;
   line-height: 1.25rem;
+  --rd-text-opacity: 1;
+  color: rgb(140 143 148 / var(--rd-text-opacity));
 }
 body[class*=rd] .rd-field table th {
   border-bottom-width: 1px;
@@ -351,6 +361,8 @@ body[class*=rd] .rd-field table th {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  --rd-text-opacity: 1;
+  color: rgb(100 105 112 / var(--rd-text-opacity));
 }
 body[class*=rd] .rd-field table td {
   white-space: nowrap;
