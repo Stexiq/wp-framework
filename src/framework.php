@@ -15,7 +15,8 @@ if( ! function_exists( 'WP_Filesystem' ) ) {
 
 require_once RD_ROOT . 'functions.php';
 require_once RD_ROOT . 'updater/plugin-update-checker.php';
-require_once RD_ROOT . 'classes/class-updater.php';
+require_once RD_ROOT . 'classes/class-api.php';
+require_once RD_ROOT . 'classes/class-setup.php';
 require_once RD_ROOT . 'classes/class-field.php';
 
 foreach( glob(RD_ROOT . 'fields/*.php') as $file ) {

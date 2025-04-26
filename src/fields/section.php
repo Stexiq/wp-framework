@@ -1,44 +1,64 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class RD_Section extends RD_Field
+if( ! class_exists( 'RD_Section') )
 {
     /**
-    * @var string
-    */
-    public string $type = 'section';
-
-    /**
-     * @param array $fields
+     * Class RD_Section
      *
-     * @return $this
+     * Section field class.
      */
-    public function fields( ...$fields ): static
+    class RD_Section extends RD_Field
     {
-        $this->fields = rd_validate_fields($fields);
+        /**
+        * @var string
+        */
+        public string $type = 'section';
 
-        return $this;
+        /**
+         * @param array $fields
+         *
+         * @return $this
+         */
+        public function fields( ...$fields ): static
+        {
+            $this->fields = rd_validate_fields($fields);
+
+            return $this;
+        }
+
+        /**
+         * Render the field.
+         *
+         * @return void
+         */
+        public function render(): void
+        {
+            ?>
+           <div class="rd-settings__section rd-settings__section--open">
+                <div class="rd-settings__section-header">
+                    <h2>
+                        <span><?= $this->label ?></span>
+                    </h2>
+                </div>
+
+                <?php foreach( $this->fields as $field ) {
+                    echo $field->set()->render();
+                }
+
+            echo '</div>';
+        }
     }
+}
 
-	/**
-	 * Render the field.
-	 *
-	 * @return void
-	 */
-    public function render(): void
+if( ! function_exists( 'rd_section' ) ) {
+    /**
+     * Create a new section field.
+     *
+     * @return RD_Section
+     */
+    function rd_section(): RD_Section
     {
-        ?>
-       <div class="rd-settings__section rd-settings__section--open">
-            <div class="rd-settings__section-header">
-                <h2>
-                    <span><?= $this->label ?></span>
-                </h2>
-            </div>
-
-            <?php foreach( $this->fields as $field ) {
-                echo $field->set()->render();
-            }
-
-        echo '</div>';
+        return new RD_Section();
     }
 }

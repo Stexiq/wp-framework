@@ -1,42 +1,62 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class RD_Select extends RD_Field
+if( ! class_exists( 'RD_Select') )
 {
-
     /**
-    * @var string
-    */
-    public string $type = 'select';
-
-    /**
-     * Set options.
+     * Class RD_Select
      *
-     * @param array $options
-     * @return $this
+     * Select field class.
      */
-    public function options( array $options ): static
+    class RD_Select extends RD_Field
     {
-        $this->options = $options;
 
-        return $this;
+        /**
+        * @var string
+        */
+        public string $type = 'select';
+
+        /**
+         * Set options.
+         *
+         * @param array $options
+         * @return $this
+         */
+        public function options( array $options ): static
+        {
+            $this->options = $options;
+
+            return $this;
+        }
+
+        /**
+         * Render the field
+         *
+         * @return void
+         */
+        public function render(): void
+        {
+            $this->field_before();
+            ?>
+                <select id="<?= $this->id ?>" name="<?= $this->name ?>" <?= $this->get_attributes() ?>>
+                    <?php foreach( $this->options as $key => $option ): ?>
+                        <option value="<?= $key ?>" <?= selected( $this->get_value(), $key ) ?>><?= $option ?></option>
+                    <?php endforeach; ?>
+                </select>
+            <?php
+            $this->field_after();
+        }
     }
+}
 
+if( ! function_exists( 'rd_select' ) ) {
     /**
-     * Render the field
+     * Create a new select field.
      *
-     * @return void
+     * @return RD_Select
      */
-    public function render(): void
+    function rd_select(): RD_Select
     {
-	    $this->field_before();
-	    ?>
-            <select id="<?= $this->id ?>" name="<?= $this->name ?>" <?= $this->get_attributes() ?>>
-                <?php foreach( $this->options as $key => $option ): ?>
-                    <option value="<?= $key ?>" <?= selected( $this->get_value(), $key ) ?>><?= $option ?></option>
-                <?php endforeach; ?>
-            </select>
-        <?php
-        $this->field_after();
+        return new RD_Select();
     }
 }

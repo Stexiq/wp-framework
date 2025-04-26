@@ -30,6 +30,26 @@ if( ! function_exists( 'rd_setting' ) )
 		return $settings[ $name ] ?? $default;
 	}
 }
+
+
+if( ! function_exists( 'rd_save_settings' ) )
+{
+	/**
+	 * Save settings
+	 *
+	 * @param string $name
+	 * @param string $value
+	 * @return void
+	 */
+	function rd_save_settings( string $name, string $value ): void
+	{
+		$settings = get_option( RD_OPTION_SLUG );
+		$settings[ $name ] = $value;
+
+		update_option( RD_OPTION_SLUG, $settings );
+	}
+}
+
 if( ! function_exists('rd_validate_fields' )) {
 	/**
 	 * Validate fields
@@ -88,116 +108,117 @@ if( ! function_exists( 'rd_generate_site_id') )
 	}
 }
 
-if( ! function_exists( 'rd_select' ) ) {
-	/**
-	 * Create a new select field
-	 *
-	 * @return RD_Select
-	 */
-	function rd_select(): RD_Select
-	{
-		return new RD_Select();
-	}
-}
-if( ! function_exists( 'rd_section' ) ) {
-	/**
-	 * Create a new section field
-	 *
-	 * @return RD_Section
-	 */
-	function rd_section(): RD_Section
-	{
-		return new RD_Section();
-	}
-}
-if( ! function_exists( 'rd_checkbox' ) ) {
-	/**
-	 * Create a new checkbox field
-	 *
-	 * @return RD_Checkbox
-	 */
-	function rd_checkbox(): RD_Checkbox
-	{
-		return new RD_Checkbox();
-	}
-}
-if( ! function_exists( 'rd_textarea' ) ) {
-	/**
-	 * Create a new textarea field
-	 *
-	 * @return RD_Textarea
-	 */
-	function rd_textarea(): RD_Textarea
-	{
-		return new RD_Textarea();
-	}
-}
-if( ! function_exists( 'rd_switch' ) ) {
-	/**
-	 * Create a new switch field
-	 *
-	 * @return RD_Switch
-	 */
-	function rd_switch(): RD_Switch
-	{
-		return new RD_Switch();
-	}
-}
-if( ! function_exists( 'rd_color' ) ) {
-	/**
-	 * Create a new color field
-	 *
-	 * @return RD_Color
-	 */
-	function rd_color(): RD_Color
-	{
-		return new RD_Color();
-	}
-}
-if( ! function_exists( 'rd_password' ) ) {
-	/**
-	 * Create a new password field
-	 *
-	 * @return RD_Password
-	 */
-	function rd_password(): RD_Password
-	{
-		return new RD_Password();
-	}
-}
-if( ! function_exists( 'rd_text' ) ) {
-	/**
-	 * Create a new text field
-	 *
-	 * @return RD_Text
-	 */
-	function rd_text(): RD_Text
-	{
-		return new RD_Text();
-	}
-}
-if( ! function_exists( 'rd_custom' ) ) {
-	/**
-	 * Create a new custom field
-	 *
-	 * @return RD_Custom
-	 */
-	function rd_custom(): RD_Custom
-	{
-		return new RD_Custom();
-	}
-}
-if( ! function_exists( 'rd_tab' ) ) {
-	/**
-	 * Create a new tab field
-	 *
-	 * @return RD_Tab
-	 */
-	function rd_tab(): RD_Tab
-	{
-		return new RD_Tab();
-	}
-}
+//
+//if( ! function_exists( 'rd_select' ) ) {
+//	/**
+//	 * Create a new select field
+//	 *
+//	 * @return RD_Select
+//	 */
+//	function rd_select(): RD_Select
+//	{
+//		return new RD_Select();
+//	}
+//}
+//if( ! function_exists( 'rd_section' ) ) {
+//	/**
+//	 * Create a new section field
+//	 *
+//	 * @return RD_Section
+//	 */
+//	function rd_section(): RD_Section
+//	{
+//		return new RD_Section();
+//	}
+//}
+//if( ! function_exists( 'rd_checkbox' ) ) {
+//	/**
+//	 * Create a new checkbox field
+//	 *
+//	 * @return RD_Checkbox
+//	 */
+//	function rd_checkbox(): RD_Checkbox
+//	{
+//		return new RD_Checkbox();
+//	}
+//}
+//if( ! function_exists( 'rd_textarea' ) ) {
+//	/**
+//	 * Create a new textarea field
+//	 *
+//	 * @return RD_Textarea
+//	 */
+//	function rd_textarea(): RD_Textarea
+//	{
+//		return new RD_Textarea();
+//	}
+//}
+//if( ! function_exists( 'rd_switch' ) ) {
+//	/**
+//	 * Create a new switch field
+//	 *
+//	 * @return RD_Switch
+//	 */
+//	function rd_switch(): RD_Switch
+//	{
+//		return new RD_Switch();
+//	}
+//}
+//if( ! function_exists( 'rd_color' ) ) {
+//	/**
+//	 * Create a new color field
+//	 *
+//	 * @return RD_Color
+//	 */
+//	function rd_color(): RD_Color
+//	{
+//		return new RD_Color();
+//	}
+//}
+//if( ! function_exists( 'rd_password' ) ) {
+//	/**
+//	 * Create a new password field
+//	 *
+//	 * @return RD_Password
+//	 */
+//	function rd_password(): RD_Password
+//	{
+//		return new RD_Password();
+//	}
+//}
+//if( ! function_exists( 'rd_text' ) ) {
+//	/**
+//	 * Create a new text field
+//	 *
+//	 * @return RD_Text
+//	 */
+//	function rd_text(): RD_Text
+//	{
+//		return new RD_Text();
+//	}
+//}
+//if( ! function_exists( 'rd_custom' ) ) {
+//	/**
+//	 * Create a new custom field
+//	 *
+//	 * @return RD_Custom
+//	 */
+//	function rd_custom(): RD_Custom
+//	{
+//		return new RD_Custom();
+//	}
+//}
+//if( ! function_exists( 'rd_tab' ) ) {
+//	/**
+//	 * Create a new tab field
+//	 *
+//	 * @return RD_Tab
+//	 */
+//	function rd_tab(): RD_Tab
+//	{
+//		return new RD_Tab();
+//	}
+//}
 
 
 if( ! function_exists( 'rd_get_roles') )
@@ -257,6 +278,26 @@ if( ! function_exists( 'rd_get_post_types') )
 		}
 
 		return $post_types_list;
+	}
+}
+
+if( ! function_exists( 'rd_get_pages') )
+{
+	/**
+	 * Get all pages
+	 *
+	 * @return array
+	 */
+	function rd_get_pages(): array
+	{
+		$pages = get_pages();
+		$pages_list = [];
+
+		foreach( $pages as $page ) {
+			$pages_list[$page->ID] = $page->post_title;
+		}
+
+		return $pages_list;
 	}
 }
 
@@ -327,6 +368,12 @@ if( ! function_exists( 'rd_is_allowed' ) )
 					break;
 				case 'user':
 					if ( $current_user->ID == $source_value ) {
+						$is_allowed = true;
+					}
+					break;
+				case 'post_type':
+					$post_type = get_post_type();
+					if ( $post_type == $source_value ) {
 						$is_allowed = true;
 					}
 					break;
@@ -511,6 +558,33 @@ if( ! function_exists( 'rd_get_dashboard_widgets' ) )
 	}
 }
 
+
+if( ! function_exists( 'rd_get_current_ip' ) )
+{
+	/**
+	 * Get current IP
+	 *
+	 * @return string
+	 */
+	function rd_get_current_ip(): string
+	{
+		if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+			return $_SERVER['HTTP_CF_CONNECTING_IP'];
+		}
+
+		elseif ( false === empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+			$ipList = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
+
+			return trim( $ipList[0] );
+		}
+
+		elseif ( false === empty($_SERVER['HTTP_CLIENT_IP'])) {
+			return $_SERVER['HTTP_CLIENT_IP'];
+		}
+
+		return $_SERVER['REMOTE_ADDR'];
+	}
+}
 
 function rd_minify( $data )
 {

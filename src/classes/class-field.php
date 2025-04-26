@@ -58,6 +58,11 @@ class RD_Field
      */
     public array $rules = [];
 
+    /**
+     * @var array
+     */
+    public array $data = [];
+
 	/**
 	 * @var string
 	 */
@@ -257,7 +262,7 @@ class RD_Field
 	 */
 	public function description( string $description ): static
 	{
-		$this->description = $description;
+		$this->description = htmlspecialchars($description);
 
 		return $this;
 	}
@@ -280,7 +285,7 @@ class RD_Field
      */
     public function default( string $value ): static
     {
-        if( ! isset( $this->attributes['value'] ) || strlen( $this->attributes['value'] ) === 0 ) {
+        if( ! isset( $this->attributes['value'] ) ) {
 	        $this->attributes['value'] = $value;
         }
 
@@ -325,7 +330,21 @@ class RD_Field
         return $this;
     }
 
-    /**
+
+	/**
+	 * Set the field as recommended
+	 *
+	 * @return $this
+	 */
+	public function full(): static
+	{
+		$this->settings['width'] = 'full';
+
+		return $this;
+	}
+
+
+	/**
      * Set the field as impact
      *
      * @param string|null $level
@@ -382,13 +401,18 @@ class RD_Field
     /**
      * Add condition to the field
      *
+     * @param string $id
+     * @param string $operator
+     * @param string $value
+     *
      * @return $this
      */
-	public function when( $function ): static
+	public function when( string $id, string $operator = '=', string $value ): static
 	{
-		if( ! $function() ) {
-			$this->enabled = false;
-		}
+        $this->data['data-rd-show-if-id'] = $this->id;
+        $this->data['data-rd-show-if-target'] = $id;
+        $this->data['data-rd-show-if-value'] = $value;
+        $this->data['data-rd-show-if-operator'] = $operator;
 
 		return $this;
 	}
@@ -405,13 +429,6 @@ class RD_Field
 
 		return $this;
 	}
-
-    public function sub_fields_hidden( bool $show = true ): static
-    {
-        $this->settings['sub_fields_hidden'] = $show;
-
-        return $this;
-    }
 
     /**
      * Set all the configuration.
@@ -499,6 +516,25 @@ class RD_Field
         return count($this->tags) > 0;
     }
 
+    /**
+     * Get the field classes
+     *
+     * @return string
+     */
+    protected function classes(): string
+    {
+        $classes = array(
+            'rd-field',
+            'rd-field--' . $this->type,
+            'rd-field--' . ( $this->enabled ? 'enabled' : 'disabled' ),
+        );
+
+        if( isset($this->settings['width']) ) {
+            $classes[] = 'rd-field--' . $this->settings['width'];
+        }
+
+        return implode(' ', $classes);
+    }
 
     /**
      * Render something before the field
@@ -508,7 +544,7 @@ class RD_Field
     protected function field_before(): void
     {
         ?>
-        <div class="rd-field rd-field--<?= $this->type ?> rd-field--<?= $this->has_label() ? 'has-label' : 'no-label' ?>" data-field="<?= $this->id ?>">
+        <div class="<?= $this->classes() ?>" data-field="<?= $this->id ?>" <?= $this->get_data() ?>>
             <?php if( $this->has_label() ) : ?>
             <div class="rd-field__title">
                 <div class="rd-field__label">
@@ -554,7 +590,6 @@ class RD_Field
 		<?php
 	}
 
-
     /**
      * Attributes
      *
@@ -590,6 +625,22 @@ class RD_Field
 
 		return $value;
 	}
+
+    /**
+     * Get the field data
+     *
+     * @return string
+     */
+    public function get_data(): string
+    {
+        $data = '';
+
+        foreach( $this->data as $key => $value ) {
+            $data .= ' ' . esc_attr($key) . '="' . esc_attr($value) . '"';
+        }
+
+        return $data;
+    }
 
     /**
      * Render the field

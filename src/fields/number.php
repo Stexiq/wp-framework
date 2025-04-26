@@ -1,19 +1,19 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! class_exists( 'RD_Password') )
+if( ! class_exists( 'RD_Number') )
 {
     /**
-     * Class RD_Password
+     * Class RD_Number
      *
      * Password field class.
      */
-    class RD_Password extends RD_Field
+    class RD_Number extends RD_Field
     {
         /**
         * @var string
         */
-        public string $type = 'password';
+        public string $type = 'number';
 
         /**
          * Set the field type to color.
@@ -22,7 +22,20 @@ if( ! class_exists( 'RD_Password') )
          */
         public function init(): void
         {
-            $this->attributes['type'] = 'password';
+            $this->attributes['type'] = 'number';
+        }
+
+        public function min( int $min )
+        {
+            $this->attributes['min'] = $min;
+            return $this;
+        }
+
+        public function max( int $max )
+        {
+            $this->attributes['max'] = $max;
+
+            return $this;
         }
 
         /**
@@ -41,14 +54,14 @@ if( ! class_exists( 'RD_Password') )
     }
 }
 
-if( ! function_exists( 'rd_password' ) ) {
+if( ! function_exists( 'rd_number' ) ) {
     /**
      * Create a new password field.
      *
-     * @return RD_Password
+     * @return RD_Number
      */
-    function rd_password(): RD_Password
+    function rd_number(): RD_Number
     {
-        return new RD_Password();
+        return new RD_Number();
     }
 }

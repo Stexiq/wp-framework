@@ -1,40 +1,89 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class RD_Tab extends RD_Field
+if( ! class_exists( 'RD_Tab') )
 {
     /**
-    * @var string
-    */
-    public string $type = 'tab';
-
-    /**
-     * @param array $fields
+     * Class RD_Tab
      *
-     * @return $this
+     * Tab field class.
      */
-    public function fields( ...$fields ): static
+    class RD_Tab extends RD_Field
     {
-        $this->fields = rd_validate_fields( $fields );
+        /**
+        * @var string
+        */
+        public string $type = 'tab';
 
-        return $this;
-    }
+        /**
+         * @var string
+         */
+        public string $icon = '';
 
-	/**
-	 * Render the field.
-	 *
-	 * @return void
-	 */
-    public function render(): void
-    {
-		?>
-	    <div class="rd-tab" data-tab-content="<?php echo $this->get_id(); ?>">
-    	    <?php
-            foreach( $this->fields as $field ):
-                echo $field->set()->render();
-            endforeach;
+        /**
+         * @param array $fields
+         *
+         * @return $this
+         */
+        public function fields( ...$fields ): static
+        {
+            $this->fields = rd_validate_fields( $fields );
+
+            return $this;
+        }
+
+        /**
+         * Set the icon for the tab.
+         *
+         * @param string $icon
+         *
+         * @return $this
+         */
+        public function icon( string $icon ): static
+        {
+            $this->icon = $icon;
+
+            return $this;
+        }
+
+        /**
+         * Get the icon for the tab.
+         *
+         * @return string
+         */
+        public function get_icon(): string
+        {
+            return $this->icon;
+        }
+
+        /**
+         * Render the field.
+         *
+         * @return void
+         */
+        public function render(): void
+        {
             ?>
-	    </div>
-        <?php
+            <div class="rd-tab" data-tab-content="<?php echo $this->get_id(); ?>">
+                <?php
+                foreach( $this->fields as $field ):
+                    echo $field->set()->render();
+                endforeach;
+                ?>
+            </div>
+            <?php
+        }
+    }
+}
+
+if( ! function_exists( 'rd_tab' ) ) {
+    /**
+     * Create a new tab field.
+     *
+     * @return RD_Tab
+     */
+    function rd_tab(): RD_Tab
+    {
+        return new RD_Tab();
     }
 }

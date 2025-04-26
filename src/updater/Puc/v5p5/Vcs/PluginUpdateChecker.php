@@ -121,7 +121,6 @@ if ( !class_exists(PluginUpdateChecker::class, false) ):
 					$info->last_updated = $latestCommitTime;
 				}
 			}
-
 			$info = apply_filters($this->getUniqueName('request_info_result'), $info, null);
 			return $info;
 		}

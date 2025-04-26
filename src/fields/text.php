@@ -1,45 +1,65 @@
 <?php
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class RD_Text extends RD_Field
+if( ! class_exists( 'RD_Text') )
 {
     /**
-    * @var string
-    */
-    public string $type = 'text';
-
-	/**
-     * Set the field type to text.
+     * Class RD_Text
      *
-	 * @return void
-	 */
-	public function init(): void
-	{
-		$this->attributes['type'] = 'text';
-	}
-
-    /**
-     * Set the field type to number.
-     *
-     * @return $this
+     * Text field class.
      */
-    public function numeric(): static
+    class RD_Text extends RD_Field
     {
-        $this->attributes['type'] = 'number';
-		$this->rules[] = 'numeric';
+        /**
+        * @var string
+        */
+        public string $type = 'text';
 
-        return $this;
+        /**
+         * Set the field type to text.
+         *
+         * @return void
+         */
+        public function init(): void
+        {
+            $this->attributes['type'] = 'text';
+        }
+
+//        /**
+//         * Set the field type to number.
+//         *
+//         * @return $this
+//         */
+//        public function numeric(): static
+//        {
+//            $this->attributes['type'] = 'number';
+//            $this->rules[] = 'numeric';
+//
+//            return $this;
+//        }
+
+        /**
+         * Render the field
+         *
+         * @return void
+         */
+        public function field(): void
+        {
+            ?>
+                <input name="<?php echo esc_attr( $this->name ); ?>" id="<?php echo esc_attr( $this->id ); ?>" <?php $this->get_attributes(); ?>/>
+            <?php
+        }
     }
+}
 
+if( ! function_exists( 'rd_text' ) ) {
     /**
-     * Render the field
+     * Create a new text field.
      *
-     * @return void
+     * @return RD_Text
      */
-    public function field(): void
+    function rd_text(): RD_Text
     {
-		?>
-		    <input name="<?php echo esc_attr( $this->name ); ?>" id="<?php echo esc_attr( $this->id ); ?>" <?php $this->get_attributes(); ?>/>
-	    <?php
+        return new RD_Text();
     }
 }
