@@ -38,6 +38,11 @@ class RD_Field
 	 */
 	public array $attributes = [];
 
+    /**
+     * @var array
+     */
+    public array $data = [];
+
 	/**
 	 * @var array
 	 */
@@ -303,6 +308,26 @@ class RD_Field
 	}
 
 	/**
+	 * Get the field "data".
+	 *
+	 * @return void
+	 */
+	public function get_data(): void
+	{
+		foreach ( $this->data as $attribute => $value ) {
+			if ( null === $value ) {
+				continue;
+			}
+
+			if( is_array($value) ) {
+				$value = implode(' ', $value);
+			}
+
+			echo ' ' . esc_attr((string)$attribute) . '="' . esc_attr((string)$value) . '"';
+		}
+	}
+
+	/**
      * Get the data "enabled".
      *
 	 * @return bool
@@ -398,10 +423,10 @@ class RD_Field
 	 */
 	public function when( string $id, string $operator = '=', string $value ): static
 	{
-		$this->attributes['data-rd-show-if-id'] = $this->id;
-		$this->attributes['data-rd-show-if-target'] = $id;
-		$this->attributes['data-rd-show-if-value'] = $value;
-		$this->attributes['data-rd-show-if-operator'] = $operator;
+		$this->data['data-rd-show-if-id'] = $this->id;
+		$this->data['data-rd-show-if-target'] = $id;
+		$this->data['data-rd-show-if-value'] = $value;
+		$this->data['data-rd-show-if-operator'] = $operator;
 
 		return $this;
 	}
@@ -529,7 +554,7 @@ class RD_Field
 	protected function field_before(): void
 	{
 		?>
-        <div class="<?= $this->classes() ?>" data-field="<?= $this->get_id() ?>" >
+        <div class="<?= $this->classes() ?>" data-field="<?= $this->get_id() ?>" <?= $this->get_data() ?>>
 		<?php if( $this->has_label() ) : ?>
             <div class="rd-field__title">
                 <div class="rd-field__label">
