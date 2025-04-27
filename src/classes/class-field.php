@@ -331,6 +331,21 @@ class RD_Field
         return $this;
     }
 
+
+	/**
+	 * Set settings for the field
+	 *
+	 * @param array $settings
+	 * @return $this
+	 */
+	public function settings( array $settings ): static
+	{
+		$this->settings = array_merge( $this->settings, $settings );
+
+		return $this;
+	}
+
+
 	/**
 	 * Set the field "default" value.
 	 *

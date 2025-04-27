@@ -20,7 +20,7 @@ if( ! class_exists( 'RD_Modal') )
          */
 	    public function init(): void
 	    {
-		    $this->attributes([
+		    $this->settings([
 			    'modal-title' => $this->get_label(),
 			    'modal-close' => esc_html__( 'Close', 'rd-framework' ),
 		    ]);
@@ -47,12 +47,12 @@ if( ! class_exists( 'RD_Modal') )
         public function modal( string $title = null, string $button = null ): static
         {
             if( $title ) {
-	            $this->attributes([
+	            $this->settings([
 		            'modal-title' => $title,
 	            ]);
             }
 
-            $this->attributes([
+            $this->settings([
                 'modal-button' => $button ?? __( 'Open', 'rd-framework' ),
             ]);
 
@@ -70,8 +70,8 @@ if( ! class_exists( 'RD_Modal') )
             <div class="rd-modal" id="<?= $this->get_id() ?>_modal" aria-hidden="true" role="dialog">
                 <div class="rd-modal__content">
                     <div class="rd-modal__header">
-                        <h2><?= $this->attr( 'modal-title') ?></h2>
-                        <button type="button" class="rd-modal__close" aria-label="<?= $this->attr( 'modal-close') ?>">
+                        <h2><?= $this->get( 'modal-title') ?></h2>
+                        <button type="button" class="rd-modal__close" aria-label="<?= $this->get( 'modal-close') ?>">
                             <span class="dashicons dashicons-no"></span>
                         </button>
                     </div>
@@ -89,7 +89,7 @@ if( ! class_exists( 'RD_Modal') )
             <div class="rd-modal__overlay"></div>
 
             <button type="button" class="<?= RD_PREFIX ?>-button" data-modal-trigger="#<?= $this->get_id() ?>_modal" aria-controls="<?= $this->get_id() ?>" aria-expanded="false" aria-haspopup="dialog">
-                <?= $this->attr( 'modal-button') ?>
+                <?= $this->get( 'modal-button') ?>
             </button>
             <?php
             $this->field_after();
