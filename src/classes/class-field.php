@@ -611,6 +611,17 @@ class RD_Field
     }
 
     /**
+     * Get the field setting
+     *
+     * @param string $key
+     * @return mixed
+     */
+    public function get( string $key ): mixed
+    {
+        return $this->settings[ $key ] ?? null;
+    }
+
+    /**
      * Get the field value
      *
      * @return mixed
