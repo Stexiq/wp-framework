@@ -593,6 +593,20 @@ if( ! function_exists( 'rd_get_current_ip' ) )
 	}
 }
 
+if( ! function_exists( 'rd_editor' ) )
+{
+	/**
+	 * Change some default tags to HTML tags
+	 *
+	 * @param string $content
+	 * @return string
+	 */
+	function rd_editor( string $content ): string
+	{
+		return preg_replace( '/[i|b|u|em]\s*(.*?)\s*[\/i|\/b|\/u|\/em]/', '<$1>$2</$1>', $content );
+	}
+}
+
 function rd_minify( $data )
 {
 	return preg_replace( array( '/\s+/', '/\s*([{};:])\s*/', '/\s*([()])\s*/', ), array( ' ', '$1', '$1', ), $data );

@@ -34,7 +34,7 @@ if( ! class_exists( 'RD_Message') )
 		 */
 		public function content( string $content ): RD_Message
 		{
-			$this->settings['content'] = $content;
+			$this->settings['content'] = rd_editor( $content );
 
 			return $this;
 		}
