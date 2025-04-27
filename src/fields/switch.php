@@ -16,6 +16,11 @@ if( ! class_exists( 'RD_Switch') )
         public string $type = 'switch';
 
         /**
+         * @var array
+         */
+        public array $options = [];
+
+        /**
          * Set options.
          *
          * @param array $options
@@ -40,8 +45,8 @@ if( ! class_exists( 'RD_Switch') )
             if( count($this->options) ):
                 foreach( $this->options as $key => $option ): ?>
                     <div class="rd-form-choice-group">
-                        <label class="rd-toggle-switch" id="<?= $this->id ?>_<?= $key ?>">
-                            <input type="checkbox" id="<?= $this->id ?>_<?= $key ?>" name="<?= $this->name ?>[<?= $key ?>]" value="1" <?= checked( isset($value[$key]) ?? [], 1) ?> <?= $this->get_attributes(); ?>>
+                        <label class="rd-toggle-switch" id="<?= $this->get_id() ?>_<?= $key ?>">
+                            <input type="checkbox" id="<?= $this->get_id() ?>_<?= $key ?>" name="<?= $this->get_name() ?>[<?= $key ?>]" value="1" <?= checked( isset($value[$key]) ?? [], 1) ?> <?= $this->get_attributes(); ?>>
 
                             <div class="rd-toggle-switch-background">
                                 <div class="rd-toggle-switch-handle"></div>
@@ -53,8 +58,8 @@ if( ! class_exists( 'RD_Switch') )
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="rd-form-choice-group">
-                    <label class="rd-toggle-switch" id="<?= $this->id ?>">
-                        <input type="checkbox" id="<?= $this->id ?>" name="<?= $this->name ?>" value="1" <?= checked( $value, 1) ?> <?= $this->get_attributes(); ?>>
+                    <label class="rd-toggle-switch" id="<?= $this->get_id() ?>">
+                        <input type="checkbox" id="<?= $this->get_id() ?>" name="<?= $this->get_name() ?>" value="1" <?= checked( $value, 1) ?> <?= $this->get_attributes(); ?>>
 
                         <div class="rd-toggle-switch-background">
                             <div class="rd-toggle-switch-handle"></div>

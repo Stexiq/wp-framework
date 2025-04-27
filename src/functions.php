@@ -60,7 +60,7 @@ if( ! function_exists('rd_validate_fields' )) {
 	function rd_validate_fields( array $fields ): array
 	{
 		return array_filter($fields, function( $field) {
-			return $field->enabled ?? false;
+			return $field->get_enabled();
 		});
 	}
 }
@@ -611,7 +611,7 @@ if( ! function_exists( 'rd_editor' ) )
 		$content = preg_replace( '/\[img\](.*?)\[\/img\]/i', '<img src="$1" />', $content );
 		$content = preg_replace( '/\[quote\](.*?)\[\/quote\]/i', '<blockquote>$1</blockquote>', $content );
 		$content = preg_replace( '/\[code\](.*?)\[\/code\]/i', '<pre><code>$1</code></pre>', $content );
-		
+
 		return $content;
 	}
 }

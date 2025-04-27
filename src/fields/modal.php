@@ -16,14 +16,15 @@ if( ! class_exists( 'RD_Modal') )
         public string $type = 'modal';
 
         /**
-         * @var string
+         * Init the field
          */
-        public string $button = 'Open Modal';
-
-        /**
-         * @var ?string
-         */
-        public ?string $modal_title = null;
+	    public function init(): void
+	    {
+		    $this->attributes([
+			    'modal-title' => $this->get_label(),
+			    'modal-close' => esc_html__( 'Close', 'rd-framework' ),
+		    ]);
+        }
 
 	    /**
 	     * @param array $fields
@@ -43,22 +44,17 @@ if( ! class_exists( 'RD_Modal') )
          * @param string $label The button label
          * @return $this
          */
-        public function button( string $label ): static
+        public function modal( string $title = null, string $button = null ): static
         {
-            $this->button = $label;
+            if( $title ) {
+	            $this->attributes([
+		            'modal-title' => $title,
+	            ]);
+            }
 
-            return $this;
-        }
-
-        /**
-         * Set the modal title
-         *
-         * @param string $title The modal title
-         * @return $this
-         */
-        public function modal_title( string $title ): static
-        {
-            $this->modal_title = $title;
+            $this->attributes([
+                'modal-button' => $button ?? __( 'Open', 'rd-framework' ),
+            ]);
 
             return $this;
         }
@@ -71,12 +67,11 @@ if( ! class_exists( 'RD_Modal') )
         {
             $this->field_before();
             ?>
-            <div class="rd-modal" id="<?= $this->id ?>_modal" aria-hidden="true" role="dialog" aria-labelledby="<?= $this->id ?>_label" aria-describedby="<?= $this->id ?>_description">
+            <div class="rd-modal" id="<?= $this->get_id() ?>_modal" aria-hidden="true" role="dialog">
                 <div class="rd-modal__content">
-
                     <div class="rd-modal__header">
-                        <h2><?= $this->modal_title ?? $this->label ?></h2>
-                        <button type="button" class="rd-modal__close" aria-label="<?= esc_attr__( 'Close', 'rd-framework' ) ?>">
+                        <h2><?= $this->attr( 'modal-title') ?></h2>
+                        <button type="button" class="rd-modal__close" aria-label="<?= $this->attr( 'modal-close') ?>">
                             <span class="dashicons dashicons-no"></span>
                         </button>
                     </div>
@@ -84,7 +79,7 @@ if( ! class_exists( 'RD_Modal') )
                     <div class="rd-modal__body">
                         <?php
                         foreach( $this->fields as $field ):
-                            echo $field->set()->render();
+                            echo $field->render();
                         endforeach;
                         ?>
                     </div>
@@ -93,8 +88,8 @@ if( ! class_exists( 'RD_Modal') )
 
             <div class="rd-modal__overlay"></div>
 
-            <button type="button" class="<?= RD_PREFIX ?>-button" data-modal-trigger="#<?= $this->id ?>_modal" aria-controls="<?= $this->id ?>" aria-expanded="false" aria-haspopup="dialog">
-                <?= esc_html__( $this->button, 'rd-framework' ) ?>
+            <button type="button" class="<?= RD_PREFIX ?>-button" data-modal-trigger="#<?= $this->get_id() ?>_modal" aria-controls="<?= $this->get_id() ?>" aria-expanded="false" aria-haspopup="dialog">
+                <?= $this->attr( 'modal-button') ?>
             </button>
             <?php
             $this->field_after();

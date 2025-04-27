@@ -43,7 +43,7 @@ if( ! class_exists( 'RD_Section') )
                 </div>
 
                 <?php foreach( $this->fields as $field ) {
-                    echo $field->set()->render();
+                    echo $field->render();
                 }
 
             echo '</div>';

@@ -17,6 +17,11 @@ if( ! class_exists( 'RD_Select') )
         public string $type = 'select';
 
         /**
+         * @var array
+         */
+        public array $options = [];
+
+        /**
          * Set options.
          *
          * @param array $options

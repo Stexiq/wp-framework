@@ -67,7 +67,7 @@ if( ! class_exists( 'RD_Tab') )
             <div class="rd-tab" data-tab-content="<?php echo $this->get_id(); ?>">
                 <?php
                 foreach( $this->fields as $field ):
-                    echo $field->set()->render();
+                    echo $field->render();
                 endforeach;
                 ?>
             </div>
