@@ -25,6 +25,26 @@ if( ! class_exists( 'RD_Message') )
 //            $this->attributes['type'] = 'password';
 //        }
 
+
+		/**
+		 * Set the content for the message field.
+		 *
+		 * @param string $content
+		 * @return RD_Message
+		 */
+		public function content( string $content ): RD_Message
+		{
+			$this->settings['content'] = $content;
+
+			return $this;
+		}
+
+        /**
+         * Set the type for the message field.
+         *
+         * @param string $type
+         * @return RD_Message
+         */
         public function type( string $type ): RD_Message
         {
             $this->settings['type'] = $type;
@@ -41,13 +61,11 @@ if( ! class_exists( 'RD_Message') )
         {
             $this->field_before();
             ?>
-
             <div class="rd-message rd-message--<?php echo esc_attr( $this->get( 'type' ) ); ?>">
                 <div class="rd-message__content">
                     <?php echo wp_kses_post( $this->get( 'content' ) ); ?>
                 </div>
             </div>
-
             <?php
             $this->field_after();
         }
