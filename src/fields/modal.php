@@ -38,12 +38,13 @@ if( ! class_exists( 'RD_Modal') )
 		    return $this;
 	    }
 
-        /**
-         * Set the button label
-         *
-         * @param string $label The button label
-         * @return $this
-         */
+	    /**
+	     * Set the button label
+	     *
+	     * @param string|null $title
+	     * @param string|null $button
+	     * @return $this
+	     */
         public function modal( string $title = null, string $button = null ): static
         {
             if( $title ) {

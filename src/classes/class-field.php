@@ -398,10 +398,10 @@ class RD_Field
 	 */
 	public function when( string $id, string $operator = '=', string $value ): static
 	{
-		$this->data['data-rd-show-if-id'] = $this->id;
-		$this->data['data-rd-show-if-target'] = $id;
-		$this->data['data-rd-show-if-value'] = $value;
-		$this->data['data-rd-show-if-operator'] = $operator;
+		$this->attributes['data-rd-show-if-id'] = $this->id;
+		$this->attributes['data-rd-show-if-target'] = $id;
+		$this->attributes['data-rd-show-if-value'] = $value;
+		$this->attributes['data-rd-show-if-operator'] = $operator;
 
 		return $this;
 	}
