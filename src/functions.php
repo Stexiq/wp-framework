@@ -603,7 +603,16 @@ if( ! function_exists( 'rd_editor' ) )
 	 */
 	function rd_editor( string $content ): string
 	{
-		return preg_replace( '/[i|b|u|em]\s*(.*?)\s*[\/i|\/b|\/u|\/em]/', '<$1>$2</$1>', $content );
+		$content = preg_replace( '/\[b\](.*?)\[\/b\]/i', '<strong>$1</strong>', $content );
+		$content = preg_replace( '/\[i\](.*?)\[\/i\]/i', '<i>$1</i>', $content );
+		$content = preg_replace( '/\[u\](.*?)\[\/u\]/i', '<u>$1</u>', $content );
+		$content = preg_replace( '/\[s\](.*?)\[\/s\]/i', '<s>$1</s>', $content );
+		$content = preg_replace( '/\[url=(.*?)\](.*?)\[\/url\]/i', '<a href="$1">$2</a>', $content );
+		$content = preg_replace( '/\[img\](.*?)\[\/img\]/i', '<img src="$1" />', $content );
+		$content = preg_replace( '/\[quote\](.*?)\[\/quote\]/i', '<blockquote>$1</blockquote>', $content );
+		$content = preg_replace( '/\[code\](.*?)\[\/code\]/i', '<pre><code>$1</code></pre>', $content );
+		
+		return $content;
 	}
 }
 
