@@ -625,6 +625,77 @@ body[class*=rd] .rd-toggle-switch .rd-toggle-switch-handle {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(4px);
 }
+body[class*=rd] .rd-message {
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  --rd-border-opacity: 1;
+  border-color: rgb(220 220 222 / var(--rd-border-opacity));
+  --rd-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--rd-bg-opacity));
+  padding: 1rem;
+  --rd-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --rd-shadow-colored: 0 1px 2px 0 var(--rd-shadow-color);
+  box-shadow: var(--rd-ring-offset-shadow, 0 0 #0000), var(--rd-ring-shadow, 0 0 #0000), var(--rd-shadow);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  --rd-text-opacity: 1;
+  color: rgb(100 105 112 / var(--rd-text-opacity));
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+body[class*=rd] .rd-message.rd-message--info {
+  --rd-border-opacity: 1;
+  border-color: rgb(158 194 230 / var(--rd-border-opacity));
+  --rd-bg-opacity: 1;
+  background-color: rgb(240 246 252 / var(--rd-bg-opacity));
+  --rd-text-opacity: 1;
+  color: rgb(19 94 150 / var(--rd-text-opacity));
+}
+body[class*=rd] .rd-message.rd-message--info:hover {
+  --rd-bg-opacity: 1;
+  background-color: rgb(197 217 237 / var(--rd-bg-opacity));
+}
+body[class*=rd] .rd-message.rd-message--success {
+  --rd-border-opacity: 1;
+  border-color: rgb(104 222 124 / var(--rd-border-opacity));
+  --rd-bg-opacity: 1;
+  background-color: rgb(237 250 239 / var(--rd-bg-opacity));
+  --rd-text-opacity: 1;
+  color: rgb(0 112 23 / var(--rd-text-opacity));
+}
+body[class*=rd] .rd-message.rd-message--success:hover {
+  --rd-bg-opacity: 1;
+  background-color: rgb(184 230 191 / var(--rd-bg-opacity));
+}
+body[class*=rd] .rd-message.rd-message--warning {
+  --rd-border-opacity: 1;
+  border-color: rgb(242 214 117 / var(--rd-border-opacity));
+  --rd-bg-opacity: 1;
+  background-color: rgb(252 249 232 / var(--rd-bg-opacity));
+  --rd-text-opacity: 1;
+  color: rgb(117 81 0 / var(--rd-text-opacity));
+}
+body[class*=rd] .rd-message.rd-message--warning:hover {
+  --rd-bg-opacity: 1;
+  background-color: rgb(245 230 171 / var(--rd-bg-opacity));
+}
+body[class*=rd] .rd-message.rd-message--error {
+  --rd-border-opacity: 1;
+  border-color: rgb(255 171 175 / var(--rd-border-opacity));
+  --rd-bg-opacity: 1;
+  background-color: rgb(252 240 241 / var(--rd-bg-opacity));
+  --rd-text-opacity: 1;
+  color: rgb(179 45 46 / var(--rd-text-opacity));
+}
+body[class*=rd] .rd-message.rd-message--error:hover {
+  --rd-bg-opacity: 1;
+  background-color: rgb(250 207 210 / var(--rd-bg-opacity));
+}
 
 .rd-admin-bar.rd-admin-bar--scrollable .ab-sub-wrapper {
   max-height: calc(100vh - 200px);
