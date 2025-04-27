@@ -266,14 +266,21 @@ if( ! function_exists( 'rd_get_post_types') )
 	/**
 	 * Get all post types
 	 *
+	 * @param array $exclude
 	 * @return array
 	 */
-	function rd_get_post_types(): array
+	function rd_get_post_types( array $exclude = [] ): array
 	{
 		$post_types = get_post_types( array( 'public' => true ), 'objects' );
 		$post_types_list = [];
 
+		// Add the post types to the list
 		foreach( $post_types as $post_type ) {
+			// Skip the excluded post types
+			if( in_array( $post_type->name, $exclude ) ) {
+				continue;
+			}
+
 			$post_types_list[$post_type->name] = $post_type->label;
 		}
 

@@ -25,13 +25,25 @@ if( ! class_exists( 'RD_Number') )
             $this->attributes['type'] = 'number';
         }
 
-        public function min( int $min )
+        /**
+         * Set the minimum value for the number field.
+         *
+         * @param int $min
+         * @return RD_Number
+         */
+        public function min( int $min ): static
         {
             $this->attributes['min'] = $min;
             return $this;
         }
 
-        public function max( int $max )
+        /**
+         * Set the maximum value for the number field.
+         *
+         * @param int $max
+         * @return RD_Number
+         */
+        public function max( int $max ): static
         {
             $this->attributes['max'] = $max;
 
