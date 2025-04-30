@@ -1,4 +1,7 @@
 <?php
+
+use LiteSpeed\Error;
+
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if( ! function_exists( 'rd_name' ) ) {
@@ -101,8 +104,8 @@ if( ! function_exists( 'rd_generate_site_id') )
 
 		$site_id = md5( implode( '', $unique ) );
 
-		 $site_id = substr( $site_id, 0, 16 );
-		 $site_id = sprintf( '%s-%s-%s', substr( $site_id, 0, 4 ), substr( $site_id, 8, 4 ), substr( $site_id, 12, 4 ) );
+		$site_id = substr( $site_id, 0, 16 );
+		$site_id = sprintf( '%s-%s-%s', substr( $site_id, 0, 4 ), substr( $site_id, 8, 4 ), substr( $site_id, 12, 4 ) );
 
 		return $site_id;
 	}
@@ -391,51 +394,99 @@ if( ! function_exists( 'rd_is_allowed' ) )
 	}
 }
 
-if( ! function_exists( 'rd_plugin_update_htaccess' ) )
-{
+
+if( ! function_exists( 'rd_plugin_update_htaccess' ) ) {
 	/**
 	 * Update htaccess
 	 *
-	 * @param string $block
-	 * @param string $rules
-	 * @return void
+	 * @param string $marker
+	 * @param string|array $insertion
+	 * @param bool $prepend
+	 *
+	 * @return bool
 	 */
-	function rd_plugin_update_htaccess( string $block, string $rules ): void
+	function rd_plugin_update_htaccess( $marker, $insertion, $prepend = false )
 	{
-		$filesystem = rd_plugin_get_filesystem();
-		if ( null === $filesystem ) {
-			return;
+		$htaccess_file = rd_plugin_get_writable_htaccess_path();
+		if ( false === $htaccess_file ) {
+			return false;
 		}
 
-		$htaccess_file = rd_plugin_get_writable_htaccess_path( $filesystem );
-		if ( null === $htaccess_file ) {
-			return;
+		if ( ! is_array( $insertion ) ) {
+			$insertion = explode( "\n", $insertion );
 		}
 
-		rd_plugin_cleanup_htaccess( $block );
+		$start_marker = "# BEGIN {$marker}";
+		$end_marker   = "# END {$marker}";
 
-		$original_contents = $filesystem->get_contents( $htaccess_file );
-		if ( false === $original_contents ) {
-			return;
+		$fp = fopen( $htaccess_file, 'r+' );
+
+		if ( ! $fp ) {
+			return false;
 		}
 
-		$rules = explode( PHP_EOL, $rules );
-		$rules = array_map( 'trim', $rules );
+		// Attempt to get a lock. If the filesystem supports locking, this will block until the lock is acquired.
+		flock( $fp, LOCK_EX );
 
-		$lines = array(
-			$original_contents,
-			'',
-			sprintf( '# BEGIN %s', $block ),
-		);
+		$lines = array();
+		while ( ! feof( $fp ) ) {
+			$lines[] = rtrim( fgets( $fp ), "\r\n" );
+		}
 
-		$lines = array_merge( $lines, $rules );
+		// Split out the existing file into the preceding lines, and those that appear after the marker
+		$pre_lines    = $post_lines = $existing_lines = array();
+		$found_marker = $found_end_marker = false;
+		foreach ( $lines as $line ) {
+			if ( ! $found_marker && false !== strpos( $line, $start_marker ) ) {
+				$found_marker = true;
+				continue;
+			} elseif ( ! $found_end_marker && false !== strpos( $line, $end_marker ) ) {
+				$found_end_marker = true;
+				continue;
+			}
 
-		$lines[] = sprintf( '# END %s', $block );
-		$lines[] = '';
+			if ( ! $found_marker ) {
+				$pre_lines[] = $line;
+			} elseif ( $found_marker && $found_end_marker ) {
+				$post_lines[] = $line;
+			} else {
+				$existing_lines[] = $line;
+			}
+		}
 
-		$filesystem->put_contents( $htaccess_file, implode( PHP_EOL, $lines ) );
+		// Check to see if there was a change
+		if ( $existing_lines === $insertion ) {
+			flock( $fp, LOCK_UN );
+			fclose( $fp );
+
+			return true;
+		}
+
+		// Check if need to prepend data if not exist
+		if ( $prepend && ! $post_lines ) {
+			// Generate the new file data
+			$new_file_data = implode( "\n", array_merge( array( $start_marker ), $insertion, array( $end_marker ), $pre_lines ) );
+		} else {
+			// Generate the new file data
+			$new_file_data = implode( "\n", array_merge( $pre_lines, array( $start_marker ), $insertion, array( $end_marker ), $post_lines ) );
+		}
+
+		// Write to the start of the file, and truncate it to that length
+		fseek( $fp, 0 );
+
+		$bytes = fwrite( $fp, $new_file_data );
+		if ( $bytes ) {
+			ftruncate( $fp, ftell( $fp ) );
+		}
+
+		fflush( $fp );
+		flock( $fp, LOCK_UN );
+		fclose( $fp );
+
+		return (bool) $bytes;
 	}
 }
+
 if( ! function_exists( 'rd_plugin_cleanup_htaccess' ) )
 {
 	/**
@@ -444,32 +495,42 @@ if( ! function_exists( 'rd_plugin_cleanup_htaccess' ) )
 	 * @param string $block
 	 * @return void
 	 */
-	function rd_plugin_cleanup_htaccess( string $block ): void
+	function rd_plugin_cleanup_htaccess( string $block ): bool
 	{
-		$filesystem = rd_plugin_get_filesystem();
-		if ( null === $filesystem ) {
-			return;
-		}
-
 		$htaccess_file = rd_plugin_get_writable_htaccess_path( $filesystem );
 		if ( null === $htaccess_file ) {
-			return;
+			return false;
 		}
 
-		$htaccess_contents = $filesystem->get_contents( $htaccess_file );
-		if ( false === $htaccess_contents ) {
-			return;
+		$fp = fopen( $htaccess_file, 'r+' );
+
+		if ( ! $fp ) {
+			return false;
 		}
+
+		// Attempt to get a lock. If the filesystem supports locking, this will block until the lock is acquired.
+		flock($fp, LOCK_EX);
 
 		$regex             = '/# BEGIN ' . preg_quote( $block, '/' ) . '.*?# END ' . preg_quote( $block, '/' ) . '/s';
 		$htaccess_contents = preg_replace( $regex, "\n\n", $htaccess_contents );
-
 		$htaccess_contents = preg_replace( "/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $htaccess_contents );
-		$filesystem->put_contents( $htaccess_file, $htaccess_contents );
 
-		rd_plugin_flush_rewrite_rules();
+		// Write to the start of the file, and truncate it to that length
+		fseek($fp, 0);
+
+		$bytes = fwrite($fp, $new_file_data);
+		if ($bytes) {
+			ftruncate($fp, ftell($fp));
+		}
+
+		fflush($fp);
+		flock($fp, LOCK_UN);
+		fclose($fp);
+
+		return (bool) $bytes;
 	}
 }
+
 if( ! function_exists( 'rd_plugin_flush_rewrite_rules' ) )
 {
 	/**
@@ -485,24 +546,7 @@ if( ! function_exists( 'rd_plugin_flush_rewrite_rules' ) )
 		}
 	}
 }
-if( ! function_exists( 'rd_plugin_get_filesystem' ) )
-{
-	/**
-	 * Get filesystem
-	 *
-	 * @return WP_Filesystem_Base|null
-	 */
-	function rd_plugin_get_filesystem(): ?WP_Filesystem_Base
-	{
-		global $wp_filesystem;
 
-		if( true !== WP_Filesystem() ) {
-			return null;
-		}
-
-		return $wp_filesystem;
-	}
-}
 if( ! function_exists( 'rd_plugin_get_writable_htaccess_path' ) )
 {
 	/**
@@ -511,12 +555,27 @@ if( ! function_exists( 'rd_plugin_get_writable_htaccess_path' ) )
 	 * @param WP_Filesystem_Base $filesystem
 	 * @return string|null
 	 */
-	function rd_plugin_get_writable_htaccess_path( WP_Filesystem_Base $filesystem ): ?string
+	function rd_plugin_get_writable_htaccess_path(): ?string
 	{
 		$htaccess_file = get_home_path() . '.htaccess';
 
-		if ( ! $filesystem->exists( $htaccess_file ) || ! $filesystem->is_readable( $htaccess_file ) || ! $filesystem->is_writable( $htaccess_file ) ) {
-			return null;
+		if ( ! file_exists( $htaccess_file ) ) {
+			if ( ! is_writable( dirname( $htaccess_file ) ) ) {
+				return false;
+			}
+
+			if ( ! touch( $htaccess_file ) ) {
+				return false;
+			}
+
+			// Make sure the file is created with a minimum set of permissions.
+			$perms = fileperms( $htaccess_file );
+
+			if ( $perms ) {
+				chmod( $htaccess_file, $perms | 0644 );
+			}
+		} elseif ( ! is_writable( $htaccess_file ) ) {
+			return false;
 		}
 
 		return $htaccess_file;
@@ -620,3 +679,7 @@ function rd_minify( $data )
 {
 	return preg_replace( array( '/\s+/', '/\s*([{};:])\s*/', '/\s*([()])\s*/', ), array( ' ', '$1', '$1', ), $data );
 }
+
+
+
+
