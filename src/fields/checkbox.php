@@ -15,6 +15,11 @@ if( ! class_exists( 'RD_Checkbox') )
         */
         public string $type = 'checkbox';
 
+	    /**
+	     * @var array
+	     */
+	    public array $options = [];
+        
         /**
          * Set options.
          *
