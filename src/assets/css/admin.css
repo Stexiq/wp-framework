@@ -9,7 +9,7 @@ body[class*=rd] ::after {
 
 body[class*=rd] {
   --rd-bg-opacity: 1;
-  background-color: rgb(248 250 252 / var(--rd-bg-opacity));
+  background-color: rgb(249 250 251 / var(--rd-bg-opacity));
 }
 body[class*=rd] body {
   overflow: hidden;
@@ -41,14 +41,20 @@ body[class*=rd] .notice p {
   margin: 0px;
 }
 body[class*=rd] .notice.notice-success {
-  border-radius: 0.25rem;
-  border-width: 1px;
   --rd-border-opacity: 1;
   border-color: rgb(184 230 191 / var(--rd-border-opacity));
   --rd-bg-opacity: 1;
   background-color: rgb(237 250 239 / var(--rd-bg-opacity));
   --rd-text-opacity: 1;
   color: rgb(0 112 23 / var(--rd-text-opacity));
+}
+body[class*=rd] .notice.notice-error {
+  --rd-border-opacity: 1;
+  border-color: rgb(250 207 210 / var(--rd-border-opacity));
+  --rd-bg-opacity: 1;
+  background-color: rgb(252 240 241 / var(--rd-bg-opacity));
+  --rd-text-opacity: 1;
+  color: rgb(179 45 46 / var(--rd-text-opacity));
 }
 body[class*=rd] .notice .notice-dismiss {
   display: none;
@@ -70,21 +76,7 @@ body[class*=rd] .rd-card {
   --rd-shadow-colored: 0 1px 3px 0 var(--rd-shadow-color), 0 1px 2px -1px var(--rd-shadow-color);
   box-shadow: var(--rd-ring-offset-shadow, 0 0 #0000), var(--rd-ring-shadow, 0 0 #0000), var(--rd-shadow);
 }
-body[class*=rd] .rd-container {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  max-width: 80rem;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: 0.25rem;
-  border-width: 1px;
-  --rd-border-opacity: 1;
-  border-color: rgb(240 240 241 / var(--rd-border-opacity));
-}
-body[class*=rd] .rd-container .button {
+body[class*=rd] .button {
   display: flex !important;
   height: 2.5rem !important;
   align-items: center !important;
@@ -99,11 +91,11 @@ body[class*=rd] .rd-container .button {
   --rd-text-opacity: 1;
   color: rgb(255 255 255 / var(--rd-text-opacity));
 }
-body[class*=rd] .rd-container .button:hover {
+body[class*=rd] .button:hover {
   --rd-bg-opacity: 1;
   background-color: rgb(19 94 150 / var(--rd-bg-opacity));
 }
-body[class*=rd] .rd-container .button:focus {
+body[class*=rd] .button:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
   --rd-ring-offset-shadow: var(--rd-ring-inset) 0 0 0 var(--rd-ring-offset-width) var(--rd-ring-offset-color);
@@ -112,7 +104,7 @@ body[class*=rd] .rd-container .button:focus {
   --rd-ring-color: rgb(53 130 196 / var(--rd-ring-opacity));
   --rd-ring-opacity: 0.5;
 }
-body[class*=rd] .rd-container .rd-top-bar {
+body[class*=rd] .rd-top-bar {
   display: flex;
   width: 100%;
   align-items: center;
@@ -125,7 +117,7 @@ body[class*=rd] .rd-container .rd-top-bar {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-body[class*=rd] .rd-container .rd-top-bar .rd-logo h1 {
+body[class*=rd] .rd-top-bar .rd-logo h1 {
   margin: 0px;
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -133,37 +125,57 @@ body[class*=rd] .rd-container .rd-top-bar .rd-logo h1 {
   --rd-text-opacity: 1;
   color: rgb(80 87 94 / var(--rd-text-opacity));
 }
-body[class*=rd] .rd-container .rd-top-bar .rd-top-bar--right {
+body[class*=rd] .rd-top-bar .rd-top-bar--right {
   display: flex;
   gap: 0.5rem;
 }
-body[class*=rd] .rd-container .rd-admin {
+body[class*=rd] .rd-admin {
   display: flex;
 }
-body[class*=rd] .rd-container .rd-admin .rd-sidebar {
+body[class*=rd] .rd-admin .rd-sidebar {
   display: flex;
-  width: 250px;
+  width: 18rem;
   flex-direction: column;
+  gap: 1rem;
+  overflow: auto;
+  border-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  --rd-border-opacity: 1;
+  border-color: rgb(240 240 241 / var(--rd-border-opacity));
   --rd-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--rd-bg-opacity));
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  height: auto;
+  min-height: 100vh;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
 }
-body[class*=rd] .rd-container .rd-admin .rd-sidebar .rd-nav {
+@media (min-width: 1024px) {
+
+  body[class*=rd] .rd-admin .rd-sidebar {
+    width: 18rem;
+  }
+}
+body[class*=rd] .rd-admin .rd-sidebar .rd-nav {
   margin: 0px;
   display: flex;
   list-style-type: none;
   flex-direction: column;
   padding: 0px;
 }
-body[class*=rd] .rd-container .rd-admin .rd-sidebar .rd-nav li {
+body[class*=rd] .rd-admin .rd-sidebar .rd-nav li {
   margin: 0px;
 }
-body[class*=rd] .rd-container .rd-admin .rd-sidebar .rd-nav li a {
+body[class*=rd] .rd-admin .rd-sidebar .rd-nav li a {
   display: flex;
   cursor: pointer;
   align-items: center;
   gap: 0.5rem;
-  border-left-width: 2px;
-  border-color: transparent;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   padding-left: 1rem;
@@ -171,47 +183,44 @@ body[class*=rd] .rd-container .rd-admin .rd-sidebar .rd-nav li a {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25rem;
+  text-decoration-line: none;
+  border-radius: 0.375rem;
   --rd-text-opacity: 1;
   color: rgb(120 124 130 / var(--rd-text-opacity));
-  text-decoration-line: none;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-body[class*=rd] .rd-container .rd-admin .rd-sidebar .rd-nav li a:focus {
-  border-left-width: 2px;
-  --rd-border-opacity: 1;
-  border-color: rgb(53 130 196 / var(--rd-border-opacity));
-  background-color: rgb(240 246 252 / 0.1);
-  --rd-text-opacity: 1;
-  color: rgb(19 94 150 / var(--rd-text-opacity));
+body[class*=rd] .rd-admin .rd-sidebar .rd-nav li a:focus {
   --rd-shadow: 0 0 #0000;
   --rd-shadow-colored: 0 0 #0000;
   box-shadow: var(--rd-ring-offset-shadow, 0 0 #0000), var(--rd-ring-shadow, 0 0 #0000), var(--rd-shadow);
-  --rd-ring-opacity: 1;
-  --rd-ring-color: rgb(53 130 196 / var(--rd-ring-opacity));
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
-body[class*=rd] .rd-container .rd-admin .rd-sidebar .rd-nav li a:focus svg {
-  stroke: #135e96;
+body[class*=rd] .rd-admin .rd-sidebar .rd-nav li a:hover {
+  --rd-bg-opacity: 1;
+  background-color: rgb(246 247 247 / var(--rd-bg-opacity));
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
-body[class*=rd] .rd-container .rd-admin .rd-sidebar .rd-nav li a:hover {
-  --rd-border-opacity: 1;
-  border-color: rgb(197 217 237 / var(--rd-border-opacity));
-}
-body[class*=rd] .rd-container .rd-admin .rd-sidebar .rd-nav li a:hover svg {
-  stroke: #135e96;
-}
-body[class*=rd] .rd-container .rd-admin .rd-content {
+body[class*=rd] .rd-admin .rd-content {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 80rem;
   display: flex;
-  flex: 1 1 0%;
-  border-left-width: 1px;
-  --rd-border-opacity: 1;
-  border-color: rgb(240 240 241 / var(--rd-border-opacity));
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0.375rem;
   --rd-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--rd-bg-opacity));
-}
-body[class*=rd] .rd-container .rd-admin .rd-content > * {
-  width: 100%;
+  --rd-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --rd-shadow-colored: 0 1px 3px 0 var(--rd-shadow-color), 0 1px 2px -1px var(--rd-shadow-color);
+  box-shadow: var(--rd-ring-offset-shadow, 0 0 #0000), var(--rd-ring-shadow, 0 0 #0000), var(--rd-shadow);
 }
 body[class*=rd] .rd-settings .rd-settings__section .rd-settings__section-header {
   margin: 0px;
@@ -220,11 +229,10 @@ body[class*=rd] .rd-settings .rd-settings__section .rd-settings__section-header 
   align-items: center;
   justify-content: space-between;
   border-bottom-width: 1px;
-  --rd-bg-opacity: 1;
-  background-color: rgb(246 247 247 / var(--rd-bg-opacity));
   padding: 1rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
+  background-color: rgba(0, 0, 0, 0.01);
 }
 body[class*=rd] .rd-settings .rd-settings__section .rd-settings__section-header h2 {
   margin: 0px;
@@ -233,7 +241,7 @@ body[class*=rd] .rd-settings .rd-settings__section .rd-settings__section-header 
   --rd-text-opacity: 1;
   color: rgb(100 105 112 / var(--rd-text-opacity));
 }
-body[class*=rd] .rd-settings .rd-settings__section:not(:first-child) .rd-settings__section-header {
+body[class*=rd] .rd-settings .rd-settings__section .rd-settings__section-header {
   border-top-width: 1px;
 }
 body[class*=rd] .rd-settings .rd-settings__footer {
@@ -275,7 +283,7 @@ body[class*=rd] .rd-settings .rd-settings__footer button:focus {
 }
 body[class*=rd] .rd-field {
   display: grid;
-  grid-template-columns: 450px 1fr;
+  grid-template-columns: 550px 1fr;
   -moz-column-gap: 2rem;
        column-gap: 2rem;
   padding: 1rem;
@@ -351,20 +359,35 @@ body[class*=rd] .rd-field .rd-field__sub-fields:has(.rd-field--enabled) {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 2rem;
+  border-radius: 0.375rem;
   --rd-bg-opacity: 1;
   background-color: rgb(246 247 247 / var(--rd-bg-opacity));
   padding: 1rem;
+  --rd-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --rd-shadow-colored: 0 1px 3px 0 var(--rd-shadow-color), 0 1px 2px -1px var(--rd-shadow-color);
+  box-shadow: var(--rd-ring-offset-shadow, 0 0 #0000), var(--rd-ring-shadow, 0 0 #0000), var(--rd-shadow);
+}
+body[class*=rd] .rd-field .rd-field__sub-fields .rd-field--enabled:first-child {
+  margin-top: 0px !important;
 }
 body[class*=rd] .rd-field .rd-field__sub-fields .rd-field {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  border-style: none;
   padding: 0px;
+  border-style: none !important;
+}
+body[class*=rd] .rd-field .rd-field__sub-fields .rd-field.rd-field--enabled {
+  margin-top: 2rem;
+}
+body[class*=rd] .rd-field .rd-field__sub-fields .rd-field.rd-field--message {
+  margin-top: 1rem;
 }
 body[class*=rd] .rd-field .rd-field__sub-fields .rd-field .rd-field__type {
   width: 100%;
+}
+body[class*=rd] .rd-field .rd-field__sub-fields .rd-field .rd-message {
+  margin-bottom: 0px;
 }
 body[class*=rd] .rd-field .rd-field__sub-fields .rd-field--switch {
   align-items: flex-start;
@@ -712,7 +735,7 @@ body[class*=rd] .rd-message.rd-message--danger {
 .rd-admin-bar .ab-sub-wrapper ul li * {
   line-height: 2 !important;
 }
-.rd-admin-bar .ab-sub-wrapper ul li div {
+.rd-admin-bar .ab-sub-wrapper ul li > div {
   display: flex !important;
   flex-direction: column !important;
   line-height: normal !important;

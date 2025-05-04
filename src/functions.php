@@ -409,6 +409,7 @@ if( ! function_exists( 'rd_plugin_update_htaccess' ) ) {
 	{
 		$htaccess_file = rd_plugin_get_writable_htaccess_path();
 		if ( false === $htaccess_file ) {
+			error_log( 'RD: Unable to write to .htaccess file. Please check permissions.' );
 			return false;
 		}
 
@@ -422,6 +423,7 @@ if( ! function_exists( 'rd_plugin_update_htaccess' ) ) {
 		$fp = fopen( $htaccess_file, 'r+' );
 
 		if ( ! $fp ) {
+			error_log( 'RD: Unable to open .htaccess file. Please check permissions.' );
 			return false;
 		}
 
@@ -675,11 +677,33 @@ if( ! function_exists( 'rd_editor' ) )
 	}
 }
 
-function rd_minify( $data )
+
+if( ! function_exists( 'rd_minify' ) )
 {
-	return preg_replace( array( '/\s+/', '/\s*([{};:])\s*/', '/\s*([()])\s*/', ), array( ' ', '$1', '$1', ), $data );
+	/**
+	 * Minify content
+	 *
+	 * @param string $content
+	 * @return string
+	 */
+	function rd_minify( string $content ): string
+	{
+		return preg_replace( array( '/\s+/', '/\s*([{};:])\s*/', '/\s*([()])\s*/', ), array( ' ', '$1', '$1', ), $content );
+	}
 }
 
 
+if( ! function_exists( 'rd_is_debug_mode' ) )
+{
+	/**
+	 * Check if debug mode is enabled
+	 *
+	 * @return bool
+	 */
+	function rd_is_wp_debug_mode(): bool
+	{
+		return defined( 'WP_DEBUG' ) && WP_DEBUG;
+	}
+}
 
 

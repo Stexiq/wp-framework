@@ -259,7 +259,8 @@ class RD_Field
 	 */
 	public function description( string $description ): static
 	{
-		$this->description = htmlspecialchars( rd_editor( $description ), ENT_QUOTES | ENT_HTML5 );
+		$this->description = htmlspecialchars( $description, ENT_QUOTES | ENT_HTML5 );
+        $this->description = rd_editor( $this->description );
 
 		return $this;
 	}
@@ -374,12 +375,12 @@ class RD_Field
 	/**
 	 * Set the field "default" value.
 	 *
-	 * @param string $value
+	 * @param mixed $value
 	 * @return $this
 	 */
-	public function default( string $value ): static
+	public function default( mixed $value ): static
 	{
-		if( ! isset( $this->attributes['value'] ) ) {
+		if( strlen($this->attributes['value']) === 0 ) {
 			$this->attributes['value'] = $value;
 		}
 

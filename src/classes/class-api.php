@@ -15,7 +15,7 @@ if( ! class_exists( 'RD_Api' ) ) {
 		/**
 		 * @var string
 		 */
-		public string $api_url = 'https://api.wprefined.dev/';
+		public string $api_url = 'https://manage.wprefined.dev/';
 
 		/**
 		 * @var string

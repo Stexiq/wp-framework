@@ -20,6 +20,16 @@ if( ! class_exists( 'RD_Checkbox') )
 	     */
 	    public array $options = [];
 
+	    /**
+	     * Initialize the field.
+	     *
+	     * @return void
+	     */
+        public function init(): void
+        {
+	        $this->attributes['value'] = $this->attributes['value'] === '' ? 0 : $this->attributes['value'];
+        }
+
         /**
          * Set options.
          *

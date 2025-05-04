@@ -15,17 +15,6 @@ if( ! class_exists( 'RD_Message') )
         */
         public string $type = 'message';
 
-//        /**
-//         * Set the field type to color.
-//         *
-//         * @return void
-//         */
-//        public function init(): void
-//        {
-//            $this->attributes['type'] = 'password';
-//        }
-
-
 		/**
 		 * Set the content for the message field.
 		 *
