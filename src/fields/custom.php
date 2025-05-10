@@ -12,16 +12,19 @@ if( ! class_exists( 'RD_Custom') )
 	{
 		/**
 		 * @var string
+		 * @since 1.0.0
 		 */
 		public string $type = 'custom';
 
 		/**
 		 * @var string
+		 * @since 1.0.0
 		 */
 		public string $html = '';
 
 		/**
 		 * Set the HTML to be rendered.
+		 * @since 1.0.0
 		 *
 		 * @param string $html
 		 * @return $this
@@ -35,6 +38,7 @@ if( ! class_exists( 'RD_Custom') )
 
 		/**
 		 * Render the field
+		 * @since 1.0.0
 		 *
 		 * @return void
 		 */
@@ -49,7 +53,8 @@ if( ! class_exists( 'RD_Custom') )
 
 if( ! function_exists( 'rd_custom' ) ) {
 	/**
-	 * Create a new custom field.
+	 * Get an instance of the RD_Custom class.
+	 * @since 1.0.0
 	 *
 	 * @return RD_Custom
 	 */

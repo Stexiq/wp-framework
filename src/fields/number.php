@@ -12,11 +12,13 @@ if( ! class_exists( 'RD_Number') )
     {
         /**
         * @var string
+         * @since 1.0.0
         */
         public string $type = 'number';
 
         /**
          * Set the field type to color.
+         * @since 1.0.0
          *
          * @return void
          */
@@ -27,6 +29,7 @@ if( ! class_exists( 'RD_Number') )
 
         /**
          * Set the minimum value for the number field.
+         * @since 1.0.0
          *
          * @param int $min
          * @return RD_Number
@@ -39,6 +42,7 @@ if( ! class_exists( 'RD_Number') )
 
         /**
          * Set the maximum value for the number field.
+         * @since 1.0.0
          *
          * @param int $max
          * @return RD_Number
@@ -52,6 +56,7 @@ if( ! class_exists( 'RD_Number') )
 
         /**
          * Render the field
+         * @since 1.0.0
          *
          * @return void
          */
@@ -67,11 +72,12 @@ if( ! class_exists( 'RD_Number') )
 }
 
 if( ! function_exists( 'rd_number' ) ) {
-    /**
-     * Create a new password field.
-     *
-     * @return RD_Number
-     */
+	/**
+	 * Get an instance of the RD_Number class.
+	 * @since 1.0.0
+	 *
+	 * @return RD_Number
+	 */
     function rd_number(): RD_Number
     {
         return new RD_Number();

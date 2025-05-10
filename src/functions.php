@@ -111,6 +111,33 @@ if( ! function_exists( 'rd_generate_site_id') )
 	}
 }
 
+if( ! function_exists( 'rd_get_files_recursive' ) )
+{
+	/**
+	 * Get all files in a directory recursively
+	 *
+	 * @param string $directory
+	 * @param string $ext
+	 * @return array
+	 */
+	function rd_get_files_recursive( string $directory, string $ext = 'php' ): array
+	{
+		$files = [];
+
+		$iterator = new RecursiveIteratorIterator(
+			new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS)
+		);
+
+		foreach ($iterator as $file) {
+			if ( $file->isFile() && strtolower( $file->getExtension()) === $ext ) {
+				$files[] = $file->getRealPath();
+			}
+		}
+
+		return $files;
+	}
+}
+
 //
 //if( ! function_exists( 'rd_select' ) ) {
 //	/**
@@ -499,7 +526,7 @@ if( ! function_exists( 'rd_plugin_cleanup_htaccess' ) )
 	 */
 	function rd_plugin_cleanup_htaccess( string $block ): bool
 	{
-		$htaccess_file = rd_plugin_get_writable_htaccess_path( $filesystem );
+		$htaccess_file = rd_plugin_get_writable_htaccess_path();
 		if ( null === $htaccess_file ) {
 			return false;
 		}
@@ -509,6 +536,8 @@ if( ! function_exists( 'rd_plugin_cleanup_htaccess' ) )
 		if ( ! $fp ) {
 			return false;
 		}
+
+		$htaccess_contents = fread( $fp, filesize( $htaccess_file ) );
 
 		// Attempt to get a lock. If the filesystem supports locking, this will block until the lock is acquired.
 		flock($fp, LOCK_EX);
@@ -520,7 +549,7 @@ if( ! function_exists( 'rd_plugin_cleanup_htaccess' ) )
 		// Write to the start of the file, and truncate it to that length
 		fseek($fp, 0);
 
-		$bytes = fwrite($fp, $new_file_data);
+		$bytes = fwrite($fp, $htaccess_contents);
 		if ($bytes) {
 			ftruncate($fp, ftell($fp));
 		}

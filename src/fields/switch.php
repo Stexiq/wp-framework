@@ -12,16 +12,19 @@ if( ! class_exists( 'RD_Switch') )
     {
         /**
         * @var string
+        * @since 1.0.0
         */
         public string $type = 'switch';
 
         /**
          * @var array
+         * @since 1.0.0
          */
         public array $options = [];
 
         /**
          * Initialize the field.
+         * @since 1.0.0
          *
          * @return void
          */
@@ -32,6 +35,7 @@ if( ! class_exists( 'RD_Switch') )
 
         /**
          * Set options.
+         * @since 1.0.0
          *
          * @param array $options
          * @return $this
@@ -45,6 +49,7 @@ if( ! class_exists( 'RD_Switch') )
 
         /**
          * Render the field.
+         * @since 1.0.0
          *
          * @return void
          */
@@ -83,11 +88,12 @@ if( ! class_exists( 'RD_Switch') )
 }
 
 if( ! function_exists( 'rd_switch' ) ) {
-    /**
-     * Create a new switch field
-     *
-     * @return RD_Switch
-     */
+	/**
+	 * Get an instance of the RD_Switch class.
+	 * @since 1.0.0
+	 *
+	 * @return RD_Switch
+	 */
     function rd_switch(): RD_Switch
     {
         return new RD_Switch();

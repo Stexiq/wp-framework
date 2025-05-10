@@ -10,19 +10,21 @@ if( ! class_exists( 'RD_Select') )
      */
     class RD_Select extends RD_Field
     {
-
         /**
         * @var string
+        * @since 1.0.0
         */
         public string $type = 'select';
 
         /**
          * @var array
+         * @since 1.0.0
          */
         public array $options = [];
 
         /**
          * Set options.
+         * @since 1.0.0
          *
          * @param array $options
          * @return $this
@@ -36,6 +38,7 @@ if( ! class_exists( 'RD_Select') )
 
         /**
          * Render the field
+         * @since 1.0.0
          *
          * @return void
          */
@@ -55,11 +58,12 @@ if( ! class_exists( 'RD_Select') )
 }
 
 if( ! function_exists( 'rd_select' ) ) {
-    /**
-     * Create a new select field.
-     *
-     * @return RD_Select
-     */
+	/**
+	 * Get an instance of the RD_Select class.
+	 * @since 1.0.0
+	 *
+	 * @return RD_Select
+	 */
     function rd_select(): RD_Select
     {
         return new RD_Select();

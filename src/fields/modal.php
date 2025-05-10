@@ -12,11 +12,13 @@ if( ! class_exists( 'RD_Modal') )
     {
         /**
         * @var string
+         * @since 1.0.0
         */
         public string $type = 'modal';
 
         /**
          * Init the field
+         * @since 1.0.0
          */
 	    public function init(): void
 	    {
@@ -27,8 +29,10 @@ if( ! class_exists( 'RD_Modal') )
         }
 
 	    /**
+         * Set the fields to be displayed in the modal
+         * @since 1.0.0
+         *
 	     * @param array $fields
-	     *
 	     * @return $this
 	     */
 	    public function fields( ...$fields ): static
@@ -40,7 +44,8 @@ if( ! class_exists( 'RD_Modal') )
 
 	    /**
 	     * Set the button label
-	     *
+	     * @since 1.0.0
+         *
 	     * @param string|null $title
 	     * @param string|null $button
 	     * @return $this
@@ -62,6 +67,8 @@ if( ! class_exists( 'RD_Modal') )
 
         /**
          * Render the field
+         * @since 1.0.0
+         *
          * @return void
          */
         public function render(): void
@@ -99,11 +106,12 @@ if( ! class_exists( 'RD_Modal') )
 }
 
 if( ! function_exists( 'rd_modal' ) ) {
-    /**
-     * Create a new modal field
-     *
-     * @return RD_Modal
-     */
+	/**
+	 * Get an instance of the RD_Modal class.
+	 * @since 1.0.0
+	 *
+	 * @return RD_Modal
+	 */
     function rd_modal(): RD_Modal
     {
         return new RD_Modal();

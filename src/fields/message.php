@@ -12,11 +12,13 @@ if( ! class_exists( 'RD_Message') )
     {
         /**
         * @var string
+        * @since 1.0.0
         */
         public string $type = 'message';
 
 		/**
 		 * Set the content for the message field.
+         * @since 1.0.0
 		 *
 		 * @param string $content
 		 * @return RD_Message
@@ -30,6 +32,7 @@ if( ! class_exists( 'RD_Message') )
 
         /**
          * Set the type for the message field.
+         * @since 1.0.0
          *
          * @param string $type
          * @return RD_Message
@@ -43,6 +46,7 @@ if( ! class_exists( 'RD_Message') )
 
         /**
          * Render the field
+         * @since 1.0.0
          *
          * @return void
          */
@@ -62,11 +66,12 @@ if( ! class_exists( 'RD_Message') )
 }
 
 if( ! function_exists( 'rd_Message' ) ) {
-    /**
-     * Create a new message field
-     *
-     * @return RD_Message
-     */
+	/**
+	 * Get an instance of the RD_Message class.
+	 * @since 1.0.0
+	 *
+	 * @return RD_Message
+	 */
     function rd_Message(): RD_Message
     {
         return new RD_Message();

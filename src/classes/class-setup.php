@@ -8,21 +8,25 @@ class RD_Setup
 {
 	/**
 	 * @var static
+	 * @since 1.0.0
 	 */
 	public static $instance;
 
 	/**
 	 * @var string
+	 * @since 1.0.0
 	 */
 	public string $plugin_file;
 
 	/**
 	 * @var array
+	 * @since 1.0.0
 	 */
 	public array $plugin_data = array();
 
 	/**
 	 * Get instance
+	 * @since 1.0.0
 	 *
 	 * @param string $plugin_file
 	 * @return static
@@ -36,6 +40,12 @@ class RD_Setup
 		return self::$instance;
 	}
 
+	/**
+	 * Constructor
+	 * @since 1.0.0
+	 *
+	 * @param string $plugin_file
+	 */
 	public function __construct( string $plugin_file )
 	{
 		$this->plugin_file = $plugin_file;
@@ -46,6 +56,7 @@ class RD_Setup
 
 	/**
 	 * Hooks
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -56,6 +67,7 @@ class RD_Setup
 
 	/**
 	 * Register updater
+	 * @since 1.0.0
 	 *
 	 * @return void
 	 */

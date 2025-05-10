@@ -9,21 +9,25 @@ if( ! class_exists( 'RD_Api' ) ) {
 	{
 		/**
 		 * @var static
+		 * @since 1.0.0
 		 */
 		public static $instance;
 
 		/**
 		 * @var string
+		 * @since 1.0.0
 		 */
 		public string $api_url = 'https://manage.wprefined.dev/';
 
 		/**
 		 * @var string
+		 * @since 1.0.0
 		 */
 		public string $plugin_file;
 
 		/**
 		 * Get instance
+		 * @since 1.0.0
 		 *
 		 * @param string $plugin_file
 		 * @return static
@@ -39,6 +43,7 @@ if( ! class_exists( 'RD_Api' ) ) {
 
 		/**
 		 * Constructor
+		 * @since 1.0.0
 		 *
 		 * @param string $plugin_file
 		 */
@@ -49,10 +54,10 @@ if( ! class_exists( 'RD_Api' ) ) {
 
 		/**
 		 * Returns the URL for the API
+		 * @since 1.0.0
 		 *
 		 * @param string $path
 		 * @param array $args
-		 *
 		 * @return string
 		 */
 		public function url( string $path, array $args = array() ): string
@@ -69,6 +74,7 @@ if( ! class_exists( 'RD_Api' ) ) {
 
 		/**
 		 * Default arguments for the API
+		 * @since 1.0.0
 		 *
 		 * @return array
 		 */
@@ -88,13 +94,15 @@ if( ! class_exists( 'RD_Api' ) ) {
 	}
 }
 
-/**
- * Get the API instance
- *
- * @return RD_Api
- */
 if( ! function_exists( 'rd_api' ) )
 {
+	/**
+	 * Get the API instance
+	 * @since 1.0.0
+	 *
+	 * @param string $plugin_file
+	 * @return RD_Api
+	 */
 	function rd_api( string $plugin_file ): RD_Api
 	{
 		return RD_Api::get_instance( $plugin_file );

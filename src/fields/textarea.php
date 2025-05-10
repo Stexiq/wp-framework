@@ -12,11 +12,13 @@ if( ! class_exists( 'RD_Textarea') )
     {
         /**
         * @var string
+        * @since 1.0.0
         */
         public string $type = 'textarea';
 
         /**
          * @var array
+         * @since 1.0.0
          */
         public array $code_mirror = array(
             'enabled' => false,
@@ -74,48 +76,7 @@ if( ! class_exists( 'RD_Textarea') )
             return $mode;
         }
 
-        /**
-         * Add the required JS
-         *
-         * @return array
-         */
-        public function js(): array
-        {
-            return array(
-                array(
-                    'handle' => 'codemirror',
-                    'src' => RD_URL . 'admin/assets/libs/codemirror/codemirror.min.js',
-                    'deps' => array(),
-                    'ver' => '1.0',
-                    'in_footer' => false
-                ),
-                array(
-                    'handle' => 'codemirror-mode-' . $this->code_mirror_mode(),
-                    'src' => RD_URL . 'admin/assets/libs/codemirror/mode/' . $this->code_mirror_mode() . '.min.js',
-                    'deps' => array( 'jquery' ),
-                    'ver' => '1.0',
-                    'in_footer' => false
-                )
-            );
-        }
 
-        /**
-         * Add the required CSS
-         *
-         * @return array
-         */
-        public function css(): array
-        {
-            return array(
-                array(
-                    'handle' => 'codemirror-css',
-                    'src' => RD_URL . 'admin/assets/libs/codemirror/codemirror.min.css',
-                    'deps' => array(),
-                    'ver' => '1.0',
-                    'in_footer' => false
-                ),
-            );
-        }
 
         /**
          * Render the field
@@ -148,11 +109,12 @@ if( ! class_exists( 'RD_Textarea') )
 }
 
 if( ! function_exists( 'rd_textarea' ) ) {
-    /**
-     * Create a new textarea field
-     *
-     * @return RD_Textarea
-     */
+	/**
+	 * Get an instance of the RD_Textarea class.
+	 * @since 1.0.0
+	 *
+	 * @return RD_Textarea
+	 */
     function rd_textarea(): RD_Textarea
     {
         return new RD_Textarea();

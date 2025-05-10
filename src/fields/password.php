@@ -12,11 +12,13 @@ if( ! class_exists( 'RD_Password') )
     {
         /**
         * @var string
+         * @since 1.0.0
         */
         public string $type = 'password';
 
         /**
          * Set the field type to color.
+         * @since 1.0.0
          *
          * @return void
          */
@@ -27,6 +29,7 @@ if( ! class_exists( 'RD_Password') )
 
         /**
          * Render the field
+         * @since 1.0.0
          *
          * @return void
          */
@@ -42,11 +45,12 @@ if( ! class_exists( 'RD_Password') )
 }
 
 if( ! function_exists( 'rd_password' ) ) {
-    /**
-     * Create a new password field.
-     *
-     * @return RD_Password
-     */
+	/**
+	 * Get an instance of the RD_Password class.
+	 * @since 1.0.0
+	 *
+	 * @return RD_Password
+	 */
     function rd_password(): RD_Password
     {
         return new RD_Password();

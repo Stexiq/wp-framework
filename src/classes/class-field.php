@@ -5,46 +5,55 @@ class RD_Field
 {
 	/**
 	 * @var string
+     * @since 1.0.0
 	 */
 	public string $type = '';
 
 	/**
 	 * @var string
+     * @since 1.0.0
 	 */
 	public string $id = '';
 
 	/**
 	 * @var string
+     * @since 1.0.0
 	 */
 	public string $name = '';
 
 	/**
 	 * @var string
+     * @since 1.0.0
 	 */
 	public string $slug = '';
 
 	/**
 	 * @var string
+     * @since 1.0.0
 	 */
 	public string $label = '';
 
 	/**
 	 * @var string
+     * @since 1.0.0
 	 */
 	public string $description = '';
 
 	/**
 	 * @var array
+     * @since 1.0.0
 	 */
 	public array $attributes = [];
 
     /**
      * @var array
+     * @since 1.0.0
      */
     public array $data = [];
 
 	/**
 	 * @var array
+     * @since 1.0.0
 	 */
 	public array $settings = [];
 
@@ -55,20 +64,26 @@ class RD_Field
 
 	/**
 	 * @var array
+     * @since 1.0.0
 	 */
 	public array $tags = [];
 
 	/**
 	 * @var array
+     * @since 1.0.0
 	 */
 	public array $sub_fields = [];
 
 	/**
 	 * @var bool
+     * @since 1.0.0
 	 */
 	public bool $enabled = true;
 
 	/**
+     * Constructor
+     * @since 1.0.0
+     *
 	 * @param string $id
 	 * @return static
 	 */
@@ -80,16 +95,26 @@ class RD_Field
 
 		$this->attributes['value'] = $this->get_value();
 
-		$this->init();
+		//add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ), 10 );
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+
+        foreach( $this->js() as $js ) {
+            wp_enqueue_script( $js['handle'], $js['src'] , $js['deps'], $js['ver'], $js['in_footer'] );
+        }
+
+        foreach( $this->css() as $css ) {
+            wp_enqueue_style( $css['handle'], $css['src'], $css['deps'], $css['ver'], $css['media'] ?? 'all'  );
+        }
+
+		$this->init();
 
 		return $this;
 	}
 
 	/**
 	 * Init
-	 *
+	 * @since 1.0.0
+     *
 	 * @return void
 	 */
 	public function init(): void
@@ -98,7 +123,8 @@ class RD_Field
 
 	/**
 	 * Add the required JS
-	 *
+	 * @since 1.0.0
+     *
 	 * @return array
 	 */
 	public function js(): array
@@ -108,7 +134,8 @@ class RD_Field
 
 	/**
 	 * Add the required CSS
-	 *
+	 * @since 1.0.0
+     *
 	 * @return array
 	 */
 	public function css(): array
@@ -118,7 +145,8 @@ class RD_Field
 
 	/**
 	 * Enqueue the field's assets
-	 *
+	 * @since 1.0.0
+     *
 	 * @return void
 	 */
 	public function enqueue_assets(): void
@@ -130,12 +158,12 @@ class RD_Field
 				'deps' => [],
 				'ver' => 0,
 				'in_footer' => false,
-				'when' => fn() => true
+			//	'when' => fn() => true
 			), $js );
-
-			if( ! $js['when']() ) {
-				continue;
-			}
+//
+//			if( ! $js['when']() ) {
+//				continue;
+//			}
 
 			wp_enqueue_script( $js['handle'], $js['src'] , $js['deps'], $js['ver'], $js['in_footer'] );
 		}
@@ -147,21 +175,22 @@ class RD_Field
 				'deps' => [],
 				'ver' => 0,
 				'media' => 'all',
-				'when' => fn() => true
+				//'when' => fn() => true
 			), $css );
 
-			if( ! $css['when']() ) {
-				continue;
-			}
+//			if( ! $css['when']() ) {
+//				continue;
+//			}
 
-			wp_enqueue_style( $css['handle'], $css['src'], $css['deps'], $css['ver'], $css['media'] );
+			wp_enqueue_style( $css['handle'], $css['src'], $css['deps'], $css['ver'], $css['media'] ?? 'all' );
 		}
 	}
 
 
 	/**
 	 * Set the field "id".
-	 *
+	 * @since 1.0.0
+     *
 	 * @param string $id
 	 * @return $this
 	 */
@@ -174,7 +203,8 @@ class RD_Field
 
 	/**
 	 * Get the field "id".
-	 *
+	 * @since 1.0.0
+     *
 	 * @return string
 	 */
 	public function get_id(): string
@@ -184,7 +214,8 @@ class RD_Field
 
 	/**
 	 * Set the field "name".
-	 *
+	 * @since 1.0.0
+     *
 	 * @param string $name
 	 * @return $this
 	 */
@@ -197,7 +228,8 @@ class RD_Field
 
 	/**
 	 * Get the field "name".
-	 *
+	 * @since 1.0.0
+     *
 	 * @return string
 	 */
 	public function get_name(): string
@@ -207,7 +239,8 @@ class RD_Field
 
 	/**
 	 * Set the field "label".
-	 *
+	 * @since 1.0.0
+     *
 	 * @param string $label
 	 * @return $this
 	 */
@@ -220,7 +253,8 @@ class RD_Field
 
 	/**
 	 * Get the field "label".
-	 *
+	 * @since 1.0.0
+     *
 	 * @return string
 	 */
 	public function get_label(): string
@@ -230,7 +264,8 @@ class RD_Field
 
 	/**
 	 * Set the field "slug".
-	 *
+	 * @since 1.0.0
+     *
 	 * @param string $slug
 	 * @return $this
 	 */
@@ -243,7 +278,8 @@ class RD_Field
 
 	/**
 	 * Get the field "slug".
-	 *
+	 * @since 1.0.0
+     *
 	 * @return string
 	 */
 	public function get_slug(): string
@@ -253,7 +289,8 @@ class RD_Field
 
 	/**
 	 * Set the field "description".
-	 *
+	 * @since 1.0.0
+     *
 	 * @param string $description
 	 * @return $this
 	 */
@@ -267,7 +304,8 @@ class RD_Field
 
 	/**
 	 * Get the field "description".
-	 *
+	 * @since 1.0.0
+     *
 	 * @return string
 	 */
 	public function get_description(): string
@@ -277,7 +315,8 @@ class RD_Field
 
 	/**
 	 * Set attributes for the field
-	 *
+	 * @since 1.0.0
+     *
 	 * @param array $attributes
 	 * @return $this
 	 */
@@ -290,7 +329,8 @@ class RD_Field
 
 	/**
 	 * Get the field "attributes".
-	 *
+	 * @since 1.0.0
+     *
 	 * @return void
 	 */
 	public function get_attributes(): void
@@ -310,7 +350,8 @@ class RD_Field
 
 	/**
 	 * Get the field "data".
-	 *
+	 * @since 1.0.0
+     *
 	 * @return void
 	 */
 	public function get_data(): void
@@ -330,6 +371,7 @@ class RD_Field
 
 	/**
      * Get the data "enabled".
+     * @since 1.0.0
      *
 	 * @return bool
 	 */
@@ -337,30 +379,32 @@ class RD_Field
     {
         return $this->settings[ 'enabled' ] ?? true;
     }
-
-	/**
-     * Set the data "enabled".
-     *
-	 * @param $enabled
-	 * @return $this
-	 */
-    public function enabled_when( $enabled ): static
-    {
-        if( is_callable( $enabled ) ) {
-            $this->settings[ 'enabled' ] = $enabled;
-        } else {
-            $this->settings[ 'enabled' ] = function() use ( $enabled ) {
-                return $enabled;
-            };
-        }
-
-        return $this;
-    }
+//
+//	/**
+//     * Set the data "enabled".
+//     * @since 1.0.0
+//     *
+//	 * @param $enabled
+//	 * @return $this
+//	 */
+//    public function enabled_when( $enabled ): static
+//    {
+//        if( is_callable( $enabled ) ) {
+//            $this->settings[ 'enabled' ] = $enabled;
+//        } else {
+//            $this->settings[ 'enabled' ] = function() use ( $enabled ) {
+//                return $enabled;
+//            };
+//        }
+//
+//        return $this;
+//    }
 
 
 	/**
 	 * Set settings for the field
-	 *
+	 * @since 1.0.0
+     *
 	 * @param array $settings
 	 * @return $this
 	 */
@@ -374,7 +418,8 @@ class RD_Field
 
 	/**
 	 * Set the field "default" value.
-	 *
+	 * @since 1.0.0
+     *
 	 * @param mixed $value
 	 * @return $this
 	 */
@@ -389,7 +434,8 @@ class RD_Field
 
 	/**
 	 * Set the field "value" value.
-	 *
+	 * @since 1.0.0
+     *
 	 * @param string $value
 	 * @return $this
 	 */
@@ -402,7 +448,8 @@ class RD_Field
 
 	/**
 	 * Set the placeholder
-	 *
+	 * @since 1.0.0
+     *
 	 * @param string $placeholder
 	 * @return $this
 	 */
@@ -415,45 +462,58 @@ class RD_Field
 
 	/**
 	 * Add condition to the field
-	 *
+	 * @since 1.0.0
+     *
 	 * @param string $id
 	 * @param string $operator
 	 * @param string $value
-	 *
 	 * @return $this
 	 */
-	public function when( string $id, string $operator = '=', string $value ): static
-	{
-		$this->data['data-rd-show-if-id'] = $this->id;
-		$this->data['data-rd-show-if-target'] = $id;
-		$this->data['data-rd-show-if-value'] = $value;
-		$this->data['data-rd-show-if-operator'] = $operator;
+	public function when( string $field = null, string $operator = null, string $value = null, callable $function = null ): static
+    {
+        if( is_callable( $function ) ) {
+	        $this->settings[ 'enabled' ] = $function();
+        }
+        else
+        {
+	        $this->data['data-rd-show-if-id'] = $this->id;
+	        $this->data['data-rd-show-if-target'] = $field;
+	        $this->data['data-rd-show-if-value'] = $value;
+	        $this->data['data-rd-show-if-operator'] = $operator ?? '=';
+        }
+
+//		$this->data['data-rd-show-if-id'] = $this->id;
+//		$this->data['data-rd-show-if-target'] = $id;
+//		$this->data['data-rd-show-if-value'] = $value;
+//		$this->data['data-rd-show-if-operator'] = $operator ?? '=';
 
 		return $this;
 	}
 
 	/**
 	 * Set the field as recommended
-	 *
+	 * @since 1.0.0
+     *
 	 * @return $this
 	 */
 	public function recommended(): static
 	{
-		$this->tags[] = [ 'title' => __('Recommended', 'rd'), 'color' => 'success' ];
+		$this->tags[] = array( 'title' => __( 'Recommended', 'rd' ), 'color' => 'success' );
 
 		return $this;
 	}
 
 	/**
 	 * Set the field as impact
-	 *
+	 * @since 1.0.0
+     *
 	 * @param string|null $level
 	 * @param string|null $color
 	 * @return $this
 	 */
 	public function impact( ?string $level = null, ?string $color = null ): static
 	{
-		if( ! isset( $color ) ) {
+		if( false === isset( $color ) ) {
 			switch ( $level ) {
 				case 'low':
 					$color = 'info';
@@ -467,14 +527,15 @@ class RD_Field
 			}
 		}
 
-		$this->tags[] = [ 'title' => ucfirst($level), 'color' => $color ];
+		$this->tags[] = array( 'title' => ucfirst( $level ), 'color' => $color );
 
 		return $this;
 	}
 
 	/**
 	 * Change the field width to "full"
-	 *
+	 * @since 1.0.0
+     *
 	 * @return $this
 	 */
 	public function full(): static
@@ -486,7 +547,8 @@ class RD_Field
 
 	/**
 	 * Add sub-fields
-	 *
+	 * @since 1.0.0
+     *
 	 * @param mixed ...$args
 	 * @return $this
 	 */
@@ -499,7 +561,8 @@ class RD_Field
 
 	/**
 	 * Check if the field has a label
-	 *
+	 * @since 1.0.0
+     *
 	 * @return boolean
 	 */
 	protected function has_label(): bool
@@ -509,7 +572,8 @@ class RD_Field
 
 	/**
 	 * Check if the field has a description
-	 *
+	 * @since 1.0.0
+     *
 	 * @return boolean
 	 */
 	protected function has_description(): bool
@@ -519,7 +583,8 @@ class RD_Field
 
 	/**
 	 * Check if the field has tags
-	 *
+	 * @since 1.0.0
+     *
 	 * @return boolean
 	 */
 	protected function has_tags(): bool
@@ -529,7 +594,8 @@ class RD_Field
 
 	/**
 	 * Get the field classes
-	 *
+	 * @since 1.0.0
+     *
 	 * @return string
 	 */
 	protected function classes(): string
@@ -549,7 +615,8 @@ class RD_Field
 
 	/**
 	 * Render something before the field
-	 *
+	 * @since 1.0.0
+     *
 	 * @return void
 	 */
 	protected function field_before(): void
@@ -582,7 +649,8 @@ class RD_Field
 
 	/**
 	 * Render something after the field
-	 *
+	 * @since 1.0.0
+     *
 	 * @return void
 	 */
 	protected function field_after(): void
@@ -603,7 +671,8 @@ class RD_Field
 
 	/**
 	 * Get the field setting
-	 *
+	 * @since 1.0.0
+     *
 	 * @param string $key
 	 * @return mixed
 	 */
@@ -614,6 +683,7 @@ class RD_Field
 
 	/**
      * Get the field attribute
+     * @since 1.0.0
      *
 	 * @param string $key
 	 * @return mixed
@@ -625,7 +695,8 @@ class RD_Field
 
 	/**
 	 * Get the field value
-	 *
+	 * @since 1.0.0
+     *
 	 * @return mixed
 	 */
 	public function get_value(): mixed
@@ -641,7 +712,8 @@ class RD_Field
 
 	/**
 	 * Render the field
-	 *
+	 * @since 1.0.0
+     *
 	 * @return void
 	 */
 	public function render(): void

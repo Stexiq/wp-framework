@@ -12,12 +12,15 @@ if( ! class_exists( 'RD_Section') )
     {
         /**
         * @var string
+        * @since 1.0.0
         */
         public string $type = 'section';
 
         /**
-         * @param array $fields
+         * Add fields to the section.
+         * @since 1.0.0
          *
+         * @param array $fields
          * @return $this
          */
         public function fields( ...$fields ): static
@@ -29,6 +32,7 @@ if( ! class_exists( 'RD_Section') )
 
         /**
          * Render the field.
+         * @since 1.0.0
          *
          * @return void
          */
@@ -52,11 +56,12 @@ if( ! class_exists( 'RD_Section') )
 }
 
 if( ! function_exists( 'rd_section' ) ) {
-    /**
-     * Create a new section field.
-     *
-     * @return RD_Section
-     */
+	/**
+	 * Get an instance of the RD_Section class.
+	 * @since 1.0.0
+	 *
+	 * @return RD_Section
+	 */
     function rd_section(): RD_Section
     {
         return new RD_Section();

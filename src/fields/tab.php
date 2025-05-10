@@ -12,17 +12,21 @@ if( ! class_exists( 'RD_Tab') )
     {
         /**
         * @var string
+        * @since 1.0.0
         */
         public string $type = 'tab';
 
         /**
          * @var string
+         * @since 1.0.0
          */
         public string $icon = '';
 
         /**
-         * @param array $fields
+         * Add fields to the tab.
+         * @since 1.0.0
          *
+         * @param array $fields
          * @return $this
          */
         public function fields( ...$fields ): static
@@ -34,9 +38,9 @@ if( ! class_exists( 'RD_Tab') )
 
         /**
          * Set the icon for the tab.
+         * @since 1.0.0
          *
          * @param string $icon
-         *
          * @return $this
          */
         public function icon( string $icon ): static
@@ -48,6 +52,7 @@ if( ! class_exists( 'RD_Tab') )
 
         /**
          * Get the icon for the tab.
+         * @since 1.0.0
          *
          * @return string
          */
@@ -58,6 +63,7 @@ if( ! class_exists( 'RD_Tab') )
 
         /**
          * Render the field.
+         * @since 1.0.0
          *
          * @return void
          */
@@ -77,11 +83,12 @@ if( ! class_exists( 'RD_Tab') )
 }
 
 if( ! function_exists( 'rd_tab' ) ) {
-    /**
-     * Create a new tab field.
-     *
-     * @return RD_Tab
-     */
+	/**
+	 * Get an instance of the RD_Tab class.
+	 * @since 1.0.0
+	 *
+	 * @return RD_Tab
+	 */
     function rd_tab(): RD_Tab
     {
         return new RD_Tab();

@@ -12,17 +12,20 @@ if( ! class_exists( 'RD_Checkbox') )
     {
         /**
         * @var string
+         * @since 1.0.0
         */
         public string $type = 'checkbox';
 
 	    /**
 	     * @var array
+         * @since 1.0.0
 	     */
 	    public array $options = [];
 
 	    /**
 	     * Initialize the field.
-	     *
+	     * @since 1.0.0
+         *
 	     * @return void
 	     */
         public function init(): void
@@ -32,6 +35,7 @@ if( ! class_exists( 'RD_Checkbox') )
 
         /**
          * Set options.
+         * @since 1.0.0
          *
          * @param array $options
          * @return $this
@@ -45,6 +49,7 @@ if( ! class_exists( 'RD_Checkbox') )
 
         /**
          * Render the field.
+         * @since 1.0.0
          *
          * @return void
          */
@@ -73,7 +78,8 @@ if( ! class_exists( 'RD_Checkbox') )
 
 if( ! function_exists( 'rd_checkbox' ) ) {
 	/**
-	 * Create a new checkbox field
+	 * Get an instance of the RD_Checkbox class.
+     * @since 1.0.0
 	 *
 	 * @return RD_Checkbox
 	 */

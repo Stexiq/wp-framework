@@ -12,60 +12,25 @@ if( ! class_exists( 'RD_Color') )
     {
         /**
         * @var string
+        * @since 1.0.0
         */
         public string $type = 'input';
 
         /**
          * Set the field type to color.
+         * @since 1.0.0
          *
          * @return void
          */
         public function init(): void
         {
-            /**
-             * Set the attributes.
-             */
             $this->attributes['type'] = 'text';
-            //$this->attributes['class'] = 'rd-color-picker';
-
-            /**
-             * Set the rules.
-             */
-            $this->rules[] = 'color';
         }
-
-    //	/**
-    //	 * Add the required JS
-    //	 *
-    //	 * @return array
-    //	 */
-    //	public function js(): array
-    //	{
-    //		return array(
-    //			array(
-    //				'handle' => 'color-picker',
-    //				'src' => RD_URL . 'admin/assets/libs/colorpicker/coloris.min.js',
-    //			),
-    //		);
-    //	}
-    //
-    //	/**
-    //	 * Add the required CSS
-    //	 *
-    //	 * @return array
-    //	 */
-    //	public function css(): array
-    //	{
-    //		return array(
-    //			array(
-    //				'handle' => 'color-picker',
-    //				'src' => RD_URL . 'admin/assets/libs/colorpicker/coloris.min.css',
-    //			),
-    //		);
-    //	}
 
         /**
          * Render the field
+         * @since 1.0.0
+         *
          * @return void
          */
         public function render(): void
@@ -81,7 +46,8 @@ if( ! class_exists( 'RD_Color') )
 
 if( ! function_exists( 'rd_color' ) ) {
     /**
-     * Create a new color field
+     * Get an instance of the RD_Color class.
+     * @since 1.0.0
      *
      * @return RD_Color
      */

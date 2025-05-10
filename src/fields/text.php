@@ -12,11 +12,13 @@ if( ! class_exists( 'RD_Text') )
     {
         /**
         * @var string
+         * @since 1.0.0
         */
         public string $type = 'text';
 
         /**
          * Set the field type to text.
+         * @since 1.0.0
          *
          * @return void
          */
@@ -25,21 +27,9 @@ if( ! class_exists( 'RD_Text') )
             $this->attributes['type'] = 'text';
         }
 
-//        /**
-//         * Set the field type to number.
-//         *
-//         * @return $this
-//         */
-//        public function numeric(): static
-//        {
-//            $this->attributes['type'] = 'number';
-//            $this->rules[] = 'numeric';
-//
-//            return $this;
-//        }
-
         /**
          * Render the field
+         * @since 1.0.0
          *
          * @return void
          */
@@ -53,11 +43,12 @@ if( ! class_exists( 'RD_Text') )
 }
 
 if( ! function_exists( 'rd_text' ) ) {
-    /**
-     * Create a new text field.
-     *
-     * @return RD_Text
-     */
+	/**
+	 * Get an instance of the RD_Text class.
+	 * @since 1.0.0
+	 *
+	 * @return RD_Text
+	 */
     function rd_text(): RD_Text
     {
         return new RD_Text();
